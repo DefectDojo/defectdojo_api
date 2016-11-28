@@ -8,11 +8,12 @@ try:
 except ImportError:
     from distutils.core import setup
 
-from defect_dojo_api import __version__ as version
+from defectdojo_api import __version__ as version
 
 with open('README.rst', 'r') as f:
     readme = f.read()
 
+"""
 # Publish helper
 if sys.argv[-1] == 'build':
     os.system('python setup.py sdist bdist_wheel')
@@ -25,12 +26,16 @@ if sys.argv[-1] == 'publish':
 if sys.argv[-1] == 'publish-test':
     os.system('python setup.py sdist bdist_wheel upload -r pypitest')
     sys.exit(0)
+"""
+
+# allow setup.py to be run from any path
+os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='defectdojo_api',
     packages=['defectdojo_api'],
     version=version,
-    description='An API wrapper to facilitate interactions with Defect Dojo.',
+    description='An API wrapper to for Defect Dojo.',
     long_description=readme,
     author='Aaron Weaver',
     author_email='aaron.weaver2@gmail.com',
