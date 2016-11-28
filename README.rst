@@ -11,8 +11,8 @@ Quick Start
 Several quick start options are available:
 
 - Install with pip (recommended): :code:`pip install defect_dojo_api`
-- `Download the latest release <https://github.com/aaronweaver/dojo_api/releases/latest>`_
-- Clone the repository: :code:`git clone https://github.com/aaronweaver/defect_dojo_api`
+- `Download the latest release <https://github.com/aaronweaver/defectdojo_api/releases/latest>`_
+- Clone the repository: :code:`git clone https://github.com/aaronweaver/defectdojo_api`
 
 Example
 -------
@@ -47,14 +47,14 @@ Example
     for product in products.data["objects"]:
         print(product['name'])  # Print the name of each product
 
-Supporting information for each method available can be found in the `documentation <https://github.com/aaronweaver/DefectDojo_api/tree/master/docs>`_.
+Supporting information for each method available can be found in the `documentation <https://github.com/aaronweaver/defectdojo_api/tree/master/docs>`_.
 
 Bugs and Feature Requests
 -------------------------
 
-Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, `please open a new issue <https://github.com/aaronweaver/Defect_Dojo_api/issues/new>`_.
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, `please open a new issue <https://github.com/aaronweaver/defectdojo_api/issues/new>`_.
 
 Copyright and License
 ---------------------
 
-- `Licensed under MIT <https://github.com/aaronweaver/Defect_Dojo_api/blob/master/LICENSE.txt>`_.
+- `Licensed under MIT <https://github.com/aaronweaver/defectdojo_api/blob/master/LICENSE.txt>`_.
