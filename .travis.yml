@@ -1,0 +1,13 @@
+language: python
+
+python:
+  - "2.7"
+
+deploy:
+  provider: pypi
+  user: aweaver
+  password:
+    secure: npvVBar8zVc9uCh+SHRGvJdoHf489E4VXKYWX7M8cpUMdICYFctuzRxrWOtdWl/YFJBHeVkIX2BrBV46IcGwvZjawjgFtjvoz50B0Fta18X4abgy6Pm1B+/LCUixUl9YYpB42wY1Kx9dXvoaZoQ13tGwACXORNd/WDjyralu/fNHyMZ2ezimBbay8QHetyzImLQAVPTPSebu58iOe363u8E8nb8zVglEHcxLe1tMX1xTCK1M9y+K4A+ss2Tj9t3m0lmCo6y7y1cP6kO7DIS9rSc22CNjDKalSh+uWQn/h4MbxYb02zOKhCSYr9/whg1XpFP1vpgMcCj4UhIZqhkRlhfQXZfKnytapCTWJitL8wAKj3/PXharUDGoYnnGMRUv5fkU1he2HGu3+g1BQJIecmmj5VpF09teTlAm2C1A8KgDjyB0CxVZMonSjalUDrUZmRz9t2uELEEKvxKWgkrmDXhomAO4Ml0vkMLh3TccxxDJ4qSAc0HWswF4y88AY2J5kCaYV+wOmnKUPofb4Oh7B9Ttc74Xahp5ODliT11PW3P5ZESZHzy00fnu3KUPG6USuKjc8bghfMi8nkkPYr4RnkaNXTjQ2b7VdN1BxYChLAsJr9otN3ZgkTmuGVOMOHUH9yQjtwXuwCTd7Hlv2f1vLT+EyNsqWBRc0trgNON1R2o=
+  on:
+    tags: true
+    branch: master
