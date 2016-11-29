@@ -53,6 +53,8 @@ Example
     else:
         print products.message
 
+More examples `available https://github.com/aaronweaver/defectdojo_api/tree/master/examples` on Github.
+
 Supporting information for each method available can be found in the `documentation <https://defectdojo-api.readthedocs.io>`_.
 
 Bugs and Feature Requests
