@@ -7,7 +7,7 @@ class TestDefectDojoAPI(unittest.TestCase):
 
     def setUp(self):
         host = 'http://localhost:8000'
-        api_key = 'd76b707b48dbdca6222db7cd71c839ead6b1768e'
+        api_key = os.environ['DOJO_API_KEY']
         user = 'admin'
 
         self.dd = defectdojo.DefectDojoAPI(host, api_key, user, debug=False)
@@ -17,8 +17,8 @@ class TestDefectDojoAPI(unittest.TestCase):
         user = self.dd.get_user(1)
         self.assertIsNotNone(user.data['username'])
 
-    def test_02_get_users(self):
-        users = self.dd.get_users()
+    def test_02_list_users(self):
+        users = self.dd.list_users()
         #print users.data_json(pretty=True)
         #Test that the total count is not zero
         self.assertTrue(users.data["meta"]["total_count"]>0)
@@ -39,8 +39,8 @@ class TestDefectDojoAPI(unittest.TestCase):
         #print product.data_json(pretty=True)
         self.assertEqual("Product Update Test", product.data['name'])
 
-    def test_06_get_products(self):
-        products = self.dd.get_products()
+    def test_06_list_products(self):
+        products = self.dd.list_products()
         #print products.data_json(pretty=True)
         #Test that the total count is not zero
         self.assertTrue(products.data["meta"]["total_count"]>0)
@@ -57,8 +57,8 @@ class TestDefectDojoAPI(unittest.TestCase):
         #print engagement.data_json(pretty=True)
         self.assertIsNotNone(str(engagement.data["name"]))
 
-    def test_09_get_engagements(self):
-        engagements = self.dd.get_engagements()
+    def test_09_list_engagements(self):
+        engagements = self.dd.list_engagements()
         #print engagements.data_json(pretty=True)
         self.assertTrue(engagements.data["meta"]["total_count"]>0)
 
@@ -81,8 +81,8 @@ class TestDefectDojoAPI(unittest.TestCase):
         #print test.data_json(pretty=True)
         self.assertIsNotNone(str(test.data["engagement"]))
 
-    def test_13_get_tests(self):
-        tests = self.dd.get_tests()
+    def test_13_list_tests(self):
+        tests = self.dd.list_tests()
         #print tests.data_json(pretty=True)
         self.assertTrue(tests.data["meta"]["total_count"]>0)
 
@@ -107,8 +107,8 @@ class TestDefectDojoAPI(unittest.TestCase):
         #print finding.data_json(pretty=True)
         self.assertIsNotNone(str(finding.data["title"]))
 
-    def test_17_get_findings(self):
-        findings = self.dd.get_findings()
+    def test_17_list_findings(self):
+        findings = self.dd.list_findings()
         #print findings.data_json(pretty=True)
         self.assertTrue(findings.data["meta"]["total_count"]>0)
 

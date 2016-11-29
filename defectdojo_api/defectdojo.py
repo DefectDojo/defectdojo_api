@@ -9,19 +9,21 @@ from . import __version__ as version
 class DefectDojoAPI(object):
     """An API wrapper for DefectDojo."""
 
-    def __init__(self, host, api_key, user, api_version='v1', verify_ssl=True, timeout=30, user_agent=None, cert=None, debug=False):
-        """
-        Initialize a DefectDojo API instance.
+    def __init__(self, host, api_key, user, api_version='v1', verify_ssl=True, timeout=30, proxies=None, user_agent=None, cert=None, debug=False):
+        """Initialize a DefectDojo API instance.
+
         :param host: The URL for the DefectDojo server. (e.g., http://localhost:8000/DefectDojo/)
         :param api_key: The API key generated on the DefectDojo API key page.
         :param user: The user associated with the API key.
         :param api_version: API version to call, the default is v1.
         :param verify_ssl: Specify if API requests will verify the host's SSL certificate, defaults to true.
         :param timeout: HTTP timeout in seconds, default is 30.
+        :param proxis: Proxy for API requests.
         :param user_agent: HTTP user agent string, default is "DefectDojo_api/[version]".
         :param cert: You can also specify a local cert to use as client side certificate, as a single file (containing
         the private key and the certificate) or as a tuple of both file's path
         :param debug: Prints requests and responses, useful for debugging.
+
         """
 
         self.host = host + '/api/' + api_version + '/'
@@ -29,6 +31,7 @@ class DefectDojoAPI(object):
         self.user = user
         self.api_version = api_version
         self.verify_ssl = verify_ssl
+        self.proxies = proxies
         self.timeout = timeout
 
         if not user_agent:
@@ -44,26 +47,51 @@ class DefectDojoAPI(object):
 
     ###### Helper Functions ######
     def get_user_uri(self, user_id):
+        """Returns the DefectDojo API URI for a user.
+
+        :param user_id: Id of the user
+
+        """
+
         return "/api/" + self.api_version + "/users/" + str(user_id) + "/"
 
     def get_engagement_uri(self, engagement_id):
+        """Returns the DefectDojo API URI for an engagement.
+
+        :param engagement_id: Id of the engagement
+
+        """
         return "/api/" + self.api_version + "/engagements/" + str(engagement_id) + "/"
 
     def get_product_uri(self, product_id):
+        """Returns the DefectDojo API URI for a product.
+
+        :param product_id: Id of the product
+
+        """
         return "/api/" + self.api_version + "/products/" + str(product_id) + "/"
 
     def get_test_uri(self, test_id):
+        """Returns the DefectDojo API URI for a test.
+
+        :param test_id: Id of the test
+
+        """
         return "/api/" + self.api_version + "/tests/" + str(test_id) + "/"
 
     def version_url(self):
+        """Returns the DefectDojo API version.
+
+        """
         return self.api_version
 
     ###### User API #######
-    def get_users(self, username=None, limit=20):
-        """
-        Retrieves all the users.
-        :param usename: Search by username.
+    def list_users(self, username=None, limit=20):
+        """Retrieves all the users.
+
+        :param username: Search by username.
         :param limit: Number of records to return.
+
         """
         params  = {}
         if limit:
@@ -75,18 +103,20 @@ class DefectDojoAPI(object):
         return self._request('GET', 'users/')
 
     def get_user(self, user_id):
-        """
-        Retrieves a user using the given user id.
+        """Retrieves a user using the given user id.
+
         :param user_id: User identification.
+
         """
         return self._request('GET', 'users/' + str(user_id) + '/')
 
     ###### Engagements API #######
-    def get_engagements(self, product_in=None,limit=20):
-        """
-        Retrieves all the engagements.
+    def list_engagements(self, product_in=None,limit=20):
+        """Retrieves all the engagements.
+
         :param product_in: List of product ids (1,2).
         :param limit: Number of records to return.
+
         """
 
         params  = {}
@@ -99,17 +129,18 @@ class DefectDojoAPI(object):
         return self._request('GET', 'engagements/', params)
 
     def get_engagement(self, engagement_id):
-        """
-        Retrieves an engagement using the given engagement id.
+        """Retrieves an engagement using the given engagement id.
+
         :param engagement_id: Engagement identification.
+
         """
         return self._request('GET', 'engagements/' + str(engagement_id) + '/')
 
     def create_engagement(self, name, product_id, lead_id, status, target_start, target_end, active='true',
         pen_test='false', check_list='false', threat_model='false', risk_path="", test_strategy="", progress="",
         done_testing=""):
-        """
-        Creates an engagement with the given properties.
+        """Creates an engagement with the given properties.
+
         :param name: Engagement name.
         :param product_id: Product key id..
         :param lead_id: Testing lead from the user table.
@@ -123,6 +154,7 @@ class DefectDojoAPI(object):
         :param risk_path: risk_path
         :param test_strategy: Test Strategy URLs
         :param progress: Engagement progresss measured in percent.
+
         """
 
         data = {
@@ -148,8 +180,8 @@ class DefectDojoAPI(object):
         target_end=None, active=None, pen_test=None, check_list=None, threat_model=None, risk_path=None,
         test_strategy=None, progress=None, done_testing=None):
 
-        """
-        Updates an engagement with the given properties.
+        """Updates an engagement with the given properties.
+
         :param id: Engagement id.
         :param name: Engagement name.
         :param product_id: Product key id..
@@ -164,7 +196,9 @@ class DefectDojoAPI(object):
         :param risk_path: risk_path
         :param test_strategy: Test Strategy URLs
         :param progress: Engagement progresss measured in percent.
+
         """
+
         data = {}
 
         if name:
@@ -212,13 +246,15 @@ class DefectDojoAPI(object):
         return self._request('PUT', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
-    def get_products(self, name=None, name_contains=None, limit=20):
-        """
-        Retrieves all the products.
+    def list_products(self, name=None, name_contains=None, limit=20):
+        """Retrieves all the products.
+
         :param name: Search by product name.
         :param name_contains: Search by product name.
         :param limit: Number of records to return.
+
         """
+
         params  = {}
         if limit:
             params['limit'] = limit
@@ -232,18 +268,20 @@ class DefectDojoAPI(object):
         return self._request('GET', 'products/', params)
 
     def get_product(self, product_id):
-        """
-        Retrieves a product using the given product id.
+        """Retrieves a product using the given product id.
+
         :param product_id: Product identification.
+
         """
         return self._request('GET', 'products/' + str(product_id) + '/')
 
     def create_product(self, name, description, prod_type):
-        """
-        Creates a product with the given properties.
+        """Creates a product with the given properties.
+
         :param name: Product name.
         :param description: Product key id..
         :param prod_type: Product type.
+
         """
 
         data = {
@@ -255,12 +293,13 @@ class DefectDojoAPI(object):
         return self._request('POST', 'products/', data=data)
 
     def set_product(self, product_id, name=None, description=None, prod_type=None):
-        """
-        Updates a product with the given properties.
+        """Updates a product with the given properties.
+
         :param product_id: Product ID
         :param name: Product name.
         :param description: Product key id..
         :param prod_type: Product type.
+
         """
 
         data = {}
@@ -278,12 +317,14 @@ class DefectDojoAPI(object):
 
 
     ###### Test API #######
-    def get_tests(self, name=None, engagement_in=None, limit=20):
-        """
-        Retrieves all the tests.
+    def list_tests(self, name=None, engagement_in=None, limit=20):
+        """Retrieves all the tests.
+
         :param name_contains: Search by product name.
         :param limit: Number of records to return.
+
         """
+
         params  = {}
         if limit:
             params['limit'] = limit
@@ -294,20 +335,22 @@ class DefectDojoAPI(object):
         return self._request('GET', 'tests/', params)
 
     def get_test(self, test_id):
-        """
-        Retrieves a test using the given test id.
+        """Retrieves a test using the given test id.
+
         :param test_id: Test identification.
+
         """
         return self._request('GET', 'tests/' + str(test_id) + '/')
 
     def create_test(self, engagement_id, test_type, environment, target_start, target_end, percent_complete=None):
-        """
-        Creates a product with the given properties.
+        """Creates a product with the given properties.
+
         :param engagement_id: Engagement id.
         :param test_type: Test type key id.
         :param target_start: Test start date.
         :param target_end: Test end date.
         :param percent_complete: Percentage until test completion.
+
         """
 
         data = {
@@ -323,13 +366,14 @@ class DefectDojoAPI(object):
 
     def set_test(self, test_id, engagement_id=None, test_type=None, environment=None,
         target_start=None, target_end=None, percent_complete=None):
-        """
-        Creates a product with the given properties.
+        """Creates a product with the given properties.
+
         :param engagement_id: Engagement id.
         :param test_type: Test type key id.
         :param target_start: Test start date.
         :param target_end: Test end date.
         :param percent_complete: Percentage until test completion.
+
         """
 
         data = {}
@@ -355,11 +399,12 @@ class DefectDojoAPI(object):
         return self._request('PUT', 'tests/' + str(test_id) + '/', data=data)
 
     ###### Findings API #######
-    def get_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
+    def list_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
         severity_gt=None, severity_contains=None, title_contains=None, url_contains=None, date_lt=None,
         date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_in=None, limit=20):
-        """
-        Returns filtered list of findings.
+
+        """Returns filtered list of findings.
+
         :param active: Finding is active: (true or false)
         :param duplicate: Duplicate finding (true or false)
         :param mitigated: Mitigated finding (true or false)
@@ -377,6 +422,7 @@ class DefectDojoAPI(object):
         :param engagement_id_in: Engagement id(s) associated with a finding. (1,2 or 1)
         :param test_in: Test id(s) associated with a finding. (1,2 or 1)
         :param limit: Number of records to return.
+
         """
 
         params  = {}
@@ -442,8 +488,9 @@ class DefectDojoAPI(object):
 
     def create_finding(self, title, description, severity, cwe, date, product_id, engagement_id, test_id, user_id,
         impact, active, verified, mitigation, references=None):
-        """
-        Creates a finding with the given properties.
+
+        """Creates a finding with the given properties.
+
         :param title: Finding title
         :param description: Finding detailed description.
         :param severity: Finding severity: Low, Medium, High and Critical
@@ -458,6 +505,7 @@ class DefectDojoAPI(object):
         :param verified: Finding has been verified.
         :param mitigation: Steps to mitigate the finding.
         :param references: Details on finding.
+
         """
 
         data = {
@@ -482,8 +530,9 @@ class DefectDojoAPI(object):
     def set_finding(self, finding_id, product_id, engagement_id, test_id, title=None, description=None, severity=None,
         cwe=None, date=None, user_id=None, impact=None, active=None, verified=None,
         mitigation=None, references=None):
-        """
-        Updates a finding with the given properties.
+
+        """Updates a finding with the given properties.
+
         :param title: Finding title
         :param description: Finding detailed description.
         :param severity: Finding severity: Low, Medium, High and Critical
@@ -498,6 +547,7 @@ class DefectDojoAPI(object):
         :param verified: Finding has been verified.
         :param mitigation: Steps to mitigate the finding.
         :param references: Details on finding.
+
         """
 
         data = {}
@@ -549,10 +599,11 @@ class DefectDojoAPI(object):
     ##### Upload API #####
 
     def upload_scan(self, engagement_id, scan_type, file_path, active, scan_date, tags):
-        """
-        Uploads and processes a scan file.
+        """Uploads and processes a scan file.
+
         :param application_id: Application identifier.
         :param file_path: Path to the scan file to be uploaded.
+
         """
 
         data = {
@@ -569,12 +620,6 @@ class DefectDojoAPI(object):
             files=data
         )
 
-        """
-        return self._request(
-            'POST', 'importscan/',
-            files={'file': open(file_path, 'rb'), 'eid': ('', str(engagement_id)), 'scan_type': ('', scan_type)}
-        )
-        """
     # Utility
 
     @staticmethod
@@ -607,10 +652,10 @@ class DefectDojoAPI(object):
             headers['Accept'] = 'application/json'
             headers['Content-Type'] = 'application/json'
 
-        proxies = {
-          'http': 'http://localhost:8080',
-          'https': 'http://localhost:8080',
-        }
+        if self.proxies:
+            proxies=self.proxies
+        else:
+            proxies = {}
 
         try:
             if self.debug:
@@ -655,7 +700,10 @@ class DefectDojoAPI(object):
 
 
 class DefectDojoResponse(object):
-    """Container for all DefectDojo API responses, even errors."""
+    """
+    Container for all DefectDojo API responses, even errors.
+
+    """
 
     def __init__(self, message, success, data=None, response_code=-1):
         self.message = message

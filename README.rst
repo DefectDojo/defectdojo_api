@@ -1,5 +1,5 @@
 DefectDojo API
-=============
+==============
 
 A Python API wrapper to facilitate interactions with `DefectDojo <https://github.com/OWASP/django-DefectDojo>`_.
 
@@ -10,7 +10,7 @@ Quick Start
 
 Several quick start options are available:
 
-- Install with pip (recommended): :code:`pip install defect_dojo_api`
+- Install with pip (recommended): :code:`pip install defectdojo_api`
 - `Download the latest release <https://github.com/aaronweaver/defectdojo_api/releases/latest>`_
 - Clone the repository: :code:`git clone https://github.com/aaronweaver/defectdojo_api`
 
@@ -33,19 +33,25 @@ Example
     # If you need to disable certificate verification, set verify_ssl to False.
     # dd = defectdojo.DefectDojoAPI(host, api_key, user, verify_ssl=False)
 
-    # You can also specify a local cert to use as client side certificate, as a
-    # single file (containing the private key and the certificate) or as a tuple
-    # of both file's path.
-    # cert=('/path/server.crt', '/path/key')
-    # dd = defectdojo.DefectDojoAPI(host, api_key, user, cert=cert)
+    # Create a product
+    prod_type = 1 #1 - Research and Development, product type
+    product = dd.create_product("API Product Test", "This is a detailed product description.", prod_type)
+
+    if product.success:
+        # Get the product id
+        product_id = product.id()
+        print "Product successfully created with an id: " + str(product_id)
 
     #List Products
-    products = dd.get_products()
+    products = dd.list_products()
 
-    print(products.data_json(pretty=True))  # Decoded JSON object
+    if products.success:
+        print(products.data_json(pretty=True))  # Decoded JSON object
 
-    for product in products.data["objects"]:
-        print(product['name'])  # Print the name of each product
+        for product in products.data["objects"]:
+            print(product['name'])  # Print the name of each product
+    else:
+        print products.message
 
 Supporting information for each method available can be found in the `documentation <https://github.com/aaronweaver/defectdojo_api/tree/master/docs>`_.
 
