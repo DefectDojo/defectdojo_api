@@ -1,7 +1,7 @@
 DefectDojo API
 ==============
 
-A Python API wrapper for `DefectDojo <https://github.com/OWASP/django-DefectDojo>`_, an AppSec and Security Vulnerability management tool.
+A Python API wrapper for `DefectDojo <https://github.com/OWASP/django-DefectDojo>`_, an AppSec and Security Vulnerability Management tool.
 
 This package implements API functionality available within Dojo.
 
