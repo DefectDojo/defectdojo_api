@@ -670,7 +670,7 @@ class DefectDojoAPI(object):
                 print(response.text)
 
             try:
-                if response.status_code == 201: #Created new ojbect
+                if response.status_code == 201: #Created new object
                     object_id = response.headers["Location"].split('/')
                     key_id = object_id[-2]
                     try:
@@ -681,7 +681,7 @@ class DefectDojoAPI(object):
                     return DefectDojoResponse(message="Upload complete", data=data, success=True)
                 elif response.status_code == 204: #Object updates
                     return DefectDojoResponse(message="Object updated.", success=True)
-                elif response.status_code == 404: #Created new ojbect
+                elif response.status_code == 404: #Object not created
                     return DefectDojoResponse(message="Object id does not exist.", success=False)
                 else:
                     data = response.json()

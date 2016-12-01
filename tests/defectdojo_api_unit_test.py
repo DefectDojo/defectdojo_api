@@ -10,7 +10,12 @@ class TestDefectDojoAPI(unittest.TestCase):
         api_key = os.environ['DOJO_API_KEY']
         user = 'admin'
 
-        self.dd = defectdojo.DefectDojoAPI(host, api_key, user, debug=False)
+        proxies = {
+          'http': 'http://localhost:8080',
+          'https': 'http://localhost:8080',
+        }
+
+        self.dd = defectdojo.DefectDojoAPI(host, api_key, user, proxies=proxies, debug=False)
 
     #### USER API TESTS ####
     def test_01_get_user(self):
