@@ -9,7 +9,7 @@ from . import __version__ as version
 class DefectDojoAPI(object):
     """An API wrapper for DefectDojo."""
 
-    def __init__(self, host, api_key, user, api_version='v1', verify_ssl=True, timeout=30, proxies=None, user_agent=None, cert=None, debug=False):
+    def __init__(self, host, api_key, user, api_version='v1', verify_ssl=True, timeout=60, proxies=None, user_agent=None, cert=None, debug=False):
         """Initialize a DefectDojo API instance.
 
         :param host: The URL for the DefectDojo server. (e.g., http://localhost:8000/DefectDojo/)
@@ -111,7 +111,7 @@ class DefectDojoAPI(object):
         return self._request('GET', 'users/' + str(user_id) + '/')
 
     ###### Engagements API #######
-    def list_engagements(self, product_in=None,limit=20):
+    def list_engagements(self, status=None, product_in=None,limit=20):
         """Retrieves all the engagements.
 
         :param product_in: List of product ids (1,2).
@@ -125,6 +125,9 @@ class DefectDojoAPI(object):
 
         if product_in:
             params['product__in'] = product_in
+
+        if status:
+            params['status'] = status
 
         return self._request('GET', 'engagements/', params)
 
@@ -401,7 +404,7 @@ class DefectDojoAPI(object):
     ###### Findings API #######
     def list_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
         severity_gt=None, severity_contains=None, title_contains=None, url_contains=None, date_lt=None,
-        date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_in=None, limit=20):
+        date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_id_in=None, limit=20):
 
         """Returns filtered list of findings.
 
@@ -474,8 +477,8 @@ class DefectDojoAPI(object):
         if product_id_in:
             params['product__id__in'] = product_id_in
 
-        if test_in:
-            params['test__in'] = test_in
+        if test_id_in:
+            params['test__id__in'] = test_id_in
 
         return self._request('GET', 'findings/', params)
 
@@ -598,7 +601,7 @@ class DefectDojoAPI(object):
 
     ##### Upload API #####
 
-    def upload_scan(self, engagement_id, scan_type, file_path, active, scan_date, tags):
+    def upload_scan(self, engagement_id, scan_type, file, active, scan_date, tags=None):
         """Uploads and processes a scan file.
 
         :param application_id: Application identifier.
@@ -607,8 +610,8 @@ class DefectDojoAPI(object):
         """
 
         data = {
-            'file': open(file_path, 'rb'),
-            'eid': ('', str(engagement_id)),
+            'file': open(file, 'rb'),
+            'engagement': ('', self.get_engagement_uri(engagement_id)),
             'scan_type': ('', scan_type),
             'active': ('', active),
             'scan_date': ('', scan_date),

@@ -1,11 +1,14 @@
+"""
+Example written by Aaron Weaver <aaron.weaver@owasp.org>
+as part of the OWASP DefectDojo and OWASP AppSec Pipeline Security projects
+
+Description: Imports test data into DefectDojo and creates products,
+engagements and tests along with findings.
+"""
 from defectdojo_api import defectdojo
 from random import randint
 import os
 from datetime import datetime, timedelta
-
-"""
-Imports test data into Defect DefectDojo
-"""
 
 # Setup DefectDojo connection information
 host = 'http://localhost:8000'
@@ -66,8 +69,9 @@ def create_load_data(product_name, product_desc, file=None, file_test_type=None)
         if file is not None:
             print "Loading scanner results from scanner export"
             dir_path = os.path.dirname(os.path.realpath(__file__))
-            upload_scan = dd.upload_scan(engagement_id, "Burp Scan", dir_path + file,
-            "true", "01/11/2016", "API")
+            date = datetime.now()
+            upload_scan = dd.upload_scan(engagement_id, file_test_type, dir_path + file,
+            "true", date.strftime("%Y/%m/%d"), "API")
 
         i = 0
         while i < 6:
@@ -89,7 +93,7 @@ def create_load_data(product_name, product_desc, file=None, file_test_type=None)
         print product.message
 
 ##### Create Products, Engagements and Tests ########
-create_load_data("BodgeIt", "Product description.", "../tests/scans/Bodgeit-burp.xml", "Burp Scan")
+create_load_data("BodgeIt", "Product description.", "/tests/scans/Bodgeit-burp.xml", "Burp Scan")
 create_load_data("A CRM App", "Product description.")
 create_load_data("An Engineering Application", "Product description.")
 create_load_data("A Marketing Site", "Product description.")

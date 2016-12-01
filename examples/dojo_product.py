@@ -1,3 +1,9 @@
+"""
+Example written by Aaron Weaver <aaron.weaver@owasp.org>
+as part of the OWASP DefectDojo and OWASP AppSec Pipeline Security projects
+
+Description: Creates a product in DefectDojo and returns information about the newly created product
+"""
 from defectdojo_api import defectdojo
 
 import os
