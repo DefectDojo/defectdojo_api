@@ -9,20 +9,6 @@ from datetime import datetime, timedelta
 import os
 import argparse
 
-# Setup DefectDojo connection information
-host = 'http://localhost:8000'
-api_key = os.environ['DOJO_API_KEY']
-user = 'admin'
-
-#Optionally, specify a proxy
-proxies = {
-  'http': 'http://localhost:8080',
-  'https': 'http://localhost:8080',
-}
-"""
-proxies=proxies
-"""
-
 def sum_severity(findings):
     severity = [0,0,0,0,0]
     for finding in findings.data["objects"]:
@@ -32,8 +18,10 @@ def sum_severity(findings):
             severity[3] = severity[3] + 1
         if finding["severity"] == "Medium":
             severity[2] = severity[2] + 1
-        if finding["severity"] == "Info":
+        if finding["severity"] == "Low":
             severity[1] = severity[1] + 1
+        if finding["severity"] == "Info":
+            severity[0] = severity[0] + 1
 
     return severity
 
@@ -44,7 +32,17 @@ def print_findings(findings):
     print "Low: " + str(findings[1])
     print "Info: " + str(findings[0])
 
-def create_findings(product_id, user_id, file, scanner, engagement_id=None, max_critical=0, max_high=0, max_medium=0):
+def create_findings(host, api_key, user, product_id, file, scanner, engagement_id=None, max_critical=0, max_high=0, max_medium=0):
+
+    #Optionally, specify a proxy
+    proxies = {
+      'http': 'http://localhost:8080',
+      'https': 'http://localhost:8080',
+    }
+    """
+    proxies=proxies
+    """
+
     # Instantiate the DefectDojo api wrapper
     dd = defectdojo.DefectDojoAPI(host, api_key, user, proxies=proxies, timeout=90, debug=False)
 
@@ -57,7 +55,6 @@ def create_findings(product_id, user_id, file, scanner, engagement_id=None, max_
     #Specify the product id
     product_id = product_id
     engagement_id = None
-    user_id = 1
 
     # Check for a CI/CD engagement_id
     engagements = dd.list_engagements(product_in=product_id, status="In Progress")
@@ -70,7 +67,10 @@ def create_findings(product_id, user_id, file, scanner, engagement_id=None, max_
     if engagement_id == None:
         start_date = datetime.now()
         end_date = start_date+timedelta(days=180)
-
+        users = dd.list_users("admin")
+        user_id = None
+        if users.success:
+            user_id = users.data["objects"][0]["id"]
         engagement_id = dd.create_engagement("Recurring CI/CD Integration", product_id, user_id,
         "In Progress", start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
 
@@ -107,31 +107,41 @@ def create_findings(product_id, user_id, file, scanner, engagement_id=None, max_
     print
     print"=============================================="
 
-    if sum_new_findings[4] > max_critical:
-        print "Build Failed: Max Critical"
-    elif sum_new_findings[3] > max_high:
-        print "Build Failed: Max High"
-    elif sum_new_findings[2] > max_medium:
-        print "Build Failed: Max Medium"
-    else:
+    strFail = None
+    if max_critical is not None:
+        if sum_new_findings[4] > max_critical:
+            strFail =  "Build Failed: Max Critical"
+    if max_high is not None:
+        if sum_new_findings[3] > max_high:
+            strFail = strFail +  " Max High"
+    if max_medium is not None:
+        if sum_new_findings[2] > max_medium:
+            strFail = strFail +  " Max Medium"
+    if strFail is None:
         print "Build Passed!"
+    else:
+        print "Build Failed: " + strFail
     print"=============================================="
 
 class Main:
     if __name__ == "__main__":
         parser = argparse.ArgumentParser(description='CI/CD integration for DefectDojo')
-        parser.add_argument('--user', help="Dojo Product ID", required=True)
+        parser.add_argument('--host', help="Dojo Hostname", required=True)
+        parser.add_argument('--api_key', help="API Key", required=True)
+        parser.add_argument('--user', help="User", required=True)
         parser.add_argument('--product', help="Dojo Product ID", required=True)
         parser.add_argument('--file', help="Scanner file", required=True)
         parser.add_argument('--scanner', help="Type of scanner", required=True)
         parser.add_argument('--engagement', help="Engagement ID (optional)", required=False)
-        parser.add_argument('--critical', default=0, help="Maximum new critical vulns to pass the build.", required=False)
-        parser.add_argument('--high', default=0, help="Maximum new high vulns to pass the build.", required=False)
-        parser.add_argument('--medium', default=0, help="Maximum new medium vulns to pass the build.", required=False)
+        parser.add_argument('--critical', help="Maximum new critical vulns to pass the build.", required=False)
+        parser.add_argument('--high', help="Maximum new high vulns to pass the build.", required=False)
+        parser.add_argument('--medium', help="Maximum new medium vulns to pass the build.", required=False)
 
         #Parse out arguments
         args = vars(parser.parse_args())
-        user_id = args["user"]
+        host = args["host"]
+        api_key = args["api_key"]
+        user = args["user"]
         product_id = args["product"]
         file = args["file"]
         scanner = args["scanner"]
@@ -140,4 +150,4 @@ class Main:
         max_high = args["high"]
         max_medium = args["medium"]
 
-        create_findings(product_id, user_id, file, scanner, engagement_id, max_critical, max_high, max_medium)
+        create_findings(host, api_key, user, product_id, file, scanner, engagement_id, max_critical, max_high, max_medium)
