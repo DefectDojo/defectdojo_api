@@ -32,7 +32,7 @@ def print_findings(findings):
     print "Low: " + str(findings[1])
     print "Info: " + str(findings[0])
 
-def create_findings(host, api_key, user, product_id, file, scanner, engagement_id=None, max_critical=0, max_high=0, max_medium=0):
+def create_findings(host, api_key, user, product_id, file, scanner, engagement_id=None, max_critical=0, max_high=0, max_medium=0, build=None):
 
     #Optionally, specify a proxy
     proxies = {
@@ -75,11 +75,11 @@ def create_findings(host, api_key, user, product_id, file, scanner, engagement_i
         "In Progress", start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
 
     # Upload the scanner export
-    dir_path = os.path.dirname(os.path.realpath(__file__))
+    #dir_path = os.path.dirname(os.path.realpath(__file__))
 
     print "Uploading scanner data."
     date = datetime.now()
-    upload_scan = dd.upload_scan(engagement_id, scanner, dir_path + file, "true", date.strftime("%Y/%m/%d"), "API")
+    upload_scan = dd.upload_scan(engagement_id, scanner, file, "true", date.strftime("%Y-%m-%d"), build=build)
 
     if upload_scan.success:
         test_id = upload_scan.id()
@@ -132,6 +132,7 @@ class Main:
         parser.add_argument('--product', help="Dojo Product ID", required=True)
         parser.add_argument('--file', help="Scanner file", required=True)
         parser.add_argument('--scanner', help="Type of scanner", required=True)
+        parser.add_argument('--build', help="Build ID", required=False)
         parser.add_argument('--engagement', help="Engagement ID (optional)", required=False)
         parser.add_argument('--critical', help="Maximum new critical vulns to pass the build.", required=False)
         parser.add_argument('--high', help="Maximum new high vulns to pass the build.", required=False)
@@ -149,5 +150,6 @@ class Main:
         max_critical = args["critical"]
         max_high = args["high"]
         max_medium = args["medium"]
+        build = args["build"]
 
-        create_findings(host, api_key, user, product_id, file, scanner, engagement_id, max_critical, max_high, max_medium)
+        create_findings(host, api_key, user, product_id, file, scanner, engagement_id, max_critical, max_high, max_medium, build)

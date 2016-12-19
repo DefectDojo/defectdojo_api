@@ -111,10 +111,11 @@ class DefectDojoAPI(object):
         return self._request('GET', 'users/' + str(user_id) + '/')
 
     ###### Engagements API #######
-    def list_engagements(self, status=None, product_in=None,limit=20):
+    def list_engagements(self, status=None, product_in=None, name_contains=None,limit=20):
         """Retrieves all the engagements.
 
         :param product_in: List of product ids (1,2).
+        :param name_contains: Engagement name
         :param limit: Number of records to return.
 
         """
@@ -128,6 +129,9 @@ class DefectDojoAPI(object):
 
         if status:
             params['status'] = status
+
+        if name_contains:
+            params['name_contains'] = name_contains
 
         return self._request('GET', 'engagements/', params)
 
@@ -404,7 +408,7 @@ class DefectDojoAPI(object):
     ###### Findings API #######
     def list_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
         severity_gt=None, severity_contains=None, title_contains=None, url_contains=None, date_lt=None,
-        date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_id_in=None, limit=20):
+        date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_id_in=None, build=None, limit=20):
 
         """Returns filtered list of findings.
 
@@ -424,6 +428,7 @@ class DefectDojoAPI(object):
         :param product_id_in: Product id(s) associated with a finding. (1,2 or 1)
         :param engagement_id_in: Engagement id(s) associated with a finding. (1,2 or 1)
         :param test_in: Test id(s) associated with a finding. (1,2 or 1)
+        :param build_id: User specified build id relating to the build number from the build server. (Jenkins, Travis etc.).
         :param limit: Number of records to return.
 
         """
@@ -480,6 +485,9 @@ class DefectDojoAPI(object):
         if test_id_in:
             params['test__id__in'] = test_id_in
 
+        if build:
+            params['build_id__contains'] = build
+
         return self._request('GET', 'findings/', params)
 
     def get_finding(self, finding_id):
@@ -490,7 +498,7 @@ class DefectDojoAPI(object):
         return self._request('GET', 'findings/' + str(finding_id) + '/')
 
     def create_finding(self, title, description, severity, cwe, date, product_id, engagement_id, test_id, user_id,
-        impact, active, verified, mitigation, references=None):
+        impact, active, verified, mitigation, references=None, build=None):
 
         """Creates a finding with the given properties.
 
@@ -508,7 +516,7 @@ class DefectDojoAPI(object):
         :param verified: Finding has been verified.
         :param mitigation: Steps to mitigate the finding.
         :param references: Details on finding.
-
+        :param build: User specified build id relating to the build number from the build server. (Jenkins, Travis etc.).
         """
 
         data = {
@@ -525,7 +533,8 @@ class DefectDojoAPI(object):
             'active': active,
             'verified': verified,
             'mitigation': mitigation,
-            'references': references
+            'references': references,
+            'build_id' : build
         }
 
         return self._request('POST', 'findings/', data=data)
@@ -550,6 +559,7 @@ class DefectDojoAPI(object):
         :param verified: Finding has been verified.
         :param mitigation: Steps to mitigate the finding.
         :param references: Details on finding.
+        :param build: User specified build id relating to the build number from the build server. (Jenkins, Travis etc.).
 
         """
 
@@ -597,17 +607,25 @@ class DefectDojoAPI(object):
         if references:
             data['references'] = references
 
+        if build:
+            data['build_id'] = build
+
         return self._request('PUT', 'findings/' + str(finding_id) + '/', data=data)
 
     ##### Upload API #####
 
-    def upload_scan(self, engagement_id, scan_type, file, active, scan_date, tags=None):
+    def upload_scan(self, engagement_id, scan_type, file, active, scan_date, tags=None, build=None):
         """Uploads and processes a scan file.
 
         :param application_id: Application identifier.
         :param file_path: Path to the scan file to be uploaded.
 
         """
+        if tags is None:
+            tags = ''
+
+        if build is None:
+            build = ''
 
         data = {
             'file': open(file, 'rb'),
@@ -615,7 +633,8 @@ class DefectDojoAPI(object):
             'scan_type': ('', scan_type),
             'active': ('', active),
             'scan_date': ('', scan_date),
-            'tags': ('', tags)
+            'tags': ('', tags),
+            'build_id': ('', build)
         }
 
         return self._request(
@@ -724,6 +743,9 @@ class DefectDojoResponse(object):
         if self.response_code == 400: #Bad Request
             raise ValueError('Object not created:' + json.dumps(self.data, sort_keys=True, indent=4, separators=(',', ': ')))
         return int(self.data)
+
+    def count(self):
+        return self.data["meta"]["total_count"]
 
     def data_json(self, pretty=False):
         """Returns the data as a valid JSON string."""
