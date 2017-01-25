@@ -44,7 +44,7 @@ def create_findings(host, api_key, user, product_id, file, scanner, engagement_i
     """
 
     # Instantiate the DefectDojo api wrapper
-    dd = defectdojo.DefectDojoAPI(host, api_key, user, proxies=proxies, timeout=90, debug=False)
+    dd = defectdojo.DefectDojoAPI(host, api_key, user, proxies=proxies, verify_ssl=False, timeout=360, debug=False)
 
     # Workflow as follows:
     # 1. Scan tool is run against build
@@ -79,12 +79,14 @@ def create_findings(host, api_key, user, product_id, file, scanner, engagement_i
 
     print "Uploading scanner data."
     date = datetime.now()
+    print scanner
     upload_scan = dd.upload_scan(engagement_id, scanner, file, "true", date.strftime("%Y-%m-%d"), build=build)
 
     if upload_scan.success:
         test_id = upload_scan.id()
     else:
         print upload_scan.message
+        quit()
 
     findings = dd.list_findings(engagement_id_in=engagement_id, duplicate="false", active="true", verified="true")
     print"=============================================="
