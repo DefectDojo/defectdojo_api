@@ -9,6 +9,8 @@ from datetime import datetime, timedelta
 import os
 import argparse
 
+DEBUG = False
+
 def sum_severity(findings):
     severity = [0,0,0,0,0]
     for finding in findings.data["objects"]:
@@ -39,12 +41,12 @@ def create_findings(host, api_key, user, product_id, file, scanner, engagement_i
       'http': 'http://localhost:8080',
       'https': 'http://localhost:8080',
     }
-    """
-    proxies=proxies
-    """
 
-    # Instantiate the DefectDojo api wrapper
-    dd = defectdojo.DefectDojoAPI(host, api_key, user, proxies=proxies, verify_ssl=False, timeout=360, debug=False)
+    if DEBUG:
+        # Instantiate the DefectDojo api wrapper
+        dd = defectdojo.DefectDojoAPI(host, api_key, user, proxies=proxies, verify_ssl=False, timeout=360, debug=False)
+    else:
+        dd = defectdojo.DefectDojoAPI(host, api_key, user, verify_ssl=False, timeout=360, debug=False)
 
     # Workflow as follows:
     # 1. Scan tool is run against build
