@@ -85,6 +85,16 @@ class DefectDojoAPI(object):
         """
         return self.api_version
 
+    def get_id_from_url(self, url):
+        """Returns the ID from the DefectDojo API.
+
+        :param url: URL returned by the API
+
+        """
+        url = url.split('/')
+        return url[len(url)-2]
+
+
     ###### User API #######
     def list_users(self, username=None, limit=20):
         """Retrieves all the users.
@@ -641,6 +651,166 @@ class DefectDojoAPI(object):
             'POST', 'importscan/',
             files=data
         )
+
+    ##### Credential API #####
+
+    def list_credentials(self, name=None, username=None, limit=20):
+        """Retrieves all the globally configured credentials.
+
+        :param name_contains: Search by credential name.
+        :param username: Search by username
+        :param limit: Number of records to return.
+
+        """
+
+        params  = {}
+        if limit:
+            params['limit'] = limit
+
+        if name:
+            params['name__contains'] = name
+
+        if username:
+            params['username__contains'] = username
+
+        return self._request('GET', 'credentials/', params)
+
+    def get_credential(self, cred_id, limit=20):
+        """
+        Retrieves a credential using the given credential id.
+        :param credential_id: Credential identification.
+        """
+        return self._request('GET', 'credentials/' + str(cred_id) + '/')
+
+    ##### Credential Mapping API #####
+
+    def list_credential_mappings(self, name=None, product_id_in=None, engagement_id_in=None, test_id_in=None, finding_id_in=None, limit=20):
+        """Retrieves mapped credentials.
+
+        :param name_contains: Search by credential name.
+        :param username: Search by username
+        :param limit: Number of records to return.
+
+        """
+
+        params  = {}
+        if limit:
+            params['limit'] = limit
+
+        if name:
+            params['name'] = name
+
+        if product_id_in:
+            params['product__id__in'] = product_id_in
+
+        if engagement_id_in:
+            params['engagement__id__in'] = engagement_id_in
+
+        if test_id_in:
+            params['test__id__in'] = test_id_in
+
+        if finding_id_in:
+            params['finding__id__in'] = finding_id_in
+
+        return self._request('GET', 'credential_mappings/', params)
+
+    def get_credential_mapping(self, cred_mapping_id, limit=20):
+        """
+        Retrieves a credential using the given credential id.
+        :param cred_mapping_id: Credential identification.
+        """
+        return self._request('GET', 'credential_mappings/' + str(cred_mapping_id) + '/')
+
+    ##### Container API #####
+
+    def list_containers(self, name=None, container_type=None, limit=20):
+        """Retrieves all the globally configured credentials.
+
+        :param name_contains: Search by credential name.
+        :param username: Search by username
+        :param limit: Number of records to return.
+
+        """
+
+        params  = {}
+        if limit:
+            params['limit'] = limit
+
+        if name:
+            params['name__contains'] = name
+
+        if container_type:
+            params['container_type__contains'] = container_type
+
+        return self._request('GET', 'container/', params)
+
+    def get_container(self, container_id, limit=20):
+        """
+        Retrieves a finding using the given container id.
+        :param container_id: Container identification.
+        """
+        return self._request('GET', 'container/' + str(container_id) + '/')
+
+    ###### Tool API #######
+
+    def list_tool_types(self, name=None, limit=20):
+        """Retrieves all the tool types.
+
+        :param name_contains: Search by tool type name.
+        :param limit: Number of records to return.
+
+        """
+
+        params  = {}
+        if limit:
+            params['limit'] = limit
+
+        if name:
+            params['name__contains'] = name
+
+        return self._request('GET', 'tool_types/', params)
+
+    def list_tools(self, name=None, tool_type_id=None, limit=20):
+        """Retrieves all the tools.
+
+        :param name_contains: Search by tool name.
+        :param tool_type_id: Search by tool type id
+        :param limit: Number of records to return.
+
+        """
+
+        params  = {}
+        if limit:
+            params['limit'] = limit
+
+        if name:
+            params['name__contains'] = name
+
+        if tool_type_id:
+            params['tool_type__id'] = tool_type_id
+
+        return self._request('GET', 'tools/', params)
+
+    def list_tool_products(self, name=None, tool_configuration_id=None, limit=20):
+        """Retrieves all the tools.
+
+        :param name_contains: Search by tool name.
+        :param tool_type_id: Search by tool type id
+        :param limit: Number of records to return.
+
+        """
+
+        params  = {}
+        if limit:
+            params['limit'] = limit
+
+        if name:
+            params['name__contains'] = name
+
+        if tool_configuration_id:
+            params['tool_configuration__id'] = tool_configuration_id
+
+        return self._request('GET', 'tool_configs/', params)
 
     # Utility
 

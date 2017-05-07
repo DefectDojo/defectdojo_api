@@ -11,7 +11,7 @@ import os
 # Setup DefectDojo connection information
 host = 'http://localhost:8000'
 api_key = os.environ['DOJO_API_KEY']
-user = 'admin'
+user = 'admin1'
 
 """
 #Optionally, specify a proxy
