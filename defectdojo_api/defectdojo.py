@@ -110,7 +110,7 @@ class DefectDojoAPI(object):
         if username:
             params['username'] = username
 
-        return self._request('GET', 'users/')
+        return self._request('GET', 'users/', params)
 
     def get_user(self, user_id):
         """Retrieves a user using the given user id.
