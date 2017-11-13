@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<testsuite failures="4" name="DefectDojo" tests="4">
+	<testcase name="blacklist Severity: Info">
+		<failure>Using cElementTree to parse untrusted XML data is known to be vulnerable to XML attacks. Replace cElementTree with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called. Filename: PyBitBucket.py Line number: 6 Line range: [6, 7, 8, 9] Issue Confidence: HIGH</failure>
+	</testcase>
+	<testcase name="SQL injection Severity: High">
+		<failure>SQL injection vulnerabilities arise when user-controllable data is
+incorporated into database SQL queries in an unsafe manner. An attacker can
+supply crafted input to break out of the data context in which their input
+appears and interfere with the structure of the surrounding query.
+
+A wide range of damaging attacks can often be delivered via SQL injection,
+including reading or modifying critical application data, interfering with
+application logic, escalating privileges within the database and taking
+control of the database server.
+
+
+
+The **sort_column** parameter appears to be vulnerable to SQL injection
+attacks. The payload **,(select*from(select(sleep(20)))a)** was submitted in
+the sort_column parameter. The application took **20562** milliseconds to
+respond to the request, compared with **1980** milliseconds for the original
+request, indicating that the injected SQL command caused a time delay.  
+  
+The database appears to be MySQL.
+
+</failure>
+	</testcase>
+	<testcase name="Cross-origin resource sharing Severity: Info">
+		<failure>An HTML5 cross-origin resource sharing (CORS) policy controls whether and how
+content running on other domains can perform two-way interaction with the
+domain that publishes the policy. The policy is fine-grained and can apply
+access controls per-request based on the URL and other features of the
+request.
+
+If another domain is allowed by the policy, then that domain can potentially
+attack users of the application. If a user is logged in to the application,
+and visits a domain allowed by the policy, then any malicious content running
+on that domain can potentially retrieve content from the application, and
+sometimes carry out actions within the security context of the logged in user.
+
+Even if an allowed domain is not overtly malicious in itself, security
+vulnerabilities within that domain could potentially be leveraged by an
+attacker to exploit the trust relationship and attack the application that
+allows access. CORS policies on pages containing sensitive information should
+be reviewed to determine whether it is appropriate for the application to
+trust both the intentions and security posture of any domains granted access.
+
+
+
+The application implements an HTML5 cross-origin resource sharing (CORS)
+policy for this request.  
+  
+If the application relies on network firewalls or other IP-based access
+controls, this policy is likely to present a security risk.  
+  
+Since the Vary: Origin header was not present in the response, reverse proxies
+and intermediate servers may cache it. This may enable an attacker to carry
+out cache poisoning attacks.
+
+</failure>
+	</testcase>
+	<testcase name="Cross-origin resource sharing: arbitrary origin trusted Severity: Info">
+		<failure>An HTML5 cross-origin resource sharing (CORS) policy controls whether and how
+content running on other domains can perform two-way interaction with the
+domain that publishes the policy. The policy is fine-grained and can apply
+access controls per-request based on the URL and other features of the
+request.
+
+Trusting arbitrary origins effectively disables the same-origin policy,
+allowing two-way interaction by third-party web sites. Unless the response
+consists only of unprotected public content, this policy is likely to present
+a security risk.
+
+If the site specifies the header Access-Control-Allow-Credentials: true,
+third-party sites may be able to carry out privileged actions and retrieve
+sensitive information. Even if it does not, attackers may be able to bypass
+any IP-based access controls by proxying through users' browsers.
+
+
+
+The application implements an HTML5 cross-origin resource sharing (CORS)
+policy for this request that allows access from any domain.  
+  
+The application allowed access from the requested origin
+**https://pfcxuvwamstc.com**  
+  
+If the application relies on network firewalls or other IP-based access
+controls, this policy is likely to present a security risk.  
+  
+Since the Vary: Origin header was not present in the response, reverse proxies
+and intermediate servers may cache it. This may enable an attacker to carry
+out cache poisoning attacks.
+
+</failure>
+	</testcase>
+</testsuite>

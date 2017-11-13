@@ -13,6 +13,7 @@ Several quick start options are available:
 - Install with pip (recommended): :code:`pip install defectdojo_api`
 - `Download the latest release <https://github.com/aaronweaver/defectdojo_api/releases/latest>`_
 - Clone the repository: :code:`git clone https://github.com/aaronweaver/defectdojo_api`
+- If you are testing the api locally make sure to set the PYTHONPATH. export PYTHONPATH=/path/totheapi/defectdojo_api:$PYTHONPATH
 
 Example
 -------

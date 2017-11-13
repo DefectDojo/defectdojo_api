@@ -153,9 +153,9 @@ class DefectDojoAPI(object):
         """
         return self._request('GET', 'engagements/' + str(engagement_id) + '/')
 
-    def create_engagement(self, name, product_id, lead_id, status, target_start, target_end, active='true',
-        pen_test='false', check_list='false', threat_model='false', risk_path="", test_strategy="", progress="",
-        done_testing=""):
+    def create_engagement(self, name, product_id, lead_id, status, target_start, target_end, active='True',
+        pen_test='False', check_list='False', threat_model='False', risk_path="", test_strategy="", progress="",
+        done_testing='False'):
         """Creates an engagement with the given properties.
 
         :param name: Engagement name.
