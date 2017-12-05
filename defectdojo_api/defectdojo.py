@@ -18,7 +18,7 @@ class DefectDojoAPI(object):
         :param api_version: API version to call, the default is v1.
         :param verify_ssl: Specify if API requests will verify the host's SSL certificate, defaults to true.
         :param timeout: HTTP timeout in seconds, default is 30.
-        :param proxis: Proxy for API requests.
+        :param proxies: Proxy for API requests.
         :param user_agent: HTTP user agent string, default is "DefectDojo_api/[version]".
         :param cert: You can also specify a local cert to use as client side certificate, as a single file (containing
         the private key and the certificate) or as a tuple of both file's path
