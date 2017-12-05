@@ -1,97 +1,55 @@
 <?xml version="1.0" ?>
-<testsuite failures="4" name="DefectDojo" tests="4">
-	<testcase name="blacklist Severity: Info">
-		<failure>Using cElementTree to parse untrusted XML data is known to be vulnerable to XML attacks. Replace cElementTree with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called. Filename: PyBitBucket.py Line number: 6 Line range: [6, 7, 8, 9] Issue Confidence: HIGH</failure>
+<testsuite failures="13" name="DefectDojo" tests="13">
+	<testcase name="Application Error Disclosure Severity: Medium">
+		<failure>&lt;p&gt;This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.&lt;/p&gt;
+Reference: &lt;p&gt;&lt;/p&gt;</failure>
 	</testcase>
-	<testcase name="SQL injection Severity: High">
-		<failure>SQL injection vulnerabilities arise when user-controllable data is
-incorporated into database SQL queries in an unsafe manner. An attacker can
-supply crafted input to break out of the data context in which their input
-appears and interfere with the structure of the surrounding query.
-
-A wide range of damaging attacks can often be delivered via SQL injection,
-including reading or modifying critical application data, interfering with
-application logic, escalating privileges within the database and taking
-control of the database server.
-
-
-
-The **sort_column** parameter appears to be vulnerable to SQL injection
-attacks. The payload **,(select*from(select(sleep(20)))a)** was submitted in
-the sort_column parameter. The application took **20562** milliseconds to
-respond to the request, compared with **1980** milliseconds for the original
-request, indicating that the injected SQL command caused a time delay.  
-  
-The database appears to be MySQL.
-
-</failure>
+	<testcase name="HTTP Parameter Override Severity: Medium">
+		<failure>&lt;p&gt;Unspecified form action: HTTP parameter override attack potentially possible. This is a known problem with Java Servlets but other platforms may also be vulnerable.&lt;/p&gt;
+Reference: &lt;p&gt;http://download.oracle.com/javaee-archive/servlet-spec.java.net/jsr340-experts/att-0317/OnParameterPollutionAttacks.pdf&lt;/p&gt;</failure>
 	</testcase>
-	<testcase name="Cross-origin resource sharing Severity: Info">
-		<failure>An HTML5 cross-origin resource sharing (CORS) policy controls whether and how
-content running on other domains can perform two-way interaction with the
-domain that publishes the policy. The policy is fine-grained and can apply
-access controls per-request based on the URL and other features of the
-request.
-
-If another domain is allowed by the policy, then that domain can potentially
-attack users of the application. If a user is logged in to the application,
-and visits a domain allowed by the policy, then any malicious content running
-on that domain can potentially retrieve content from the application, and
-sometimes carry out actions within the security context of the logged in user.
-
-Even if an allowed domain is not overtly malicious in itself, security
-vulnerabilities within that domain could potentially be leveraged by an
-attacker to exploit the trust relationship and attack the application that
-allows access. CORS policies on pages containing sensitive information should
-be reviewed to determine whether it is appropriate for the application to
-trust both the intentions and security posture of any domains granted access.
-
-
-
-The application implements an HTML5 cross-origin resource sharing (CORS)
-policy for this request.  
-  
-If the application relies on network firewalls or other IP-based access
-controls, this policy is likely to present a security risk.  
-  
-Since the Vary: Origin header was not present in the response, reverse proxies
-and intermediate servers may cache it. This may enable an attacker to carry
-out cache poisoning attacks.
-
-</failure>
+	<testcase name="Weak Authentication Method Severity: Medium">
+		<failure>&lt;p&gt;HTTP basic or digest authentication has been used over an unsecured connection. The credentials can be read and then reused by someone with access to the network.&lt;/p&gt;
+Reference: &lt;p&gt;www.owasp.org/index.php/Category:Authentication_Vulnerability&lt;/p&gt;</failure>
 	</testcase>
-	<testcase name="Cross-origin resource sharing: arbitrary origin trusted Severity: Info">
-		<failure>An HTML5 cross-origin resource sharing (CORS) policy controls whether and how
-content running on other domains can perform two-way interaction with the
-domain that publishes the policy. The policy is fine-grained and can apply
-access controls per-request based on the URL and other features of the
-request.
-
-Trusting arbitrary origins effectively disables the same-origin policy,
-allowing two-way interaction by third-party web sites. Unless the response
-consists only of unprotected public content, this policy is likely to present
-a security risk.
-
-If the site specifies the header Access-Control-Allow-Credentials: true,
-third-party sites may be able to carry out privileged actions and retrieve
-sensitive information. Even if it does not, attackers may be able to bypass
-any IP-based access controls by proxying through users' browsers.
-
-
-
-The application implements an HTML5 cross-origin resource sharing (CORS)
-policy for this request that allows access from any domain.  
-  
-The application allowed access from the requested origin
-**https://pfcxuvwamstc.com**  
-  
-If the application relies on network firewalls or other IP-based access
-controls, this policy is likely to present a security risk.  
-  
-Since the Vary: Origin header was not present in the response, reverse proxies
-and intermediate servers may cache it. This may enable an attacker to carry
-out cache poisoning attacks.
-
-</failure>
+	<testcase name="X-Frame-Options Header Not Set Severity: Medium">
+		<failure>&lt;p&gt;X-Frame-Options header is not included in the HTTP response to protect against 'ClickJacking' attacks.&lt;/p&gt;
+Reference: &lt;p&gt;http://blogs.msdn.com/b/ieinternals/archive/2010/03/30/combating-clickjacking-with-x-frame-options.aspx&lt;/p&gt;</failure>
+	</testcase>
+	<testcase name="Absence of Anti-CSRF Tokens Severity: Low">
+		<failure>&lt;p&gt;No Anti-CSRF tokens were found in a HTML submission form.&lt;/p&gt;&lt;p&gt;A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;CSRF attacks are effective in a number of situations, including:&lt;/p&gt;&lt;p&gt;    * The victim has an active session on the target site.&lt;/p&gt;&lt;p&gt;    * The victim is authenticated via HTTP auth on the target site.&lt;/p&gt;&lt;p&gt;    * The victim is on the same local network as the target site.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.&lt;/p&gt;
+Reference: &lt;p&gt;http://projects.webappsec.org/Cross-Site-Request-Forgery&lt;/p&gt;&lt;p&gt;http://cwe.mitre.org/data/definitions/352.html&lt;/p&gt;</failure>
+	</testcase>
+	<testcase name="Content-Type Header Missing Severity: Low">
+		<failure>&lt;p&gt;The Content-Type header was either missing or empty.&lt;/p&gt;
+Reference: &lt;p&gt;http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx&lt;/p&gt;</failure>
+	</testcase>
+	<testcase name="Cookie No HttpOnly Flag Severity: Low">
+		<failure>&lt;p&gt;A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.&lt;/p&gt;
+Reference: &lt;p&gt;http://www.owasp.org/index.php/HttpOnly&lt;/p&gt;</failure>
+	</testcase>
+	<testcase name="Information Disclosure - Debug Error Messages Severity: Low">
+		<failure>&lt;p&gt;The response appeared to contain common error messages returned by platforms such as ASP.NET, and Web-servers such as IIS and Apache. You can configure the list of common debug messages.&lt;/p&gt;
+Reference: &lt;p&gt;&lt;/p&gt;</failure>
+	</testcase>
+	<testcase name="Password Autocomplete in Browser Severity: Low">
+		<failure>&lt;p&gt;The AUTOCOMPLETE attribute is not disabled on an HTML FORM/INPUT element containing password type input.  Passwords may be stored in browsers and retrieved.&lt;/p&gt;
+Reference: &lt;p&gt;http://www.w3schools.com/tags/att_input_autocomplete.asp&lt;/p&gt;&lt;p&gt;https://msdn.microsoft.com/en-us/library/ms533486%28v=vs.85%29.aspx&lt;/p&gt;</failure>
+	</testcase>
+	<testcase name="Private IP Disclosure Severity: Low">
+		<failure>&lt;p&gt;A private IP (such as 10.x.x.x, 172.x.x.x, 192.168.x.x) or an Amazon EC2 private hostname (for example, ip-10-0-56-78) has been found in the HTTP response body. This information might be helpful for further attacks targeting internal systems.&lt;/p&gt;
+Reference: &lt;p&gt;https://tools.ietf.org/html/rfc1918&lt;/p&gt;</failure>
+	</testcase>
+	<testcase name="Web Browser XSS Protection Not Enabled Severity: Low">
+		<failure>&lt;p&gt;Web Browser XSS Protection is not enabled, or is disabled by the configuration of the 'X-XSS-Protection' HTTP response header on the web server&lt;/p&gt;
+Reference: &lt;p&gt;https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet&lt;/p&gt;&lt;p&gt;https://blog.veracode.com/2014/03/guidelines-for-setting-security-headers/&lt;/p&gt;</failure>
+	</testcase>
+	<testcase name="X-Content-Type-Options Header Missing Severity: Low">
+		<failure>&lt;p&gt;The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.&lt;/p&gt;
+Reference: &lt;p&gt;http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx&lt;/p&gt;&lt;p&gt;https://www.owasp.org/index.php/List_of_useful_HTTP_headers&lt;/p&gt;</failure>
+	</testcase>
+	<testcase name="Information Disclosure - Suspicious Comments Severity: Info">
+		<failure>&lt;p&gt;The response appears to contain suspicious comments which may help an attacker.&lt;/p&gt;
+Reference: &lt;p&gt;&lt;/p&gt;</failure>
 	</testcase>
 </testsuite>

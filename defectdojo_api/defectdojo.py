@@ -873,19 +873,21 @@ class DefectDojoAPI(object):
                     return DefectDojoResponse(message="Upload complete", data=data, success=True)
                 elif response.status_code == 204: #Object updates
                     return DefectDojoResponse(message="Object updated.", success=True)
+                elif response.status_code == 400: #Object not created
+                    return DefectDojoResponse(message="Error occured in API.", success=False, data=response.text)
                 elif response.status_code == 404: #Object not created
-                    return DefectDojoResponse(message="Object id does not exist.", success=False)
+                    return DefectDojoResponse(message="Object id does not exist.", success=False, data=response.text)
                 elif response.status_code == 401:
-                    return DefectDojoResponse(message="Unauthorized.", success=False)
+                    return DefectDojoResponse(message="Unauthorized.", success=False, data=response.text)
                 elif response.status_code == 414:
                     return DefectDojoResponse(message="Request-URI Too Large.", success=False)
                 elif response.status_code == 500:
-                    return DefectDojoResponse(message="An error 500 occured in the API.", success=False)
+                    return DefectDojoResponse(message="An error 500 occured in the API.", success=False, data=response.text)
                 else:
                     data = response.json()
                     return DefectDojoResponse(message="Success", data=data, success=True, response_code=response.status_code)
             except ValueError:
-                return DefectDojoResponse(message='JSON response could not be decoded.', success=False)
+                return DefectDojoResponse(message='JSON response could not be decoded.', success=False, data=response.text)
         except requests.exceptions.SSLError:
             return DefectDojoResponse(message='An SSL error occurred.', success=False)
         except requests.exceptions.ConnectionError:

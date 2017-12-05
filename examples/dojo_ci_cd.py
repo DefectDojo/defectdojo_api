@@ -9,9 +9,6 @@ from datetime import datetime, timedelta
 import os, sys
 import argparse
 import time
-import junit_xml_output
-
-DEBUG = True
 
 test_cases = []
 
@@ -22,18 +19,17 @@ def junit(toolName, file):
         print "Writing Junit test files"
         file.write(junit_xml.dump())
 
-def dojo_connection(host, api_key, user):
+def dojo_connection(host, api_key, user, proxy):
     #Optionally, specify a proxy
-    proxies = {
-      'http': 'http://localhost:8081',
-      'https': 'http://localhost:8081',
-    }
+    proxies = None
+    if proxy:
+        proxies = {
+          'http': proxy,
+          'https': proxy,
+        }
 
-    #if DEBUG:
-        # Instantiate the DefectDojo api wrapper
+    # Instantiate the DefectDojo api wrapper
     dd = defectdojo.DefectDojoAPI(host, api_key, user, proxies=proxies, verify_ssl=False, timeout=360, debug=False)
-    #else:
-    #    dd = defectdojo.DefectDojoAPI(host, api_key, user, verify_ssl=False, timeout=360, debug=False)
 
     return dd
     # Workflow as follows:
@@ -42,9 +38,10 @@ def dojo_connection(host, api_key, user):
     # 3. Call this script to load scan data, specifying scanner type
     # 4. Script returns along with a pass or fail results: Example: 2 new critical vulns, 1 low out of 10 vulnerabilities
 
-def return_engagement(dd, product_id):
+def return_engagement(dd, product_id, user):
     #Specify the product id
     product_id = product_id
+    engagement_id = None
 
     # Check for a CI/CD engagement_id
     engagements = dd.list_engagements(product_in=product_id, status="In Progress")
@@ -138,8 +135,10 @@ def processFiles(dd, engagement_id, file, scanner=None, build=None):
             print "Uploading " + scannerName + " scan: " + file
             test_id = dd.upload_scan(engagement_id, scannerName, file, "true", dojoDate, build)
 
+    if test_id.success == False:
+        print "Upload failed: Detailed error message: " + test_id.data
+
     return test_id
-    #print os.path.basename(full_path)
 
 def create_findings(dd, engagement_id, scanner, file, build=None):
     # Upload the scanner export
@@ -169,20 +168,22 @@ def summary(dd, engagement_id, test_ids, max_critical=0, max_high=0, max_medium=
         print_findings(sum_severity(findings))
         print
         #Delay while de-dupes
-        sys.stdout.write("Sleeping for 30 seconds for de-dupe celery process:")
+        sys.stdout.write("Sleeping for 10 seconds for de-dupe celery process:")
         sys.stdout.flush()
-        for i in range(15):
+        for i in range(5):
             time.sleep(2)
             sys.stdout.write(".")
             sys.stdout.flush()
 
         findings = dd.list_findings(test_id_in=test_ids, duplicate="false", limit=500)
         if findings.count() > 0:
+            """
             for finding in findings.data["objects"]:
                 test_cases.append(junit_xml_output.TestCase(finding["title"] + " Severity: " + finding["severity"], finding["description"],"failure"))
             if not os.path.exists("reports"):
                 os.mkdir("reports")
             junit("DefectDojo", "reports/junit_dojo.xml")
+            """
 
         print"\n=============================================="
         print "Total Number of New Findings: " + str(findings.data["meta"]["total_count"])
@@ -192,7 +193,7 @@ def summary(dd, engagement_id, test_ids, max_critical=0, max_high=0, max_medium=
         print
         print"=============================================="
 
-        strFail = ""
+        strFail = None
         if max_critical is not None:
             if sum_new_findings[4] > max_critical:
                 strFail =  "Build Failed: Max Critical"
@@ -234,10 +235,11 @@ def print_findings(findings):
 class Main:
     if __name__ == "__main__":
         parser = argparse.ArgumentParser(description='CI/CD integration for DefectDojo')
-        parser.add_argument('--host', help="Dojo Hostname", required=True)
+        parser.add_argument('--host', help="DefectDojo Hostname", required=True)
+        parser.add_argument('--proxy', help="Proxy ex:localhost:8080", required=False, default=None)
         parser.add_argument('--api_key', help="API Key", required=True)
         parser.add_argument('--user', help="User", required=True)
-        parser.add_argument('--product', help="Dojo Product ID", required=True)
+        parser.add_argument('--product', help="DefectDojo Product ID", required=True)
         parser.add_argument('--file', help="Scanner file", required=False)
         parser.add_argument('--dir', help="Scanner directory, needs to have the scanner name with the scan file in the folder. Ex: reports/nmap/nmap.csv", required=False)
         parser.add_argument('--scanner', help="Type of scanner", required=False)
@@ -261,10 +263,11 @@ class Main:
         max_high = args["high"]
         max_medium = args["medium"]
         build = args["build"]
+        proxy = args["proxy"]
 
         if dir is not None or file is not None:
-            dd = dojo_connection(host, api_key, user)
-            engagement_id = return_engagement(dd, product_id)
+            dd = dojo_connection(host, api_key, user, proxy=proxy)
+            engagement_id = return_engagement(dd, product_id, user)
             test_ids = None
             if file is not None:
                 if scanner is not None:
