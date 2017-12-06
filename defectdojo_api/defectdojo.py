@@ -18,7 +18,7 @@ class DefectDojoAPI(object):
         :param api_version: API version to call, the default is v1.
         :param verify_ssl: Specify if API requests will verify the host's SSL certificate, defaults to true.
         :param timeout: HTTP timeout in seconds, default is 30.
-        :param proxies: Proxy for API requests.
+        :param proxis: Proxy for API requests.
         :param user_agent: HTTP user agent string, default is "DefectDojo_api/[version]".
         :param cert: You can also specify a local cert to use as client side certificate, as a single file (containing
         the private key and the certificate) or as a tuple of both file's path
@@ -193,7 +193,23 @@ class DefectDojoAPI(object):
 
         return self._request('POST', 'engagements/', data=data)
 
-    def set_engagement(self, id, name=None, product_id=None, lead_id=None, status=None, target_start=None,
+    def close_engagement(self, id, user_id=None):
+
+        """Closes an engagement with the given properties.
+        :param id: Engagement id.
+        :param user_id: User from the user table.
+        """
+        engagement = self.get_engagement(id).data
+
+        #if user isn't provided then close with the lead ID
+        if user_id is None:
+            user_id = self.get_id_from_url(engagement["lead"])
+
+        product_id = engagement["product_id"]
+
+        self.set_engagement(id, name=engagement["name"], lead_id=user_id, product_id=product_id, status="Completed", active=False)
+
+    def set_engagement(self, id, product_id=None, lead_id=None, name=None, status=None, target_start=None,
         target_end=None, active=None, pen_test=None, check_list=None, threat_model=None, risk_path=None,
         test_strategy=None, progress=None, done_testing=None):
 
@@ -225,7 +241,7 @@ class DefectDojoAPI(object):
             data['product'] = self.get_product_uri(product_id)
 
         if lead_id:
-            data['lead'] = self.get_user_uri(user_id)
+            data['lead'] = self.get_user_uri(lead_id)
 
         if status:
             data['status'] = status
@@ -236,7 +252,7 @@ class DefectDojoAPI(object):
         if target_end:
             data['target_end'] = target_end
 
-        if active:
+        if active is not None:
             data['active'] = active
 
         if pen_test:

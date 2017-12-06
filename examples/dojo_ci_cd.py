@@ -38,11 +38,12 @@ def dojo_connection(host, api_key, user, proxy):
     # 3. Call this script to load scan data, specifying scanner type
     # 4. Script returns along with a pass or fail results: Example: 2 new critical vulns, 1 low out of 10 vulnerabilities
 
-def return_engagement(dd, product_id, user):
+def return_engagement(dd, product_id, user, build_id=None):
     #Specify the product id
     product_id = product_id
     engagement_id = None
 
+    """
     # Check for a CI/CD engagement_id
     engagements = dd.list_engagements(product_in=product_id, status="In Progress")
 
@@ -52,16 +53,21 @@ def return_engagement(dd, product_id, user):
                 engagement_id = engagement['id']
 
     if engagement_id == None:
-        start_date = datetime.now()
-        end_date = start_date+timedelta(days=180)
-        users = dd.list_users(user)
-        user_id = None
+    """
+    start_date = datetime.now()
+    end_date = start_date+timedelta(days=1)
+    users = dd.list_users(user)
+    user_id = None
 
-        if users.success:
-            user_id = users.data["objects"][0]["id"]
+    if users.success:
+        user_id = users.data["objects"][0]["id"]
 
-        engagement_id = dd.create_engagement("Recurring CI/CD Integration", product_id, str(user_id),
-        "In Progress", start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
+    engagementText = "CI/CD Integration"
+    if build_id is not None:
+        engagementText = engagementText + " - Build #" + build_id
+
+    engagement_id = dd.create_engagement(engagementText, product_id, str(user_id),
+    "In Progress", start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
     return engagement_id
 
 def process_findings(dd, engagement_id, dir, build=None):
@@ -238,6 +244,7 @@ class Main:
         parser.add_argument('--host', help="DefectDojo Hostname", required=True)
         parser.add_argument('--proxy', help="Proxy ex:localhost:8080", required=False, default=None)
         parser.add_argument('--api_key', help="API Key", required=True)
+        parser.add_argument('--build_id', help="Reference to external build id", required=False)
         parser.add_argument('--user', help="User", required=True)
         parser.add_argument('--product', help="DefectDojo Product ID", required=True)
         parser.add_argument('--file', help="Scanner file", required=False)
@@ -264,10 +271,11 @@ class Main:
         max_medium = args["medium"]
         build = args["build"]
         proxy = args["proxy"]
+        build_id = args["build_id"]
 
         if dir is not None or file is not None:
             dd = dojo_connection(host, api_key, user, proxy=proxy)
-            engagement_id = return_engagement(dd, product_id, user)
+            engagement_id = return_engagement(dd, product_id, user, build_id=build_id)
             test_ids = None
             if file is not None:
                 if scanner is not None:
@@ -277,6 +285,8 @@ class Main:
             else:
                 test_ids = process_findings(dd, engagement_id, dir, build)
 
+            #Close the engagement_id
+            dd.close_engagement(engagement_id)
             summary(dd, engagement_id, test_ids, max_critical, max_high, max_medium)
         else:
             print "No file or directory to scan specified."
