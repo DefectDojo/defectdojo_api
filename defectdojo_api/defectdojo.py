@@ -668,35 +668,35 @@ class DefectDojoAPI(object):
             files=data
         )
 
-    ##### Credential API #####
+    ##### Re-upload API #####
 
-    def list_credentials(self, name=None, username=None, limit=20):
-        """Retrieves all the globally configured credentials.
+    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None):
+        """Re-uploads and processes a scan file.
 
-        :param name_contains: Search by credential name.
-        :param username: Search by username
-        :param limit: Number of records to return.
+        :param test_id: Test identifier.
+        :param file: Path to the scan file to be uploaded.
 
         """
+        if tags is None:
+            tags = ''
 
-        params  = {}
-        if limit:
-            params['limit'] = limit
+        if build is None:
+            build = ''
 
-        if name:
-            params['name__contains'] = name
+        data = {
+            'test': ('', self.get_test_uri(test_id)),
+            'file': open(file, 'rb'),
+            'scan_type': ('', scan_type),
+            'active': ('', active),
+            'scan_date': ('', scan_date),
+            'tags': ('', tags),
+            'build_id': ('', build)
+        }
 
-        if username:
-            params['username__contains'] = username
-
-        return self._request('GET', 'credentials/', params)
-
-    def get_credential(self, cred_id, limit=20):
-        """
-        Retrieves a credential using the given credential id.
-        :param credential_id: Credential identification.
-        """
-        return self._request('GET', 'credentials/' + str(cred_id) + '/')
+        return self._request(
+            'POST', 'reimportscan/',
+            files=data
+        )
 
     ##### Credential Mapping API #####
 

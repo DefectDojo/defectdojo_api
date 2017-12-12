@@ -158,5 +158,15 @@ class TestDefectDojoAPI(unittest.TestCase):
 
         self.assertIsNotNone(upload_scan.id())
 
+    #### Re-upload API Test ####
+    def test_20_reupload_scan(self):
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+
+        date = datetime.now()
+        upload_scan = self.dd.upload_scan(self.__class__.test_id, "Burp Scan", dir_path + "/scans/Bodgeit-burp.xml",
+        "true", date.strftime("%Y/%m/%d"), "API")
+
+        self.assertIsNotNone(upload_scan.id())
+
 if __name__ == '__main__':
     unittest.main()
