@@ -698,6 +698,34 @@ class DefectDojoAPI(object):
             files=data
         )
 
+    ##### Credential API #####
+
+    def list_credentials(self, name=None, username=None, limit=20):
+        """Retrieves all the globally configured credentials.
+        :param name_contains: Search by credential name.
+        :param username: Search by username
+        :param limit: Number of records to return.
+        """
+
+        params  = {}
+        if limit:
+            params['limit'] = limit
+
+        if name:
+            params['name__contains'] = name
+
+        if username:
+            params['username__contains'] = username
+
+        return self._request('GET', 'credentials/', params)
+
+    def get_credential(self, cred_id, limit=20):
+        """
+        Retrieves a credential using the given credential id.
+        :param credential_id: Credential identification.
+        """
+        return self._request('GET', 'credentials/' + str(cred_id) + '/')
+    
     ##### Credential Mapping API #####
 
     def list_credential_mappings(self, name=None, product_id_in=None, engagement_id_in=None, test_id_in=None, finding_id_in=None, limit=20):
