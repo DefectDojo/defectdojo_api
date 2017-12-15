@@ -668,15 +668,43 @@ class DefectDojoAPI(object):
             files=data
         )
 
+    ##### Re-upload API #####
+
+    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None):
+        """Re-uploads and processes a scan file.
+
+        :param test_id: Test identifier.
+        :param file: Path to the scan file to be uploaded.
+
+        """
+        if tags is None:
+            tags = ''
+
+        if build is None:
+            build = ''
+
+        data = {
+            'test': ('', self.get_test_uri(test_id)),
+            'file': open(file, 'rb'),
+            'scan_type': ('', scan_type),
+            'active': ('', active),
+            'scan_date': ('', scan_date),
+            'tags': ('', tags),
+            'build_id': ('', build)
+        }
+
+        return self._request(
+            'POST', 'reimportscan/',
+            files=data
+        )
+
     ##### Credential API #####
 
     def list_credentials(self, name=None, username=None, limit=20):
         """Retrieves all the globally configured credentials.
-
         :param name_contains: Search by credential name.
         :param username: Search by username
         :param limit: Number of records to return.
-
         """
 
         params  = {}
@@ -697,7 +725,7 @@ class DefectDojoAPI(object):
         :param credential_id: Credential identification.
         """
         return self._request('GET', 'credentials/' + str(cred_id) + '/')
-
+    
     ##### Credential Mapping API #####
 
     def list_credential_mappings(self, name=None, product_id_in=None, engagement_id_in=None, test_id_in=None, finding_id_in=None, limit=20):
