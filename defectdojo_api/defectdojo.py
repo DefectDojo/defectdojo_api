@@ -653,7 +653,7 @@ class DefectDojoAPI(object):
 
     ##### Upload API #####
 
-    def upload_scan(self, engagement_id, scan_type, file, active, scan_date, tags=None, build=None):
+    def upload_scan(self, engagement_id, scan_type, file, active, scan_date, tags=None, build=None, minimum_severity="Info"):
         """Uploads and processes a scan file.
 
         :param application_id: Application identifier.
@@ -673,7 +673,8 @@ class DefectDojoAPI(object):
             'active': ('', active),
             'scan_date': ('', scan_date),
             'tags': ('', tags),
-            'build_id': ('', build)
+            'build_id': ('', build),
+	    'minimum_severity': ('', minimum_severity)
         }
 
         return self._request(
@@ -683,7 +684,7 @@ class DefectDojoAPI(object):
 
     ##### Re-upload API #####
 
-    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None):
+    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None, minimum_severity="Info"):
         """Re-uploads and processes a scan file.
 
         :param test_id: Test identifier.
@@ -703,7 +704,8 @@ class DefectDojoAPI(object):
             'active': ('', active),
             'scan_date': ('', scan_date),
             'tags': ('', tags),
-            'build_id': ('', build)
+            'build_id': ('', build),
+	    'minimum_severity': ('', minimum_severity)
         }
 
         return self._request(
