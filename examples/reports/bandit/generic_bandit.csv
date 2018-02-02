@@ -1,2 +1,0 @@
-Date,Title,CweId,Url,Severity,Description,Mitigation,Impact,References,Active,Verified,FalsePositive,Duplicate
-11/09/2017,blacklist,,,3,"Using cElementTree to parse untrusted XML data is known to be vulnerable to XML attacks. Replace cElementTree with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called. Filename: PyBitBucket.py Line number: 6 Line range: [6, 7, 8, 9] Issue Confidence: HIGH",,,,False,False,False,False

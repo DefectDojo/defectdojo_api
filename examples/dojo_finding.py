@@ -15,15 +15,15 @@ api_key = os.environ['DOJO_API_KEY']
 user = 'admin'
 user_id = 1 #Default user
 
-
+"""
 #Optionally, specify a proxy
 proxies = {
   'http': 'http://localhost:8080',
   'https': 'http://localhost:8080',
 }
 """
-proxies=proxies
-"""
+proxies=None
+
 
 def create_finding_data(product_id, engagement_id, test_id, build):
     cwe = [352, 22, 676, 863, 134, 759, 798]

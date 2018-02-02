@@ -523,8 +523,11 @@ class DefectDojoAPI(object):
         """
         return self._request('GET', 'findings/' + str(finding_id) + '/')
 
-    def create_finding(self, title, description, severity, cwe, date, product_id, engagement_id, test_id, user_id,
-        impact, active, verified, mitigation, references=None, build=None):
+    def create_finding(self, title, description, severity, cwe, date, product_id, engagement_id,
+        test_id, user_id, impact, active, verified, mitigation, references=None, build=None, line=0,
+        file_path=None, static_finding="False", dynamic_finding="False", false_p="False",
+        duplicate="False",  out_of_scope="False", under_review="False", under_defect_review="False",
+        numerical_severity=None):
 
         """Creates a finding with the given properties.
 
@@ -560,7 +563,17 @@ class DefectDojoAPI(object):
             'verified': verified,
             'mitigation': mitigation,
             'references': references,
-            'build_id' : build
+            'build_id' : build,
+            'line' : line,
+            'file_path' : file_path,
+            'static_finding' : static_finding,
+            'dynamic_finding' : dynamic_finding,
+            'false_p' : false_p,
+            'duplicate' : duplicate,
+            'out_of_scope' : out_of_scope,
+            'under_review' : under_review,
+            'under_defect_review' : under_defect_review,
+            'numerical_severity' : numerical_severity
         }
 
         return self._request('POST', 'findings/', data=data)
@@ -725,7 +738,7 @@ class DefectDojoAPI(object):
         :param credential_id: Credential identification.
         """
         return self._request('GET', 'credentials/' + str(cred_id) + '/')
-    
+
     ##### Credential Mapping API #####
 
     def list_credential_mappings(self, name=None, product_id_in=None, engagement_id_in=None, test_id_in=None, finding_id_in=None, limit=20):
@@ -814,11 +827,12 @@ class DefectDojoAPI(object):
 
         return self._request('GET', 'tool_types/', params)
 
-    def list_tools(self, name=None, tool_type_id=None, limit=20):
-        """Retrieves all the tools.
+    def list_tools(self, name=None, tool_type_id=None, url=None, limit=20):
+        """Retrieves all the tool configurations.
 
         :param name_contains: Search by tool name.
         :param tool_type_id: Search by tool type id
+        :param url: Search by url
         :param limit: Number of records to return.
 
         """
@@ -833,13 +847,20 @@ class DefectDojoAPI(object):
         if tool_type_id:
             params['tool_type__id'] = tool_type_id
 
-        return self._request('GET', 'tools/', params)
+        if tool_type_id:
+            params['url__contains'] = tool_type_id
 
-    def list_tool_products(self, name=None, tool_configuration_id=None, limit=20):
+        return self._request('GET', 'tool_configurations/', params)
+
+    def list_tool_products(self, url=None, name=None, tool_configuration_id=None,
+        tool_project_id=None, product_id=None, limit=20):
         """Retrieves all the tools.
 
+        :param url_contains: Search by url.
         :param name_contains: Search by tool name.
-        :param tool_type_id: Search by tool type id
+        :param tool_configuration_id: Search by tool_configuration_id
+        :param tool_project_id: Search by tool_project_id
+        :param product_id: Search by product_id
         :param limit: Number of records to return.
 
         """
@@ -851,10 +872,19 @@ class DefectDojoAPI(object):
         if name:
             params['name__contains'] = name
 
+        if url:
+            params['url__contains'] = url
+
+        if tool_project_id:
+            params['tool_project_id__contains'] = tool_project_id
+
         if tool_configuration_id:
             params['tool_configuration__id'] = tool_configuration_id
 
-        return self._request('GET', 'tool_configs/', params)
+        if product_id:
+            params['product__id'] = product_id
+
+        return self._request('GET', 'tool_product_settings/', params)
 
     # Utility
 
