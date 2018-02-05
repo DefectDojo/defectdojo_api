@@ -844,7 +844,7 @@ class DefectDojoAPI(object):
             params['limit'] = limit
 
         if name:
-            params['name__contains'] = name
+            params['name'] = name
 
         if tool_type_id:
             params['tool_type__id'] = tool_type_id
@@ -872,10 +872,10 @@ class DefectDojoAPI(object):
             params['limit'] = limit
 
         if name:
-            params['name__contains'] = name
+            params['name'] = name
 
         if url:
-            params['url__contains'] = url
+            params['url'] = url
 
         if tool_project_id:
             params['tool_project_id__contains'] = tool_project_id
