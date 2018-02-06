@@ -105,3 +105,4 @@ config/config.json
 
 test.py
 .DS_Store
+temp
