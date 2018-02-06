@@ -812,7 +812,7 @@ class DefectDojoAPI(object):
 
     ###### Tool API #######
 
-    def list_tool_types(self, id=None, name=None, limit=20):
+    def list_tool_types(self, resource_id=None, name=None, limit=20):
         """Retrieves all the tool types.
 
         :param name_contains: Search by tool type name.
@@ -824,15 +824,15 @@ class DefectDojoAPI(object):
         if limit:
             params['limit'] = limit
 
-        if id:
-            params['id'] = id
+        if resource_id:
+            params['id'] = resource_id
 
         if name:
             params['name__contains'] = name
 
         return self._request('GET', 'tool_types/', params)
 
-    def list_tools(self, id=None, name=None, tool_type_id=None, url=None, limit=20):
+    def list_tools(self, resource_id=None, name=None, tool_type_id=None, url=None, limit=20):
         """Retrieves all the tool configurations.
 
         :param name_contains: Search by tool name.
@@ -846,8 +846,8 @@ class DefectDojoAPI(object):
         if limit:
             params['limit'] = limit
 
-        if id:
-            params['id'] = id
+        if resource_id:
+            params['id'] = resource_id
 
         if name:
             params['name'] = name
@@ -860,7 +860,7 @@ class DefectDojoAPI(object):
 
         return self._request('GET', 'tool_configurations/', params)
 
-    def list_tool_products(self, url=None, name=None, tool_configuration_id=None,
+    def list_tool_products(self, resource_id=None, url=None, name=None, tool_configuration_id=None,
         tool_project_id=None, product_id=None, limit=20):
         """Retrieves all the tools.
 
@@ -877,8 +877,8 @@ class DefectDojoAPI(object):
         if limit:
             params['limit'] = limit
 
-        if id:
-            params['id'] = id
+        if resource_id:
+            params['id'] = resource_id
 
         if name:
             params['name'] = name
