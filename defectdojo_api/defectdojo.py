@@ -832,7 +832,7 @@ class DefectDojoAPI(object):
 
         return self._request('GET', 'tool_types/', params)
 
-    def list_tools(self, resource_id=None, name=None, tool_type_id=None, url=None, limit=20):
+    def list_tools(self, resource_id=None, name=None, tool_type_id=None, url=None, name_icontains=None, limit=20):
         """Retrieves all the tool configurations.
 
         :param name_contains: Search by tool name.
@@ -857,6 +857,9 @@ class DefectDojoAPI(object):
 
         if tool_type_id:
             params['url__contains'] = tool_type_id
+
+        if name_icontains:
+            params['name__icontains'] = name_icontains
 
         return self._request('GET', 'tool_configurations/', params)
 
