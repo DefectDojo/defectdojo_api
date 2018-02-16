@@ -887,7 +887,7 @@ class DefectDojoAPI(object):
             params['name'] = name
 
         if url:
-            params['url'] = url
+            params['url__iregex'] = url
 
         if tool_project_id:
             params['tool_project_id__contains'] = tool_project_id
