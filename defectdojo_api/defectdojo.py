@@ -79,6 +79,14 @@ class DefectDojoAPI(object):
         """
         return "/api/" + self.api_version + "/tests/" + str(test_id) + "/"
 
+    def get_language_uri(self, language_type_id):
+        """Returns the DefectDojo API URI for a test.
+
+        :param test_id: Id of the test
+
+        """
+        return "/api/" + self.api_version + "/language_types/" + str(language_type_id) + "/"
+
     def version_url(self):
         """Returns the DefectDojo API version.
 
@@ -780,13 +788,13 @@ class DefectDojoAPI(object):
         """
         return self._request('GET', 'credential_mappings/' + str(cred_mapping_id) + '/')
 
-    ##### Container API #####
+    ##### App Analysis API #####
+    def list_app_analysis(self, id=None, product_id=None, name=None, limit=20):
+        """Retrieves source code languages.
 
-    def list_containers(self, name=None, container_type=None, limit=20):
-        """Retrieves all the globally configured credentials.
-
-        :param name_contains: Search by credential name.
-        :param username: Search by username
+        :param id: Search by lanaguage id.
+        :param product: Search by product id
+        :param language_name: Search by language name
         :param limit: Number of records to return.
 
         """
@@ -795,20 +803,143 @@ class DefectDojoAPI(object):
         if limit:
             params['limit'] = limit
 
+        if id:
+            params['id'] = id
+
+        if product_id:
+            params['product__id'] = product_id
+
         if name:
-            params['name__contains'] = name
+            params['name__icontains'] = language_name
 
-        if container_type:
-            params['container_type__contains'] = container_type
+        return self._request('GET', 'app_analysis/', params)
 
-        return self._request('GET', 'container/', params)
-
-    def get_container(self, container_id, limit=20):
+    def create_app_analysis(self, product_id, user_id, name, confidence, version, icon, website):
         """
-        Retrieves a finding using the given container id.
-        :param container_id: Container identification.
+        Create a application analysis to product mapping.
+        :param id: Language identification.
         """
-        return self._request('GET', 'container/' + str(container_id) + '/')
+
+        data = {
+            'product': self.get_product_uri(product_id),
+            'user': self.get_user_uri(user_id),
+            'name': name,
+            'confidence': confidence,
+            'version': version,
+            'icon': icon,
+            'website': website
+        }
+
+        return self._request('POST', 'app_analysis/', data=data)
+
+    def delete_app_analysis(self, id):
+        """
+        Deletes an app analysis using the given id.
+        :param id: Language identification.
+        """
+        return self._request('DELETE', 'app_analysis/' + str(id) + '/')
+
+    def delete_all_app_analysis_product(self, product_id):
+        """
+        Delete all app analysis using the given id.
+        :product_id id: Product to remove
+        """
+        app_analysis = self.list_app_analysis(product_id=product_id)
+
+        if app_analysis.success:
+            for app in app_analysis.data["objects"]:
+                self.delete_app_analysis(self.get_id_from_url(app['resource_uri']))
+
+    ##### Language API #####
+
+    def list_languages(self, id=None, product_id=None, language_name=None, limit=20):
+        """Retrieves source code languages.
+
+        :param id: Search by lanaguage id.
+        :param product: Search by product id
+        :param language_name: Search by language name
+        :param limit: Number of records to return.
+
+        """
+
+        params  = {}
+        if limit:
+            params['limit'] = limit
+
+        if id:
+            params['id'] = id
+
+        if product_id:
+            params['product__id'] = product_id
+
+        if language_name:
+            params['language_type__language__icontains'] = language_name
+
+        return self._request('GET', 'languages/', params)
+
+    def create_language(self, product_id, user_id, files, code, blank, comment, language_type_id=None, language_name=None):
+        """
+        Create a language to product mapping.
+        :param product_id: Product identification.
+        """
+        #If language name specified then lookup
+        if language_name:
+            languages = self.list_language_types(language_name=language_name)
+
+            if languages.success:
+                for language in languages.data["objects"]:
+                    language_type = language['resource_uri']
+
+        data = {
+            'product': self.get_product_uri(product_id),
+            'language_type': language_type,
+            'user': self.get_user_uri(user_id),
+            'files': files,
+            'code': code,
+            'blank': blank,
+            'comment': comment
+        }
+
+        return self._request('POST', 'languages/', data=data)
+
+    def delete_language(self, id):
+        """
+        Deletes a language using the given id.
+        :param id: Language identification.
+        """
+        return self._request('DELETE', 'languages/' + str(id) + '/')
+
+    def delete_all_languages_product(self, product_id):
+        """
+        Delete all languages for a given product id.
+        :param id: Language identification.
+        """
+        languages = self.list_languages(product_id=product_id)
+
+        if languages.success:
+            for language in languages.data["objects"]:
+                self.delete_language(self.get_id_from_url(language['resource_uri']))
+
+    def list_language_types(self, id=None, language_name=None, limit=20):
+        """Retrieves source code languages.
+
+        :param id: Search by lanaguage id.
+        :param language_name: Search by language name
+        :param limit: Number of records to return.
+
+        """
+
+        params  = {}
+        if limit:
+            params['limit'] = limit
+
+        if id:
+            params['id'] = id
+
+        if language_name:
+            params['language__icontains'] = language_name
+
+        return self._request('GET', 'language_types/', params)
 
     ###### Tool API #######
 
