@@ -659,6 +659,26 @@ class DefectDojoAPI(object):
 
         return self._request('PUT', 'findings/' + str(finding_id) + '/', data=data)
 
+    ##### Build Details API #####
+
+    def build_details(self, engagement_id, json):
+        """Uploads commit file changes to an engagement.
+
+        :param engagement_id: Engagement identifier.
+        :param file: File/Json with meta data to be uploaded.
+
+        """
+
+        data = {
+            'file': json,
+            'engagement': ('', self.get_engagement_uri(engagement_id))
+        }
+
+        return self._request(
+            'POST', 'build_details/',
+            files=data
+        )
+
     ##### Upload API #####
 
     def upload_scan(self, engagement_id, scan_type, file, active, scan_date, tags=None, build=None, minimum_severity="Info"):
