@@ -33,6 +33,11 @@ class DefectDojoAPI(object):
         self.verify_ssl = verify_ssl
         self.proxies = proxies
         self.timeout = timeout
+        
+        if host.split('/')[3]:
+            self.custom_path = '/' + '/'.join(host.split('/')[3:]).rstrip('/')
+        else:
+            self.custom_path = ''
 
         if not user_agent:
             self.user_agent = 'DefectDojo_api/' + version
@@ -46,6 +51,7 @@ class DefectDojoAPI(object):
             requests.packages.urllib3.disable_warnings()  # Disabling SSL warning messages if verification is disabled.
 
     ###### Helper Functions ######
+
     def get_user_uri(self, user_id):
         """Returns the DefectDojo API URI for a user.
 
@@ -53,7 +59,7 @@ class DefectDojoAPI(object):
 
         """
 
-        return "/api/" + self.api_version + "/users/" + str(user_id) + "/"
+        return self.custom_path + "/api/" + self.api_version + "/users/" + str(user_id) + "/"
 
     def get_engagement_uri(self, engagement_id):
         """Returns the DefectDojo API URI for an engagement.
@@ -61,7 +67,7 @@ class DefectDojoAPI(object):
         :param engagement_id: Id of the engagement
 
         """
-        return "/api/" + self.api_version + "/engagements/" + str(engagement_id) + "/"
+        return self.custom_path + "/api/" + self.api_version + "/engagements/" + str(engagement_id) + "/"
 
     def get_product_uri(self, product_id):
         """Returns the DefectDojo API URI for a product.
@@ -69,7 +75,7 @@ class DefectDojoAPI(object):
         :param product_id: Id of the product
 
         """
-        return "/api/" + self.api_version + "/products/" + str(product_id) + "/"
+        return self.custom_path + "/api/" + self.api_version + "/products/" + str(product_id) + "/"
 
     def get_test_uri(self, test_id):
         """Returns the DefectDojo API URI for a test.
@@ -77,7 +83,7 @@ class DefectDojoAPI(object):
         :param test_id: Id of the test
 
         """
-        return "/api/" + self.api_version + "/tests/" + str(test_id) + "/"
+        return self.custom_path + "/api/" + self.api_version + "/tests/" + str(test_id) + "/"
 
     def get_language_uri(self, language_type_id):
         """Returns the DefectDojo API URI for a test.
@@ -85,7 +91,7 @@ class DefectDojoAPI(object):
         :param test_id: Id of the test
 
         """
-        return "/api/" + self.api_version + "/language_types/" + str(language_type_id) + "/"
+        return self.custom_path + "/api/" + self.api_version + "/language_types/" + str(language_type_id) + "/"
 
     def version_url(self):
         """Returns the DefectDojo API version.
