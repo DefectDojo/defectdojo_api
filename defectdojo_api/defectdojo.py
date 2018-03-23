@@ -34,7 +34,7 @@ class DefectDojoAPI(object):
         self.proxies = proxies
         self.timeout = timeout
         
-        if host.split('/')[3]:
+        if host.split('/') > 3:
             self.custom_path = '/' + '/'.join(host.split('/')[3:]).rstrip('/')
         else:
             self.custom_path = ''
