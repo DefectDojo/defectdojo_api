@@ -80,12 +80,20 @@ class DefectDojoAPI(object):
         return "/api/" + self.api_version + "/tests/" + str(test_id) + "/"
 
     def get_language_uri(self, language_type_id):
-        """Returns the DefectDojo API URI for a test.
+        """Returns the DefectDojo API URI for a langauge.
 
-        :param test_id: Id of the test
+        :param test_id: Id of the language
 
         """
         return "/api/" + self.api_version + "/language_types/" + str(language_type_id) + "/"
+
+    def get_tool_configuration_uri(self, tool_configuration_id):
+        """Returns the DefectDojo API URI for a tool.
+
+        :param tool_configurations_id: Id of the test
+
+        """
+        return "/api/" + self.api_version + "/tool_configurations/" + str(tool_configuration_id) + "/"
 
     def version_url(self):
         """Returns the DefectDojo API version.
@@ -162,8 +170,9 @@ class DefectDojoAPI(object):
         return self._request('GET', 'engagements/' + str(engagement_id) + '/')
 
     def create_engagement(self, name, product_id, lead_id, status, target_start, target_end, active='True',
-        pen_test='False', check_list='False', threat_model='False', risk_path="", test_strategy="", progress="",
-        done_testing='False'):
+        pen_test='False', check_list='False', threat_model='False', risk_path="",test_strategy="", progress="",
+        done_testing='False', engagement_type="CI/CD", build_id=None, commit_hash=None, branch_tag=None, build_server=None,
+        source_code_management_server=None, source_code_management_uri=None, orchestration_engine=None, description=None):
         """Creates an engagement with the given properties.
 
         :param name: Engagement name.
@@ -179,6 +188,14 @@ class DefectDojoAPI(object):
         :param risk_path: risk_path
         :param test_strategy: Test Strategy URLs
         :param progress: Engagement progresss measured in percent.
+        :param engagement_type: Interactive or CI/CD
+        :param build_id: Build id from the build server
+        :param commit_hash: Commit hash from source code management
+        :param branch_tag: Branch or tag from source code management
+        :param build_server: Tool Configuration id of build server
+        :param source_code_management_server: URL of source code management
+        :param source_code_management_uri: Link to source code commit
+        :param orchestration_engine: URL of orchestration engine
 
         """
 
@@ -196,8 +213,33 @@ class DefectDojoAPI(object):
             'risk_path': risk_path,
             'test_strategy': test_strategy,
             'progress': progress,
-            'done_testing': done_testing
+            'done_testing': done_testing,
+            'engagement_type': engagement_type
         }
+
+        if description:
+            data.update({'description': description})
+
+        if build_id:
+            data.update({'build_id': build_id})
+
+        if commit_hash:
+            data.update({'commit_hash': commit_hash})
+
+        if branch_tag:
+            data.update({'branch_tag': branch_tag})
+
+        if build_server:
+            data.update({'build_server': self.get_tool_configuration_uri(build_server)})
+
+        if source_code_management_server:
+            data.update({'source_code_management_server': self.get_tool_configuration_uri(source_code_management_server)})
+
+        if source_code_management_uri:
+            data.update({'source_code_management_uri': source_code_management_uri})
+
+        if orchestration_engine:
+            data.update({'orchestration_engine': self.get_tool_configuration_uri(orchestration_engine)})
 
         return self._request('POST', 'engagements/', data=data)
 
@@ -207,19 +249,13 @@ class DefectDojoAPI(object):
         :param id: Engagement id.
         :param user_id: User from the user table.
         """
-        engagement = self.get_engagement(id).data
 
-        #if user isn't provided then close with the lead ID
-        if user_id is None:
-            user_id = self.get_id_from_url(engagement["lead"])
-
-        product_id = engagement["product_id"]
-
-        self.set_engagement(id, name=engagement["name"], lead_id=user_id, product_id=product_id, status="Completed", active=False)
+        self.set_engagement(id, status="Completed", active=False)
 
     def set_engagement(self, id, product_id=None, lead_id=None, name=None, status=None, target_start=None,
         target_end=None, active=None, pen_test=None, check_list=None, threat_model=None, risk_path=None,
-        test_strategy=None, progress=None, done_testing=None):
+        test_strategy=None, progress=None, done_testing=None, engagement_type="CI/CD", build_id=None, commit_hash=None, branch_tag=None, build_server=None,
+        source_code_management_server=None, source_code_management_uri=None, orchestration_engine=None, description=None):
 
         """Updates an engagement with the given properties.
 
@@ -237,7 +273,14 @@ class DefectDojoAPI(object):
         :param risk_path: risk_path
         :param test_strategy: Test Strategy URLs
         :param progress: Engagement progresss measured in percent.
-
+        :param engagement_type: Interactive or CI/CD
+        :param build_id: Build id from the build server
+        :param commit_hash: Commit hash from source code management
+        :param branch_tag: Branch or tag from source code management
+        :param build_server: Tool Configuration id of build server
+        :param source_code_management_server: URL of source code management
+        :param source_code_management_uri: Link to source code commit
+        :param orchestration_engine: URL of orchestration engine
         """
 
         data = {}
@@ -284,7 +327,7 @@ class DefectDojoAPI(object):
         if done_testing:
             data['done_testing'] = done_testing
 
-        return self._request('PUT', 'engagements/' + str(id) + '/', data=data)
+        return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
     def list_products(self, name=None, name_contains=None, limit=20):

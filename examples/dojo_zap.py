@@ -38,9 +38,6 @@ list_credentials = dd.list_credentials()
 print "Creds"
 print list_credentials.data_json(pretty=True)
 
-list_containers = dd.list_containers()
-print "Containers"
-print list_containers.data_json(pretty=True)
 # Search Tool Types by Name
 tool_types = dd.list_tool_types(name="Source Code Repository")
 
