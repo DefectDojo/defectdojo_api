@@ -62,7 +62,8 @@ def return_engagement(dd, product_id, user, build_id=None):
     if users.success:
         user_id = users.data["objects"][0]["id"]
 
-    engagementText = "CI/CD Integration"
+    dojoTime = start_date.strftime("%H:%M:%S")
+    engagementText = "CI/CD Integration (" + dojoTime + ")"
     if build_id is not None:
         engagementText = engagementText + " - Build #" + build_id
 
