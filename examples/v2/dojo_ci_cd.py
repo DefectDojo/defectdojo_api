@@ -23,7 +23,7 @@ def junit(toolName, file):
         print("Writing Junit test files")
         file.write(junit_xml.dump())
 
-def dojo_connection(host, api_key, user, proxy,debug=False):
+def dojo_connection(host, api_token, user, proxy,debug=False):
     #Optionally, specify a proxy
     proxies = None
     if proxy:
@@ -33,7 +33,7 @@ def dojo_connection(host, api_key, user, proxy,debug=False):
         }
 
     # Instantiate the DefectDojo api wrapper
-    dd = defectdojo.DefectDojoAPIv2(host, api_key, user, api_version="v2", proxies=proxies, verify_ssl=False, timeout=360, debug=debug)
+    dd = defectdojo.DefectDojoAPIv2(host, api_token, user, api_version="v2", proxies=proxies, verify_ssl=False, timeout=360, debug=debug)
 
     return dd
     # Workflow as follows:
@@ -272,7 +272,7 @@ class Main:
         parser = argparse.ArgumentParser(description='CI/CD integration for DefectDojo')
         parser.add_argument('--host', help="DefectDojo Hostname", required=True)
         parser.add_argument('--proxy', help="Proxy ex:localhost:8080", required=False, default=None)
-        parser.add_argument('--api_key', help="API Key", required=True)
+        parser.add_argument('--api_token', help="API Key", required=True)
         parser.add_argument('--branch_name', help="Reference to branch being scanned", required=False)
         parser.add_argument('--build_id', help="Reference to build id or build url", required=False)
         parser.add_argument('--commit_hash', help="Reference to commit hash being scanned", required=False)
@@ -303,7 +303,7 @@ class Main:
         #Parse out arguments
         args = vars(parser.parse_args())
         host = args["host"]
-        api_key = args["api_key"]
+        api_token = args["api_token"]
         user = args["user"]
         product_id = args["product"]
         product_name = args["product_name"]
@@ -330,7 +330,7 @@ class Main:
 
         if dir is not None or file is not None:
             print("create connection")
-            dd = dojo_connection(host, api_key, user, proxy=proxy, debug=True)
+            dd = dojo_connection(host, api_token, user, proxy=proxy, debug=True)
             print("created")
 
             user_id = get_user_id(dd, user)

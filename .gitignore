@@ -111,3 +111,6 @@ temp
 /tests/scans/report.json
 /tests/scans/dependency-check-report.xml
 pip_install.bat 
+
+# visual studio code
+*.code-workspace
