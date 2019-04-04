@@ -89,7 +89,7 @@ class DefectDojoAPIv2(object):
         return self._request('GET', 'users/' + str(user_id) + '/')
 
     ###### Engagements API #######
-    def list_engagements(self, status=None, product_in=None, name_contains=None,limit=20):
+    def list_engagements(self, status=None, product_id=None, name_contains=None,limit=20):
         """Retrieves all the engagements.
 
         :param product_in: List of product ids (1,2).
@@ -102,8 +102,8 @@ class DefectDojoAPIv2(object):
         if limit:
             params['limit'] = limit
 
-        if product_in:
-            params['product__in'] = product_in
+        if product_id:
+            params['product'] = product_id
 
         if status:
             params['status'] = status
@@ -124,7 +124,7 @@ class DefectDojoAPIv2(object):
     def create_engagement(self, name, product_id, lead_id, status, target_start, target_end, active='True',
         pen_test='False', check_list='False', threat_model='False', risk_path="",test_strategy="", progress="",
         done_testing='False', engagement_type="CI/CD", build_id=None, commit_hash=None, branch_tag=None, build_server=None,
-        source_code_management_server=None, source_code_management_uri=None, orchestration_engine=None, description=None):
+        source_code_management_server=None, source_code_management_uri=None, orchestration_engine=None, description=None, deduplication_on_engagement=True):
         """Creates an engagement with the given properties.
 
         :param name: Engagement name.
@@ -148,6 +148,7 @@ class DefectDojoAPIv2(object):
         :param source_code_management_server: URL of source code management
         :param source_code_management_uri: Link to source code commit
         :param orchestration_engine: URL of orchestration engine
+        :param deduplication_on_engagement: voolean value for deduplication_on_engagement
 
         """
 
@@ -192,6 +193,9 @@ class DefectDojoAPIv2(object):
 
         if orchestration_engine:
             data.update({'orchestration_engine': orchestration_engine})
+
+        if deduplication_on_engagement:
+            data.update({'deduplication_on_engagement': deduplication_on_engagement})
 
         return self._request('POST', 'engagements/', data=data)
 
@@ -282,7 +286,7 @@ class DefectDojoAPIv2(object):
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
-    def list_products(self, name=None, name_contains=None, limit=20):
+    def list_products(self, name=None, name_contains=None, limit=200):
         """Retrieves all the products.
 
         :param name: Search by product name.
@@ -700,7 +704,7 @@ class DefectDojoAPIv2(object):
 
     ##### Upload API #####
 
-    def upload_scan(self, engagement_id, scan_type, file, active, scan_date, tags=None, build=None, minimum_severity="Info"):
+    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, minimum_severity="Info"):
         """Uploads and processes a scan file.
 
         :param application_id: Application identifier.
@@ -723,11 +727,20 @@ class DefectDojoAPIv2(object):
             'engagement': ('', engagement_id),
             'scan_type': ('', scan_type),
             'active': ('', active),
+            'verified': ('', verified),
+            'close_old_findings': ('', close_old_findings),
+            'skip_duplicates': ('', skip_duplicates),
             'scan_date': ('', scan_date),
             'tags': ('', tags),
             'build_id': ('', build),
             'minimum_severity': ('', minimum_severity)
         }
+        """
+        TODO: implement these parameters:
+          lead
+          test_type
+          scan_date
+        """
 
         return self._request(
             'POST', 'import-scan/',

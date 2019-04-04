@@ -166,7 +166,7 @@ class TestDefectDojoAPI(unittest.TestCase):
 
         date = datetime.now()
         upload_scan = self.dd.upload_scan(self.__class__.engagement_id, "Burp Scan", dir_path + "/scans/Bodgeit-burp.xml",
-        "true", date.strftime("%Y-%m-%d"), "API")
+        "true", "false", "false", "false", date.strftime("%Y-%m-%d"), "API")
 
         #upload_scan = self.dd.upload_scan(self.__class__.engagement_id, "NPM Audit Scan", dir_path + "/report.json",
         #"true", date.strftime("%Y-%m-%d"), "API")

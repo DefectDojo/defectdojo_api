@@ -42,38 +42,55 @@ def dojo_connection(host, api_key, user, proxy,debug=False):
     # 3. Call this script to load scan data, specifying scanner type
     # 4. Script returns along with a pass or fail results: Example: 2 new critical vulns, 1 low out of 10 vulnerabilities
 
-def return_engagement_id(dd, product_id, user, build_id=None):
-    #Specify the product id
-    product_id = product_id
-    engagement_id = None
-
-    """
-    # Check for a CI/CD engagement_id
-    engagements = dd.list_engagements(product_in=product_id, status="In Progress")
-
-    if engagements.success:
-        for engagement in engagements.data["objects"]:
-            if "Recurring CI/CD Integration" == engagement['name']:
-                engagement_id = engagement['id']
-
-    if engagement_id == None:
-    """
-    start_date = datetime.now()
-    end_date = start_date+timedelta(days=1)
-    users = dd.list_users(user)
+def get_user_id(dd, user_name):
+    users = dd.list_users(user_name, limit=200)
     user_id = None
 
     if users.success:
         print("users.success")
         user_id = users.data["results"][0]["id"]
+        return user_id
+    else:
+        raise ValueError('user not found: ' + str(username))
 
-    dojoTime = start_date.strftime("%H:%M:%S")
-    engagementText = "CI/CD Integration (" + dojoTime + ")"
-    if build_id is not None:
-        engagementText = engagementText + " - Build #" + build_id
+def get_product_id(dd, product_id, product_name):
+    if product_id != None:
+         product = dd.get_product(product_id)
+         return product_id
+    elif product_name != None:
+         products_response = dd.list_products()
+         for product in products_response.data["results"]:
+             #print(product["name"])
+             if product["name"] == product_name:
+                 return product["id"]
+    else:
+        raise ValueError('product_id or product_name required')
 
-    engagement_id = dd.create_engagement(engagementText, product_id, str(user_id),
-    "In Progress", start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
+def get_engagement_id(dd, product_id, user_id, engagement_id, engagement_name, branch_name, build_id=None, commit_hash=None):
+    if engagement_id != None:
+        engagement = dd.get_engagement(engagement_id = engagement_id)
+        return engagement_id
+    elif engagement_name != None:
+        engagement_name_plus_branch = engagement_name
+        if branch_name is not None:
+            engagement_name_plus_branch = engagement_name + " (" + branch_name + ")"
+            engagements_reponse = dd.list_engagements(product_id=product_id, status="In Progress")
+            for engagement in engagements_reponse.data["results"]:
+                print(engagement["name"])
+                if engagement["name"] == engagement_name_plus_branch:
+                    return engagement["id"]
+    else:
+        raise ValueError('engagement id or name required')
+
+# no engagement found by id or by name, so create a new one
+
+    start_date = datetime.now()
+    end_date = start_date+timedelta(days=365)
+
+    engagement_description = "CI/CD Engagement created by ci/cd script"
+
+    engagement_id = dd.create_engagement(engagement_name_plus_branch, product_id, str(user_id),
+    "In Progress", start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"), branch_tag=branch_name, description=engagement_description, build_id=build_id, commit_hash=commit_hash)
     return str(engagement_id.data["id"])
 
 def process_findings(dd, engagement_id, dir, build=None):
@@ -86,7 +103,7 @@ def process_findings(dd, engagement_id, dir, build=None):
                 test_ids.append(str(test_id))
     return ','.join(test_ids)
 
-def processFiles(dd, engagement_id, file, scanner=None, build=None):
+def processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=None, build=None):
     upload_scan = None
     scannerName = None
     path=os.path.dirname(file)
@@ -148,8 +165,8 @@ def processFiles(dd, engagement_id, file, scanner=None, build=None):
         scannerName = scanner
                 
     if scannerName is not None:
-        print("Uploading " + scannerName + " scan: " + file + " for engagement: " + engagement_id)
-        test_id = dd.upload_scan(engagement_id, scannerName, file, "true", dojoDate, tags="ci/cd", build=build)
+        print("Uploading " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id))
+        test_id = dd.upload_scan(engagement_id, scannerName, file, active, verified, close_old_findings, skip_duplicates, dojoDate, tags="ci/cd", build=build)
         if test_id.success == False:
             raise ValueError("Upload failed: Detailed error message: " + test_id.data)
     else:
@@ -256,17 +273,32 @@ class Main:
         parser.add_argument('--host', help="DefectDojo Hostname", required=True)
         parser.add_argument('--proxy', help="Proxy ex:localhost:8080", required=False, default=None)
         parser.add_argument('--api_key', help="API Key", required=True)
-        parser.add_argument('--build_id', help="Reference to external build id", required=False)
+        parser.add_argument('--branch_name', help="Reference to branch being scanned", required=False)
+        parser.add_argument('--build_id', help="Reference to build id or build url", required=False)
+        parser.add_argument('--commit_hash', help="Reference to commit hash being scanned", required=False)
         parser.add_argument('--user', help="User", required=True)
-        parser.add_argument('--product', help="DefectDojo Product ID", required=True)
+
         parser.add_argument('--file', help="Scanner file", required=False)
         parser.add_argument('--dir', help="Scanner directory, needs to have the scanner name with the scan file in the folder. Ex: reports/nmap/nmap.csv", required=False)
         parser.add_argument('--scanner', help="Type of scanner", required=False)
         parser.add_argument('--build', help="Build ID", required=False)
-        parser.add_argument('--engagement', help="Engagement ID (optional)", required=False)
-        parser.add_argument('--critical', help="Maximum new critical vulns to pass the build.", required=False)
-        parser.add_argument('--high', help="Maximum new high vulns to pass the build.", required=False)
-        parser.add_argument('--medium', help="Maximum new medium vulns to pass the build.", required=False)
+
+        group1 = parser.add_mutually_exclusive_group(required=True)
+        group1.add_argument('--engagement', help="Engagement ID", required=False, type=int)
+        group1.add_argument('--engagement_name', help="Engagement Name", required=False)
+        
+        group2 = parser.add_mutually_exclusive_group(required=True)
+        group2.add_argument('--product', help="DefectDojo Product ID", required=False, type=int)
+        group2.add_argument('--product_name', help='DefectDojo Product Name', required=False)
+
+        parser.add_argument('--critical', help="Maximum new critical vulns to pass the build.", required=False, type=int)
+        parser.add_argument('--high', help="Maximum new high vulns to pass the build.", required=False, type=int)
+        parser.add_argument('--medium', help="Maximum new medium vulns to pass the build.", required=False, type=int)
+
+        parser.add_argument('--active', help="Should uploaded findings be marked as active?", required=False, default=False)
+        parser.add_argument('--verified', help="Should uploaded findings be marked as verified?", required=False, default=False)
+        parser.add_argument('--close_old_findings', help="Should findings not present in this uplaod be closed?", required=False, default=False)
+        parser.add_argument('--skip_duplicates', help="Should findings already present in DefectDojo be skipped?", required=False, default=False)
 
         #Parse out arguments
         args = vars(parser.parse_args())
@@ -274,28 +306,46 @@ class Main:
         api_key = args["api_key"]
         user = args["user"]
         product_id = args["product"]
+        product_name = args["product_name"]
         file = args["file"]
         dir = args["dir"]
         scanner = args["scanner"]
         engagement_id = args["engagement"]
+        engagement_name = args["engagement_name"]
         max_critical = args["critical"]
         max_high = args["high"]
         max_medium = args["medium"]
         build = args["build"]
         proxy = args["proxy"]
+        branch_name = args["branch_name"]
         build_id = args["build_id"]
+        commit_hash = args["commit_hash"]
+
+        active = args["active"]
+        verified = args["verified"]
+        close_old_findings = args["close_old_findings"]
+        skip_duplicates = args["skip_duplicates"]
+
+
 
         if dir is not None or file is not None:
             print("create connection")
             dd = dojo_connection(host, api_key, user, proxy=proxy, debug=True)
             print("created")
 
-            engagement_id = return_engagement_id(dd, product_id, user, build_id=build_id)
-            print("engagement_id: ", engagement_id)
+            user_id = get_user_id(dd, user)
+            print('user_id derived from paramaters: ', str(user_id))
+
+            product_id = get_product_id(dd, product_id, product_name)
+            print('product_id derived from paramaters: ', str(product_id))
+            
+            engagement_id = get_engagement_id(dd, product_id, user_id, engagement_id, engagement_name, branch_name, build_id=build_id, commit_hash=commit_hash)
+            print('engagement_id derived from paramaters: ', str(engagement_id))
+
             test_ids = None
             if file is not None:
                 if scanner is not None:
-                    test_ids = processFiles(dd, engagement_id, file, scanner=scanner)
+                    test_ids = processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=scanner)
                 else:
                     print("Scanner type must be specified for a file import. --scanner")
                     sys.exit()
@@ -303,7 +353,7 @@ class Main:
                 test_ids = process_findings(dd, engagement_id, dir, build)
 
             #Close the engagement_id
-            dd.close_engagement(engagement_id)
+            #dd.close_engagement(engagement_id)
             summary(dd, engagement_id, test_ids, max_critical, max_high, max_medium)
         else:
             print("No file or directory to scan specified.")
