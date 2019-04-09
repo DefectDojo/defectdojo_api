@@ -51,7 +51,7 @@ def get_user_id(dd, user_name):
         user_id = users.data["results"][0]["id"]
         return user_id
     else:
-        raise ValueError('user not found: ' + str(username))
+        raise ValueError('user not found: ' + str(user_name))
 
 def get_product_id(dd, product_id, product_name):
     if product_id != None:
@@ -284,7 +284,7 @@ class Main:
         parser.add_argument('--build', help="Build ID", required=False)
 
         group1 = parser.add_mutually_exclusive_group(required=True)
-        group1.add_argument('--engagement', help="Engagement ID", required=False, type=int)
+        group1.add_argument('--engagement', help="Engagement ID", required=False)
         group1.add_argument('--engagement_name', help="Engagement Name", required=False)
         
         group2 = parser.add_mutually_exclusive_group(required=True)
