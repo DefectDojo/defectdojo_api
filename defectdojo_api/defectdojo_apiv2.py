@@ -77,7 +77,6 @@ class DefectDojoAPIv2(object):
         if username:
             params['username'] = username
 
-        print("listing users")
         return self._request('GET', 'users/', params)
 
     def get_user(self, user_id):
@@ -719,8 +718,10 @@ class DefectDojoAPIv2(object):
 
         with open(file, 'rb') as f:
              filedata = f.read()
-        print("filedata:")
-        print(filedata)
+        
+        if self.debug:
+            print("filedata:")
+            print(filedata)
 
         data = {
             'file': filedata,
