@@ -165,7 +165,7 @@ def processFiles(dd, engagement_id, file, active, verified, close_old_findings, 
         scannerName = scanner
                 
     if scannerName is not None:
-        print("Uploading " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id))
+        print("Uploading " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id) + " with scan_data: " + str(dojoDate))
         test_id = dd.upload_scan(engagement_id, scannerName, file, active, verified, close_old_findings, skip_duplicates, dojoDate, tags="ci/cd", build=build)
         if test_id.success == False:
             raise ValueError("Upload failed: Detailed error message: " + test_id.data)
