@@ -106,3 +106,11 @@ config/config.json
 test.py
 .DS_Store
 temp
+/cicd.bat
+/test.bat
+/tests/scans/report.json
+/tests/scans/dependency-check-report.xml
+pip_install.bat 
+
+# visual studio code
+*.code-workspace
