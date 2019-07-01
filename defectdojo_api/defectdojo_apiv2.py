@@ -89,6 +89,215 @@ class DefectDojoAPIv2(object):
         """
         return self._request('GET', 'users/' + str(user_id) + '/')
 
+    # Endpoint API
+
+    def list_endpoints(self, endpoint_id=None, host=None, product=None, limit=20, offset=0):
+        """Retrieves all the endpoints.
+
+        :param endpoint_id: List of endpoint ids (1,2).
+        :param str host:
+        :param str product:
+        :param int limit: Number of results to return per page.
+        :param int offset: The initial index from which to return the results.
+        """
+        params = {}
+        if endpoint_id:
+            params['id'] = endpoint_id
+
+        if host:
+            params['host'] = host
+
+        if product:
+            params['product'] = product
+
+        if limit:
+            params['limit'] = limit
+
+        if offset:
+            params['offset'] = offset
+
+        return self._request('GET', 'endpoints/', params)
+    
+    def get_endpoint(self, endpoint_id, host=None, product=None):
+        """Retrieves a spezific endpoint.
+
+        :param int endpoint_id: A unique integer value identifying this endpoint. (required)
+        :param str host:
+        :param str product:
+        """
+        params = {}
+        if endpoint_id:
+            params['id'] = endpoint_id
+
+        if host:
+            params['host'] = host
+
+        if product:
+            params['product'] = product
+
+        return self._request('GET', 'endpoints/' + str(endpoint_id) + '/', params)
+
+    def create_endpoint(self, product, protocol=None, tags=None, fragement=None, fqdn=None, host=None, query=None, path=None, port=None):
+        """Creates a new endpoint with the given properties.
+
+        :param str product: A unique integer value identifying this endpoint. (required)
+        :param str protocol: The communication protocol such as 'http', 'ftp', etc.
+        :param str host: The host name or IP address.
+        :param int product: Id of the product the endpoint belongs to.
+        :param str tags: A list of tags.
+        :param str fragement: The fragment identifier which follows the hash mark. The hash mark should be omitted. For example 'section-13', 'paragraph-2'.
+        :param fqdn str: Fully-Qualified Domain Name.
+        :param query str: The query string, the question mark should be omitted. For example 'group=4&team=8'
+        :param path str: The location of the resource, it should start with a '/'. For example /endpoint/420/edit
+        :param port int: The network port associated with the endpoint.
+        """
+        data = {
+            'product': product
+        }
+
+        if protocol:
+            data.update({'protocol': protocoll})
+        
+        if tags:
+            data.update({'tags': tags})
+
+        if fragment:
+            data.update({'fragment': fragment})
+
+        if fqdn:
+            data.update({'fqdn': fqdn})
+
+        if host:
+            data.update({'host': host})
+
+        if query:
+            data.update({'query': query})
+
+        if path:
+            data.update({'path': path})
+
+        if port:
+            data.update({'port': port})
+
+        return self._request('POST', 'endpoints/', data=data)
+
+    def delete_endpoint(self, endpoint_id, host=None, product=None):
+        """Deletes a spezific endpoint.
+
+        :param int endpoint_id: A unique integer value identifying this endpoint. (required)
+        :param str host:
+        :param str product:
+        """
+        params = {}
+        if endpoint_id:
+            params['id'] = endpoint_id
+
+        if host:
+            params['host'] = host
+
+        if product:
+            params['product'] = product
+
+        return self._request('DELETE', 'endpoints/' + str(endpoint_id) + '/', params)
+
+    def update_endpoint(self, endpoint_id, host=None, product=None, new_product=None, protocol=None, tags=None, fragement=None, fqdn=None, new_host=None, query=None, path=None, port=None):
+        """Updates a spezific endpoint.
+
+        :param int endpoint_id: A unique integer value identifying this endpoint. (required)
+        :param str host:
+        :param str product:
+        """
+        params = {}
+        if endpoint_id:
+            params['id'] = endpoint_id
+
+        if host:
+            params['host'] = host
+
+        if product:
+            params['product'] = product
+
+        data = {
+        }
+
+        if new_product:
+            data.update({'product': new_product})
+
+        if protocol:
+            data.update({'protocol': protocoll})
+        
+        if tags:
+            data.update({'tags': tags})
+
+        if fragment:
+            data.update({'fragment': fragment})
+
+        if fqdn:
+            data.update({'fqdn': fqdn})
+
+        if new_host:
+            data.update({'host': new_host})
+
+        if query:
+            data.update({'query': query})
+
+        if path:
+            data.update({'path': path})
+
+        if port:
+            data.update({'port': port})
+
+        return self._request('PATCH', 'endpoints/' + str(endpoint_id) + '/', params, data=data)
+
+    def set_endpoint(self, endpoint_id, host=None, product=None, new_product=None, protocol=None, tags=None, fragement=None, fqdn=None, new_host=None, query=None, path=None, port=None):
+        """Overrides a spezific endpoint.
+
+        :param int endpoint_id: A unique integer value identifying this endpoint. (required)
+        :param str host:
+        :param str product:
+        """
+        params = {}
+        if endpoint_id:
+            params['id'] = endpoint_id
+
+        if host:
+            params['host'] = host
+
+        if product:
+            params['product'] = product
+
+        data = {
+        }
+
+        if new_product:
+            data.update({'product': new_product})
+
+        if protocol:
+            data.update({'protocol': protocoll})
+        
+        if tags:
+            data.update({'tags': tags})
+
+        if fragment:
+            data.update({'fragment': fragment})
+
+        if fqdn:
+            data.update({'fqdn': fqdn})
+
+        if new_host:
+            data.update({'host': new_host})
+
+        if query:
+            data.update({'query': query})
+
+        if path:
+            data.update({'path': path})
+
+        if port:
+            data.update({'port': port})
+
+        return self._request('PUT', 'endpoints/' + str(endpoint_id) + '/', params, data=data)
+    
     # Engagements API
 
     def list_engagements(self, status=None, product_id=None, name_contains=None, limit=20):

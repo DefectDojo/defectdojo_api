@@ -165,6 +165,19 @@ class TestDefectDojoAPIV2(unittest.TestCase):
 
         # response doesn't contain an id, so check for engagement instead
         self.assertEqual("Reupload", upload_scan.data["tags"][0])
+    
+    # Endpoint API Test
+    def test_get_endpoint(self):
+        endpoint = self.dd
+    def test_create_endpoint(self):
+    
+    def test_list_endpoint(self):
+    
+    def test_update_endpoint(self):
+    
+    def test_set_endpoint(self):
+
+    def test_delete_endpoint(self):
 
 if __name__ == '__main__':
     unittest.main()
