@@ -2,10 +2,10 @@ dist: xenial
 language: python
 python:
   - "2.7"
-  - "3.2"
-  - "3.3"
   - "3.4"
   - "3.5"
+  - "3.6"
+  - "3.7"
 #sudo: required
 services:
   - docker
@@ -13,6 +13,7 @@ env:
   global:
     - DD_ADMIN_USER=admin
     - DD_ADMIN_PASSWORD=API-Tester
+    - DOJO_URL=http://localhost:8080 
 
 before_script:
   # Testing only release mode, not dev mode (ignores docker-compose.override.yml)
@@ -21,7 +22,7 @@ before_script:
   # Wait for services to become available
   - sleep 80
   - echo "Testing DefectDojo Service"
-  - curl -s -o "/dev/null" http://localhost:8080 -m 120
+  - curl -s -o "/dev/null" $DOJO_URL -m 120
   - echo "Docker compose container status"
   - docker-compose -f ./travis/docker-compose.yml ps
 
