@@ -3,7 +3,7 @@ import requests
 import requests.exceptions
 import requests.packages.urllib3
 
-requests.packages.urllib3.add_stderr_logger()
+#requests.packages.urllib3.add_stderr_logger()
 
 version = "1.1.6.dev2"
 
@@ -11,13 +11,14 @@ version = "1.1.6.dev2"
 class DefectDojoAPIv2(object):
     """An API wrapper for DefectDojo."""
 
-    def __init__(self, host, api_token, user, api_version='v2', verify_ssl=True, timeout=60, proxies=None,
+    def __init__(self, host, user, password=None, api_token=None, api_version='v2', verify_ssl=True, timeout=60, proxies=None,
                  user_agent=None, cert=None, debug=False):
         """Initialize a DefectDojo API instance.
 
         :param host: The URL for the DefectDojo server. (e.g., http://localhost:8000/DefectDojo/)
-        :param api_token: The API token generated on the DefectDojo API key page.
         :param user: The user associated with the API key.
+        :param password: The passoword for the user if no API token is spezified.
+        :param api_token: The API token generated on the DefectDojo API key page.
         :param api_version: API version to call, the default is v1.
         :param verify_ssl: Specify if API requests will verify the host's SSL certificate, defaults to true.
         :param timeout: HTTP timeout in seconds, default is 30.
@@ -30,8 +31,8 @@ class DefectDojoAPIv2(object):
         """
 
         self.host = host + '/api/' + api_version + '/'
-        self.api_token = api_token
         self.user = user
+        self.api_token = api_token
         self.api_version = api_version
         self.verify_ssl = verify_ssl
         self.proxies = proxies
@@ -47,6 +48,24 @@ class DefectDojoAPIv2(object):
 
         if not self.verify_ssl:
             requests.packages.urllib3.disable_warnings()  # Disabling SSL warning messages if verification is disabled.
+
+        if api_token == None:
+            token = self.get_api_token(user, password)
+            self.api_token = token.data['token']
+
+    def get_api_token(self, username, password):
+        """Returns the API Token for the given user.
+
+        :param username: username for a user in DefectDojo.
+        :param password: password which belogs to the user.
+
+        """
+        data = {
+            'username': username,
+            'password': password,
+        }
+
+        return self._request('POST', 'api-token-auth/', data=data)
 
     def version_url(self):
         """Returns the DefectDojo API version.
@@ -137,7 +156,7 @@ class DefectDojoAPIv2(object):
 
         return self._request('GET', 'endpoints/' + str(endpoint_id) + '/', params)
 
-    def create_endpoint(self, product, protocol=None, tags=None, fragement=None, fqdn=None, host=None, query=None, path=None, port=None):
+    def create_endpoint(self, product, protocol=None, tags=None, fragment=None, fqdn=None, host=None, query=None, path=None, port=None):
         """Creates a new endpoint with the given properties.
 
         :param str product: A unique integer value identifying this endpoint. (required)
@@ -152,11 +171,16 @@ class DefectDojoAPIv2(object):
         :param port int: The network port associated with the endpoint.
         """
         data = {
-            'product': product
+            'product': product,
+            'protocol': protocol,
+            'host': host,
+            'path': path,
+            'query': query,
+            'fragment': fragment
         }
 
         if protocol:
-            data.update({'protocol': protocoll})
+            data.update({'protocol': protocol})
         
         if tags:
             data.update({'tags': tags})
@@ -200,7 +224,7 @@ class DefectDojoAPIv2(object):
 
         return self._request('DELETE', 'endpoints/' + str(endpoint_id) + '/', params)
 
-    def update_endpoint(self, endpoint_id, host=None, product=None, new_product=None, protocol=None, tags=None, fragement=None, fqdn=None, new_host=None, query=None, path=None, port=None):
+    def update_endpoint(self, endpoint_id, host=None, product=None, new_product=None, protocol=None, tags=None, fragment=None, fqdn=None, new_host=None, query=None, path=None, port=None):
         """Updates a spezific endpoint.
 
         :param int endpoint_id: A unique integer value identifying this endpoint. (required)
@@ -224,7 +248,7 @@ class DefectDojoAPIv2(object):
             data.update({'product': new_product})
 
         if protocol:
-            data.update({'protocol': protocoll})
+            data.update({'protocol': protocol})
         
         if tags:
             data.update({'tags': tags})
@@ -249,7 +273,7 @@ class DefectDojoAPIv2(object):
 
         return self._request('PATCH', 'endpoints/' + str(endpoint_id) + '/', params, data=data)
 
-    def set_endpoint(self, endpoint_id, host=None, product=None, new_product=None, protocol=None, tags=None, fragement=None, fqdn=None, new_host=None, query=None, path=None, port=None):
+    def set_endpoint(self, endpoint_id, host=None, product=None, new_product=None, protocol=None, tags=None, fragment=None, fqdn=None, new_host=None, query=None, path=None, port=None):
         """Overrides a spezific endpoint.
 
         :param int endpoint_id: A unique integer value identifying this endpoint. (required)
@@ -273,7 +297,7 @@ class DefectDojoAPIv2(object):
             data.update({'product': new_product})
 
         if protocol:
-            data.update({'protocol': protocoll})
+            data.update({'protocol': protocol})
         
         if tags:
             data.update({'tags': tags})
@@ -942,10 +966,10 @@ class DefectDojoAPIv2(object):
 
         return self._request('PUT', 'findings/' + str(finding_id) + '/', data=data)
 
-    def update_finding(self, finding_id, product_id, engagement_id, test_id, title=None, description=None,
+    def update_finding(self, finding_id, product_id=None, engagement_id=None, test_id=None, title=None, description=None,
                        severity=None,
                        cwe=None, date=None, user_id=None, impact=None, active=None, verified=None,
-                       mitigation=None, references=None):
+                       mitigation=None, references=None, endpoints=None):
 
         """Updates a finding with the given properties.
 
@@ -1010,6 +1034,9 @@ class DefectDojoAPIv2(object):
 
         if references:
             data['references'] = references
+
+        if endpoints:
+            data['endpoints'] = endpoints
 
         return self._request('PATCH', 'findings/' + str(finding_id) + '/', data=data)
 
@@ -1103,8 +1130,8 @@ class DefectDojoAPIv2(object):
             'scan_type': ('', scan_type),
             'active': ('', active),
             'verified': ('', verified),
-            'scan_date': ('', scan_date),
             'tags': ('', tags),
+            'scan_date': ('', scan_date),
             'build_id': ('', build),
             'minimum_severity': ('', minimum_severity)
         }
@@ -1448,10 +1475,11 @@ class DefectDojoAPIv2(object):
             data = json.dumps(data)
 
         headers = {
-            'User-Agent': self.user_agent,
-            'Authorization': (("ApiKey " + self.user + ":" + self.api_token) if (self.api_version == "v1") else (
-                        "Token " + self.api_token))
+            'User-Agent': self.user_agent
         }
+        if self.api_token != None:
+            headers['Authorization'] = (("ApiKey " + self.user + ":" + self.api_token) if (self.api_version == "v1") else (
+                               "Token " + self.api_token))
 
         if not files:
             headers['Accept'] = 'application/json'
@@ -1483,9 +1511,9 @@ class DefectDojoAPIv2(object):
             try:
                 if response.status_code == 201:  # Created new object
                     try:
-                        object_id = response.headers["Location"].split('/')
-                        key_id = object_id[-2]
-                        data = int(key_id)
+                        #object_id = response.headers["Location"].split('/')
+                        #key_id = object_id[-2]
+                        data = response.json() #int(key_id)
                     except:
                         data = response.json()
 

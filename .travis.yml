@@ -1,10 +1,33 @@
+dist: xenial
 language: python
-
 python:
   - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+#sudo: required
+services:
+  - docker
+env:
+  global:
+    - DD_ADMIN_USER=admin
+    - DD_ADMIN_PASSWORD=API-Tester
 
-script:
-  - touch foo
+before_script:
+  # Testing only release mode, not dev mode (ignores docker-compose.override.yml)
+  - docker-compose -f ./travis/docker-compose.yml up -d
+  - echo "Waiting for services to start"
+  # Wait for services to become available
+  - sleep 80
+  - echo "Testing DefectDojo Service"
+  - curl -s -o "/dev/null" http://localhost:8080 -m 120
+  - echo "Docker compose container status"
+  - docker-compose -f ./travis/docker-compose.yml ps
+
+script:  
+  - pip install .
+  - python -m unittest tests/defectdojo_api_unit_test_apiv2.py
 
 deploy:
   provider: pypi

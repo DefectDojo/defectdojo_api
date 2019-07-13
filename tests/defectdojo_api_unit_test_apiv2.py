@@ -15,8 +15,16 @@ class TestDefectDojoAPIV2(unittest.TestCase):
 
     def setUp(self):
         host = os.environ['DOJO_URL']
-        api_key = os.environ['DOJO_API_KEY']
-        user = 'admin'
+        user = os.environ['DD_ADMIN_USER']
+        if 'DOJO_API_KEY' in os.environ:
+            api_key = os.environ['DOJO_API_KEY']
+        else:
+            api_key = None
+        if 'DD_ADMIN_PASSWORD' in os.environ:
+            password = os.environ['DD_ADMIN_PASSWORD']
+        else:
+            password = None
+        password = "API-Tester"
 
         """
         proxies = {
@@ -25,7 +33,7 @@ class TestDefectDojoAPIV2(unittest.TestCase):
         }
         proxies=proxies
         """
-        self.dd = defectdojo.DefectDojoAPIv2(host, api_key, user, api_version="v2", verify_ssl=False, debug=True)
+        self.dd = defectdojo.DefectDojoAPIv2(host, user=user, password=password, api_token=api_key, api_version="v2", verify_ssl=False, debug=True)
 
     #### USER API TESTS ####
     def test_01_list_users(self):
@@ -167,17 +175,36 @@ class TestDefectDojoAPIV2(unittest.TestCase):
         self.assertEqual("Reupload", upload_scan.data["tags"][0])
     
     # Endpoint API Test
-    def test_get_endpoint(self):
-        endpoint = self.dd
-    def test_create_endpoint(self):
-    
-    def test_list_endpoint(self):
-    
-    def test_update_endpoint(self):
-    
-    def test_set_endpoint(self):
+    def test_21_create_endpoint(self):
+        create_endpoint = self.dd.create_endpoint(self.__class__.product_id, protocol='http', tags=['EndpointTest'], fragment="section-13", 
+                                      fqdn="test.de", host="12.11.10.09", query="group=4&team=7", path="/endpoint/420/edit", port=80)
+        self.__class__.endpoint_id = create_endpoint.data["id"]
+        self.assertIsNotNone(self.__class__.endpoint_id)
+        self.assertEqual(201, create_endpoint.response_code)
 
-    def test_delete_endpoint(self):
+    def test_22_get_endpoint(self):
+        get_endpoint = self.dd.get_endpoint(self.__class__.endpoint_id)
+        self.assertEqual("12.11.10.09", get_endpoint.data["host"])
+
+    def test_23_update_endpoint(self):
+        self.dd.update_endpoint(self.__class__.endpoint_id, new_host="12.11.10.10")
+        get_endpoint = self.dd.get_endpoint(self.__class__.endpoint_id)
+        self.assertEqual("12.11.10.10", get_endpoint.data["host"])
+
+    def test_24_set_endpoint(self):
+        self.dd.set_endpoint(self.__class__.product_id, protocol='https', tags=['EndpointTest'], fragment="section-13", 
+                                      fqdn="test.de", new_host="12.11.10.11", query="group=4&team=7", path="/endpoint/420/edit", port=80)
+        get_endpoint = self.dd.get_endpoint(self.__class__.endpoint_id)
+        self.assertEqual("12.11.10.11", get_endpoint.data["host"])
+        self.assertEqual("https", get_endpoint.data["protocol"])
+
+    def test_25_list_endpoint(self):
+        list_endpoint = self.dd.list_endpoints(product=self.__class__.product_id)
+        self.assertGreaterEqual(list_endpoint.data["count"], 1)
+
+    def test_26_delete_endpoint(self):
+        delete_endpoint = self.dd.delete_endpoint(self.__class__.endpoint_id)
+        self.assertEqual(204, delete_endpoint.response_code)
 
 if __name__ == '__main__':
     unittest.main()
