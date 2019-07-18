@@ -620,20 +620,27 @@ class DefectDojoAPIv2(object):
 
     # Test API
 
-    def list_tests(self, name=None, engagement_in=None, limit=20):
+    def list_tests(self, title=None, engagement=None, limit=20, offset=0):
         """Retrieves all the tests.
 
-        :param name_contains: Search by product name.
+        :param title: Search by title.
         :param limit: Number of records to return.
+        :param int offset: The initial index from which to return the results.
 
         """
 
         params = {}
+        if title:
+            params['title'] = title
+
         if limit:
             params['limit'] = limit
 
-        if engagement_in:
-            params['engagement__in'] = engagement_in
+        if offset:
+            params['offset'] = offset
+
+        if engagement:
+            params['engagement'] = engagement
 
         return self._request('GET', 'tests/', params)
 
@@ -645,7 +652,7 @@ class DefectDojoAPIv2(object):
         """
         return self._request('GET', 'tests/' + str(test_id) + '/')
 
-    def create_test(self, engagement_id, test_type, environment, target_start, target_end, percent_complete=None):
+    def create_test(self, engagement_id, test_type, environment, target_start, target_end, percent_complete=None, title=None):
         """Creates a product with the given properties.
 
         :param engagement_id: Engagement id.
@@ -653,6 +660,7 @@ class DefectDojoAPIv2(object):
         :param target_start: Test start date.
         :param target_end: Test end date.
         :param percent_complete: Percentage until test completion.
+        :param title: Title for the test
 
         """
 
@@ -664,6 +672,9 @@ class DefectDojoAPIv2(object):
             'target_end': target_end,
             'percent_complete': percent_complete
         }
+
+        if title:
+            data['title'] = title
 
         return self._request('POST', 'tests/', data=data)
 
