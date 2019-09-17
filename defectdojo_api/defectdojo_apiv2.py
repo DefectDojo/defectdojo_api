@@ -1073,31 +1073,32 @@ class DefectDojoAPIv2(object):
 
     # Upload API
 
-    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates,
-                    scan_date, tags=None, build=None, minimum_severity="Info"):
+    def upload_scan(self, engagement_id, scan_type, filecontent, active, verified, close_old_findings, skip_duplicates,
+                    scan_date, endpoint_to_add=None, tags=None, build=None, minimum_severity="Info"):
         """Uploads and processes a scan file.
 
         :param application_id: Application identifier.
         :param file_path: Path to the scan file to be uploaded.
 
         """
+        if endpoint_to_add is None:
+            endpoint_to_add = ''
+
         if tags is None:
             tags = ''
 
         if build is None:
             build = ''
 
-        with open(file, 'rb') as f:
-            filedata = f.read()
-
         if self.debug:
-            print("filedata:")
-            print(filedata)
+            print("file:")
+            print(filecontent)
 
         data = {
-            'file': filedata,
+            'file': filecontent,
             'engagement': ('', engagement_id),
             'scan_type': ('', scan_type),
+            'endpoint_to_add': ('', endpoint_to_add),
             'active': ('', active),
             'verified': ('', verified),
             'close_old_findings': ('', close_old_findings),
@@ -1121,7 +1122,7 @@ class DefectDojoAPIv2(object):
 
     # Re-upload API
 
-    def reupload_scan(self, test_id, scan_type, file, active, verified, scan_date, tags=None, build=None,
+    def reupload_scan(self, test_id, scan_type, filecontent, active, verified, scan_date, endpoint_to_add=None, tags=None, build=None,
                       minimum_severity="Info"):
         """Re-uploads and processes a scan file.
 
@@ -1129,6 +1130,9 @@ class DefectDojoAPIv2(object):
         :param file: Path to the scan file to be uploaded.
 
         """
+        if endpoint_to_add is None:
+            endpoint_to_add = ''
+
         if tags is None:
             tags = ''
 
@@ -1137,8 +1141,9 @@ class DefectDojoAPIv2(object):
 
         data = {
             'test': ('', test_id),
-            'file': open(file, 'rb'),
+            'file': filecontent,
             'scan_type': ('', scan_type),
+            'endpoint_to_add': ('', endpoint_to_add),
             'active': ('', active),
             'verified': ('', verified),
             'tags': ('', tags),
