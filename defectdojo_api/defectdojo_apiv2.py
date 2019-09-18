@@ -324,7 +324,7 @@ class DefectDojoAPIv2(object):
     
     # Engagements API
 
-    def list_engagements(self, status=None, product_id=None, name_contains=None, limit=20):
+    def list_engagements(self, status=None, product_id=None, name=None, limit=20):
         """Retrieves all the engagements.
 
         :param product_in: List of product ids (1,2).
@@ -343,8 +343,8 @@ class DefectDojoAPIv2(object):
         if status:
             params['status'] = status
 
-        if name_contains:
-            params['name_contains'] = name_contains
+        if name:
+            params['name'] = name
 
         return self._request('GET', 'engagements/', params)
 
@@ -521,6 +521,9 @@ class DefectDojoAPIv2(object):
 
         if done_testing:
             data['done_testing'] = done_testing
+
+        if description:
+            data['description'] = description
 
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
