@@ -137,7 +137,7 @@ class DefectDojoAPI(object):
         return self._request('GET', 'users/' + str(user_id) + '/')
 
     ###### Engagements API #######
-    def list_engagements(self, status=None, product_in=None, name_contains=None,limit=20):
+    def list_engagements(self, status=None, product=None, name_contains=None, limit=20):
         """Retrieves all the engagements.
 
         :param product_in: List of product ids (1,2).
@@ -150,14 +150,15 @@ class DefectDojoAPI(object):
         if limit:
             params['limit'] = limit
 
-        if product_in:
-            params['product__in'] = product_in
 
         if status:
             params['status'] = status
 
         if name_contains:
             params['name_contains'] = name_contains
+
+        if  product:
+            params['product'] = product
 
         return self._request('GET', 'engagements/', params)
 
@@ -401,7 +402,7 @@ class DefectDojoAPI(object):
 
 
     ###### Test API #######
-    def list_tests(self, name=None, engagement_in=None, limit=20):
+    def list_tests(self, name=None, engagement_in=None, limit=20, title=None, engagement=None):
         """Retrieves all the tests.
 
         :param name_contains: Search by product name.
@@ -412,6 +413,12 @@ class DefectDojoAPI(object):
         params  = {}
         if limit:
             params['limit'] = limit
+
+        if title:
+            params['title'] = title
+
+        if engagement:
+            params['engagement'] = engagement
 
         if engagement_in:
             params['engagement__in'] = engagement_in
