@@ -795,13 +795,13 @@ class DefectDojoAPIv2(object):
         if limit:
             params['limit'] = limit
 
-        if active:
+        if active is not None:
             params['active'] = active
 
-        if duplicate:
+        if duplicate is not None:
             params['duplicate'] = duplicate
 
-        if mitigated:
+        if mitigated is not None:
             params['mitigated'] = mitigated
 
         if severity:
