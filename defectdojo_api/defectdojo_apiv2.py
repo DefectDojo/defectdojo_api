@@ -88,7 +88,7 @@ class DefectDojoAPIv2(object):
         return self._request('GET', 'users/' + str(user_id) + '/')
 
     ###### Engagements API #######
-    def list_engagements(self, status=None, product_id=None, name_contains=None,limit=20):
+    def list_engagements(self, status=None, product_id=None, name_contains=None, name=None, limit=20):
         """Retrieves all the engagements.
 
         :param product_in: List of product ids (1,2).
