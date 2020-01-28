@@ -289,7 +289,7 @@ class DefectDojoAPIv2(object):
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
-    def list_products(self, name=None, name_contains=None, limit=200):
+    def list_products(self, name=None, name_contains=None, name=None, limit=200):
         """Retrieves all the products.
 
         :param name: Search by product name.
