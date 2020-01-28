@@ -107,9 +107,13 @@ class DefectDojoAPIv2(object):
         if status:
             params['status'] = status
 
+        # TODO remove name_contains here, or add to Defect Dojo. Currently it does nothing
         if name_contains:
-            params['name_contains'] = name_contains
+             params['name_contains'] = name_contains
 
+        if name:
+            params['name'] = name
+        
         return self._request('GET', 'engagements/', params)
 
     def get_engagement(self, engagement_id):
