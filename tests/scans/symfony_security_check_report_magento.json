@@ -1,0 +1,652 @@
+{
+    "magento/product-community-edition": {
+        "version": "2.2.8",
+        "advisories": [
+            {
+                "title": "PRODSECBUG-1513: Insufficient brute force protections on promo code entry",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7846"
+            },
+            {
+                "title": "PRODSECBUG-2095: Defense-in-depth session validation check implemented",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7849"
+            },
+            {
+                "title": "PRODSECBUG-2116: Stored cross-site scripting in the catalog events feature",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7850"
+            },
+            {
+                "title": "PRODSECBUG-2125: Deletion of Blocks via cross-site request forgery (CSRF)",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7851"
+            },
+            {
+                "title": "PRODSECBUG-2127: Disclosure of Magento admin panel URL",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7852"
+            },
+            {
+                "title": "PRODSECBUG-2128: Stored Cross Site Scripting in the Admin Panel through the tax/notification/info_url setting",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7853"
+            },
+            {
+                "title": "PRODSECBUG-2132: Insecure Direct Object Reference (IDOR) vulnerability can expose sensitive company details",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7854"
+            },
+            {
+                "title": "PRODSECBUG-2164: Use of cryptographically weak PRNG to create gift card codes",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7855"
+            },
+            {
+                "title": "PRODSECBUG-2171: Insecure token implementation leads to Cross-Site Request Forgery (CSRF)",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7857"
+            },
+            {
+                "title": "PRODSECBUG-2172: Insecure user credential storage",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7858"
+            },
+            {
+                "title": "PRODSECBUG-2173: Path traversal vulnerability in WYSIWYG editor.",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7859"
+            },
+            {
+                "title": "PRODSECBUG-2174: Use of insufficiently random values in multiple security relevant contexts",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7860"
+            },
+            {
+                "title": "PRODSECBUG-2177: Insufficient server side validations leads to Insecure File upload vulnerability",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7861"
+            },
+            {
+                "title": "PRODSECBUG-2182: Reflected cross-site scripting in the admin panel.",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7862"
+            },
+            {
+                "title": "PRODSECBUG-2183: Stored cross-site scripting in admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7863"
+            },
+            {
+                "title": "PRODSECBUG-2186: Insecure Direct Object Reference (IDOR) vulnerability can expose order details",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7864"
+            },
+            {
+                "title": "PRODSECBUG-2187: Cross-site request forgery (CSRF) in checkout cart item",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7865"
+            },
+            {
+                "title": "PRODSECBUG-2188: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7866"
+            },
+            {
+                "title": "PRODSECBUG-2190: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7867"
+            },
+            {
+                "title": "PRODSECBUG-2193: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7868"
+            },
+            {
+                "title": "PRODSECBUG-2194: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7869"
+            },
+            {
+                "title": "PRODSECBUG-2202: Security bypass via form data injection",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7871"
+            },
+            {
+                "title": "PRODSECBUG-2208: Insufficient authorization check when adding users to company accounts",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7872"
+            },
+            {
+                "title": "PRODSECBUG-2220: Deletion of store design schedule via cross-site request forgery (CSRF)",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7873"
+            },
+            {
+                "title": "PRODSECBUG-2222: Deletion of user roles via cross-site request forgery (CSRF)",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7874"
+            },
+            {
+                "title": "PRODSECBUG-2226: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7875"
+            },
+            {
+                "title": "PRODSECBUG-2232: Arbitrary code execution via layout manipulation",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7876"
+            },
+            {
+                "title": "PRODSECBUG-2233: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7877"
+            },
+            {
+                "title": "PRODSECBUG-2244: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7880"
+            },
+            {
+                "title": "PRODSECBUG-2245: Stored cross-site scripting in store shipping methods configuration",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7881"
+            },
+            {
+                "title": "PRODSECBUG-2246: Stored cross-site scripting in the WYSIWYG editor",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7882"
+            },
+            {
+                "title": "PRODSECBUG-2266: Arbitrary code execution through malicious elastic search module configuration",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7885"
+            },
+            {
+                "title": "PRODSECBUG-2267: Use of insufficiently random values when generating initialization vector",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7886"
+            },
+            {
+                "title": "PRODSECBUG-2270: Reflected cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7887"
+            },
+            {
+                "title": "PRODSECBUG-2273: Sensitive data disclosure though malicious email templates",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7888"
+            },
+            {
+                "title": "PRODSECBUG-2275: Unsafe functionality is exposed via email templates manipulation",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7889"
+            },
+            {
+                "title": "PRODSECBUG-2276: Insecure Direct Object Reference (IDOR) vulnerability can expose order shipping details",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7890"
+            },
+            {
+                "title": "PRODSECBUG-2285: Arbitrary code execution due to unsafe handling of  a carrier gateway",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7892"
+            },
+            {
+                "title": "PRODSECBUG-2296: Arbitrary code execution through design layout update",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7895"
+            },
+            {
+                "title": "PRODSECBUG-2298: Arbitrary code execution through product imports and design layout update",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7896"
+            },
+            {
+                "title": "PRODSECBUG-2299: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7897"
+            },
+            {
+                "title": "PRODSECBUG-2300: Information about  disabled products can be leaked due to inadequate validation checks",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7898"
+            },
+            {
+                "title": "PRODSECBUG-2301: Names of disabled products can be leaked due to inadequate validation checks",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7899"
+            },
+            {
+                "title": "PRODSECBUG-2306: Remote code execution through crafted email templates",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7903"
+            },
+            {
+                "title": "PRODSECBUG-2307: Insufficient enforcement of user access controls can lead to unauthorized environment configuration changes",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7904"
+            },
+            {
+                "title": "PRODSECBUG-2316: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7908"
+            },
+            {
+                "title": "PRODSECBUG-2317: Stored cross-site scripting  in admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7909"
+            },
+            {
+                "title": "PRODSECBUG-2320: Arbitrary code execution due to unsafe handling of system configuration",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7911"
+            },
+            {
+                "title": "PRODSECBUG-2321: Filter extension bypass via crafted store configuration keys",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7912"
+            },
+            {
+                "title": "PRODSECBUG-2322: Arbitrary code execution due to unsafe handling of  a shipping gateway",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7913"
+            },
+            {
+                "title": "PRODSECBUG-2325: Denial-of-service by forcing a store to respond with a 404 error",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7915"
+            },
+            {
+                "title": "PRODSECBUG-2337: Stored cross-site scripting in the catalog templates form",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7921"
+            },
+            {
+                "title": "PRODSECBUG-2339: Arbitrary code execution due to unsafe handling of  a carrier gateway",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7923"
+            },
+            {
+                "title": "PRODSECBUG-2343: Insecure Direct Object Reference (IDOR) vulnerability can lead to deletion of downloadable products folder",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7925"
+            },
+            {
+                "title": "PRODSECBUG-2345: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7926"
+            },
+            {
+                "title": "PRODSECBUG-2346: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7927"
+            },
+            {
+                "title": "PRODSECBUG-2347: Insufficient brute-forcing defenses in the token exchange protocol could be abused in carding attacks",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7928"
+            },
+            {
+                "title": "PRODSECBUG-2348: Sensitive data disclosure via crafted two factor edit user form",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7929"
+            },
+            {
+                "title": "PRODSECBUG-2349: Arbitrary code execution via file upload in admin import feature",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7930"
+            },
+            {
+                "title": "PRODSECBUG-2351: Arbitrary code execution via crafted sitemap creation",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7932"
+            },
+            {
+                "title": "PRODSECBUG-2353: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7934"
+            },
+            {
+                "title": "PRODSECBUG-2363: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7935"
+            },
+            {
+                "title": "PRODSECBUG-2364: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7936"
+            },
+            {
+                "title": "PRODSECBUG-2366: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7937"
+            },
+            {
+                "title": "PRODSECBUG-2369: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7938"
+            },
+            {
+                "title": "PRODSECBUG-2370: Reflected cross-site scripting on customer cart page",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7939"
+            },
+            {
+                "title": "PRODSECBUG-2371: Stored cross-site scripting in the admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7940"
+            },
+            {
+                "title": "PRODSECBUG-2375: Arbitrary code execution via malicious XML layouts",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7942"
+            },
+            {
+                "title": "PRODSECBUG-2378: Stored cross-site scripting in the Return Product comments feature",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7944"
+            },
+            {
+                "title": "PRODSECBUG-2380: Stored cross-site scripting in the Currency Symbols field",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-23",
+                "cve": "CVE-2019-7945"
+            },
+            {
+                "title": "PRODSECBUG-2387: Cross site request forgery attacks are possible via the gift card removal feature",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-33",
+                "cve": "CVE-2019-7947"
+            },
+            {
+                "title": "PRODSECBUG-2429: Insecure object reference via customer REST API",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7950"
+            },
+            {
+                "title": "PRODSECBUG-2430: Security bypass via crafted SOAP requests",
+                "link": "https://magento.com/security/patches/magento-2.3.2-2.2.9-and-2.1.18-security-update-13",
+                "cve": "CVE-2019-7951"
+            },
+            {
+                "title": "PRODSECBUG-2494: Arbitrary file deletion through design layout update",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8090"
+            },
+            {
+                "title": "PRODSECBUG-2489: Cross side scripting during the preview of email templates",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8092"
+            },
+            {
+                "title": "PRODSECBUG-2485: Information Disclosure via File upload functionality",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8093"
+            },
+            {
+                "title": "PRODSECBUG-2484: Arbitrary file deletion through export data data transfer",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8107"
+            },
+            {
+                "title": "PRODSECBUG-2478: Broken authentication and session managememt",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8108"
+            },
+            {
+                "title": "PRODSECBUG-2475: Remote Code Execution through Cross-Site Request Forgery (CSRF)",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8109"
+            },
+            {
+                "title": "PRODSECBUG-2470: Remote Code Execution in email templates",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8110"
+            },
+            {
+                "title": "PRODSECBUG-2469: Remote Code Execution in email templates",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8111"
+            },
+            {
+                "title": "PRODSECBUG-2465: Bypass of user confirmation mechanism",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8112"
+            },
+            {
+                "title": "PRODSECBUG-2464: Use of weak cryptographic function",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8113"
+            },
+            {
+                "title": "PRODSECBUG-2462: Remote code execution via file upload in admin import feature",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8114"
+            },
+            {
+                "title": "PRODSECBUG-2458: Cross-Site Scripting in image file names",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8115"
+            },
+            {
+                "title": "PRODSECBUG-2456: Broken authentication and session managememt",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8116"
+            },
+            {
+                "title": "PRODSECBUG-2455: Stored cross-site scripting (XSS) from URL in to product page",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8117"
+            },
+            {
+                "title": "PRODSECBUG-2452: User Password is stored in clear",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8118"
+            },
+            {
+                "title": "PRODSECBUG-2449: Remote code execution via local file delete and XSLT injection",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8119"
+            },
+            {
+                "title": "PRODSECBUG-2448: Cross side scripting via admin panel dashboard",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8120"
+            },
+            {
+                "title": "PRODSECBUG-2447: Using JS libraries with known security vulnerabilities",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8121"
+            },
+            {
+                "title": "PRODSECBUG-2446: Remote code execution via custom layout update in create product functionality",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8122"
+            },
+            {
+                "title": "PRODSECBUG-2445: Insufficient logging and monitoring of configuration changes",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8123"
+            },
+            {
+                "title": "PRODSECBUG-2444: Missing logs of configuration changes related to design update",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8124"
+            },
+            {
+                "title": "PRODSECBUG-2440: Information disclosure through processing of external XML entities",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8126"
+            },
+            {
+                "title": "PRODSECBUG-2434: SQL injection in 'Catalog Products List' widget leading to privilege escalation",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8127"
+            },
+            {
+                "title": "PRODSECBUG-2426: Cross-Site Scripting via store name",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8128"
+            },
+            {
+                "title": "PRODSECBUG-2425: Cross-Site Scripting via Signifyd Guarantee Option Translation Override",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8129"
+            },
+            {
+                "title": "PRODSECBUG-2424: SQL injection when accessing group data in email templates",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8130"
+            },
+            {
+                "title": "PRODSECBUG-2423: Cross-Site Scripting via inventory source",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8131"
+            },
+            {
+                "title": "PRODSECBUG-2422: Cross-Site Scripting via Email Template Name",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8132"
+            },
+            {
+                "title": "PRODSECBUG-2419: Bypass of sitemp access restrictions",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8133"
+            },
+            {
+                "title": "PRODSECBUG-2418: SQL injection via marketing account with access to email templates variables",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8134"
+            },
+            {
+                "title": "PRODSECBUG-2417: Remote code execution via vulnerable Symphony dependecy injection",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8135"
+            },
+            {
+                "title": "PRODSECBUG-2416: Using vulnerable component that provides abstraction of HTTP specification",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8136"
+            },
+            {
+                "title": "PRODSECBUG-2414: Remote code execution through custom layout update of the content management functionality",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8137"
+            },
+            {
+                "title": "PRODSECBUG-2412: Cross-Site Scripting via Location Name",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8138"
+            },
+            {
+                "title": "PRODSECBUG-2410: Cross-Site Scripting via Dynamic block in the Page builder",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8139"
+            },
+            {
+                "title": "PRODSECBUG-2408: Unrestricted upload of file with dangerous type",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8140"
+            },
+            {
+                "title": "PRODSECBUG-2407: Remote code execution due to unsafe PHP archieve deserialization in the import functionality",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8141"
+            },
+            {
+                "title": "PRODSECBUG-2406: Cross-Site Scripting via Payment Method Title",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8142"
+            },
+            {
+                "title": "PRODSECBUG-2405: Injection vulnerability via email templates",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8143"
+            },
+            {
+                "title": "PRODSECBUG-2403: Remote code execution through crafted PageBuilder templates",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8144"
+            },
+            {
+                "title": "PRODSECBUG-2402: Cross-Site Scripting via Attribute Set Name",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8145"
+            },
+            {
+                "title": "PRODSECBUG-2401: Cross-Site Scripting via Customer Attribute Option Value",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8146"
+            },
+            {
+                "title": "PRODSECBUG-2398: Cross-Site Scripting via Customer Attribute Labels",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8147"
+            },
+            {
+                "title": "PRODSECBUG-2392: Cross-Site Scripting via PageBuilder Banner",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8148"
+            },
+            {
+                "title": "PRODSECBUG-2390: Broken authentication and session managememt",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8149"
+            },
+            {
+                "title": "PRODSECBUG-2376: Remote code execution through crafted page layout and image data",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8150"
+            },
+            {
+                "title": "PRODSECBUG-2367: Remote code execution due to unsafe handling of a carrier gateway",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8151"
+            },
+            {
+                "title": "PRODSECBUG-2344: Cross-Site Scripting via wysiwyg editor",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8152"
+            },
+            {
+                "title": "PRODSECBUG-2342: Cross-Site Scripting mitigation bypass",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8153"
+            },
+            {
+                "title": "PRODSECBUG-2332: Remote code execution through arbitrary file inclusion",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8154"
+            },
+            {
+                "title": "PRODSECBUG-2309: Server-side request forgery via crafted connector endpoint ",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8156"
+            },
+            {
+                "title": "PRODSECBUG-2290: Cross-Site Scripting via admin panel",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8157"
+            },
+            {
+                "title": "PRODSECBUG-2272: XPath Injection via front end rendering functionality",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8158"
+            },
+            {
+                "title": "PRODSECBUG-2223: Remote code execution when using functionality that imports a new product",
+                "link": "https://magento.com/security/patches/magento-2.3.3-and-2.2.10-security-update",
+                "cve": "CVE-2019-8159"
+            }
+        ]
+    },
+    "symfony/dependency-injection": {
+        "version": "v3.4.2",
+        "advisories": [
+            {
+                "title": "CVE-2019-10910: Check service IDs are valid",
+                "link": "https://symfony.com/cve-2019-10910",
+                "cve": "CVE-2019-10910"
+            }
+        ]
+    }
+}

@@ -289,7 +289,7 @@ class DefectDojoAPIv2(object):
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
-    def list_products(self, name=None, name_contains=None, name=None, limit=200):
+    def list_products(self, name=None, name_contains=None, limit=200):
         """Retrieves all the products.
 
         :param name: Search by product name.
@@ -378,7 +378,7 @@ class DefectDojoAPIv2(object):
 
 
     ###### Test API #######
-    def list_tests(self, name=None, engagement_in=None, limit=20):
+    def list_tests(self, engagement_id=None, test_type=None, limit=20):
         """Retrieves all the tests.
 
         :param name_contains: Search by product name.
@@ -390,8 +390,12 @@ class DefectDojoAPIv2(object):
         if limit:
             params['limit'] = limit
 
-        if engagement_in:
-            params['engagement__in'] = engagement_in
+        if engagement_id:
+            params['engagement'] = engagement_id
+
+        # TODO fix this, it doesn't work for some reason
+        if test_type:
+            params['test_type'] = test_type
 
         return self._request('GET', 'tests/', params)
 
@@ -779,7 +783,7 @@ class DefectDojoAPIv2(object):
         }
 
         return self._request(
-            'POST', 'reimportscan/',
+            'POST', 'reimport-scan/',
             files=data
         )
 

@@ -1,0 +1,3185 @@
+{
+  "actions": [
+    {
+      "isMajor": true,
+      "action": "install",
+      "resolves": [
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>fs-vacuum>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>fs-vacuum>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>fs-vacuum>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>fstream-npm>fstream-ignore>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>fstream-npm>fstream-ignore>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>fstream-npm>fstream-ignore>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>node-gyp>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>node-gyp>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>node-gyp>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>rimraf>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>node-gyp>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>fstream-npm>fstream-ignore>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>fstream-npm>fstream-ignore>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>fstream-npm>fstream-ignore>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>init-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>init-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>init-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>init-package-json>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>init-package-json>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>init-package-json>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>read-installed>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>read-installed>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>read-installed>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>read-package-tree>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>read-package-tree>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>read-package-tree>read-package-json>glob>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm>node-gyp>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 338,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>minimatch>brace-expansion",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 525,
+          "path": "npm-upgrade>npm>node-gyp>request>tough-cookie",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 525,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>tough-cookie",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 525,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>tough-cookie",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 525,
+          "path": "npm-upgrade>npm>npm-registry-client>request>tough-cookie",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 525,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>tough-cookie",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 525,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>tough-cookie",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 525,
+          "path": "npm-upgrade>npm>request>tough-cookie",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 525,
+          "path": "npm-upgrade>npm-check-updates>npm>request>tough-cookie",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 525,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>tough-cookie",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 534,
+          "path": "npm-upgrade>npm>node-gyp>path-array>array-index>debug",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 534,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>path-array>array-index>debug",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 534,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>path-array>array-index>debug",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 572,
+          "path": "npm-upgrade>npm>node-gyp>request>har-validator>is-my-json-valid",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 572,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>har-validator>is-my-json-valid",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 572,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>har-validator>is-my-json-valid",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 572,
+          "path": "npm-upgrade>npm>npm-registry-client>request>har-validator>is-my-json-valid",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 572,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>har-validator>is-my-json-valid",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 572,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>har-validator>is-my-json-valid",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 572,
+          "path": "npm-upgrade>npm>request>har-validator>is-my-json-valid",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 572,
+          "path": "npm-upgrade>npm-check-updates>npm>request>har-validator>is-my-json-valid",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 572,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>har-validator>is-my-json-valid",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 598,
+          "path": "npm-upgrade>npm>node-gyp>request>tunnel-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 598,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>tunnel-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 598,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>tunnel-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 598,
+          "path": "npm-upgrade>npm>npm-registry-client>request>tunnel-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 598,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>tunnel-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 598,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>tunnel-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 598,
+          "path": "npm-upgrade>npm>request>tunnel-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 598,
+          "path": "npm-upgrade>npm-check-updates>npm>request>tunnel-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 598,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>tunnel-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 606,
+          "path": "npm-upgrade>npm>node-gyp>request>http-signature>sshpk",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 606,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>http-signature>sshpk",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 606,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>http-signature>sshpk",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 606,
+          "path": "npm-upgrade>npm>npm-registry-client>request>http-signature>sshpk",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 606,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>http-signature>sshpk",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 606,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>http-signature>sshpk",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 606,
+          "path": "npm-upgrade>npm>request>http-signature>sshpk",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 606,
+          "path": "npm-upgrade>npm-check-updates>npm>request>http-signature>sshpk",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 606,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>http-signature>sshpk",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 664,
+          "path": "npm-upgrade>npm>node-gyp>request>stringstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 664,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>stringstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 664,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>stringstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 664,
+          "path": "npm-upgrade>npm>npm-registry-client>request>stringstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 664,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>stringstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 664,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>stringstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 664,
+          "path": "npm-upgrade>npm>request>stringstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 664,
+          "path": "npm-upgrade>npm-check-updates>npm>request>stringstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 664,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>stringstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 782,
+          "path": "npm-upgrade>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 803,
+          "path": "npm-upgrade>npm>node-gyp>tar",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 803,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>tar",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 803,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>tar",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 803,
+          "path": "npm-upgrade>npm>tar",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 803,
+          "path": "npm-upgrade>npm-check-updates>npm>tar",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 803,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>tar",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npm>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm>fstream-npm>fstream-ignore>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npm>fstream-npm>fstream-ignore>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>fstream-npm>fstream-ignore>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm>node-gyp>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm>node-gyp>tar>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>tar>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>tar>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm>tar>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npm>tar>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 886,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>tar>fstream",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 996,
+          "path": "npm-upgrade>npm>node-gyp>request>extend",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 996,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>extend",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 996,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>extend",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 996,
+          "path": "npm-upgrade>npm>npm-registry-client>request>extend",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 996,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>extend",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 996,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>extend",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 996,
+          "path": "npm-upgrade>npm>request>extend",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 996,
+          "path": "npm-upgrade>npm-check-updates>npm>request>extend",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 996,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>extend",
+          "dev": false,
+          "optional": false,
+          "bundled": true
+        },
+        {
+          "id": 1065,
+          "path": "npm-upgrade>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1084,
+          "path": "npm-upgrade>yargs>os-locale>mem",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1434,
+          "path": "npm-upgrade>npm",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1434,
+          "path": "npm-upgrade>npm-check-updates>npm",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1434,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1436,
+          "path": "npm-upgrade>npm",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1436,
+          "path": "npm-upgrade>npm-check-updates>npm",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1436,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1437,
+          "path": "npm-upgrade>npm",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1437,
+          "path": "npm-upgrade>npm-check-updates>npm",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1437,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "npm-upgrade",
+      "target": "2.0.2"
+    },
+    {
+      "isMajor": false,
+      "action": "install",
+      "resolves": [
+        {
+          "id": 577,
+          "path": "critical>oust>cheerio>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 782,
+          "path": "critical>oust>cheerio>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1065,
+          "path": "critical>oust>cheerio>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "critical",
+      "target": "1.3.9"
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 577,
+          "path": "critical>inline-critical>cave>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 782,
+          "path": "critical>inline-critical>cave>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1065,
+          "path": "critical>inline-critical>cave>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "inline-critical",
+      "target": "4.1.2",
+      "depth": 2
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 782,
+          "path": "critical>postcss-image-inliner>asset-resolver>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1065,
+          "path": "critical>postcss-image-inliner>asset-resolver>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "postcss-image-inliner",
+      "target": "2.0.3",
+      "depth": 2
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 788,
+          "path": "critical>postcss-image-inliner>svgo>js-yaml",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 788,
+          "path": "npm-upgrade>npm-check-updates>rc-config-loader>js-yaml",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 813,
+          "path": "critical>postcss-image-inliner>svgo>js-yaml",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 813,
+          "path": "npm-upgrade>npm-check-updates>rc-config-loader>js-yaml",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "js-yaml",
+      "target": "3.13.1",
+      "depth": 4
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 824,
+          "path": "critical>penthouse>puppeteer",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "penthouse",
+      "target": "1.11.1",
+      "depth": 2
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>braces>snapdragon>base>cache-base>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>expand-brackets>snapdragon>base>cache-base>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>snapdragon>base>cache-base>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>nanomatch>snapdragon>base>cache-base>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>snapdragon>base>cache-base>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "set-value",
+      "target": "2.0.1",
+      "depth": 12
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>braces>snapdragon>base>cache-base>union-value>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>expand-brackets>snapdragon>base>cache-base>union-value>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>snapdragon>base>cache-base>union-value>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>nanomatch>snapdragon>base>cache-base>union-value>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1012,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>snapdragon>base>cache-base>union-value>set-value",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "union-value",
+      "target": "1.0.1",
+      "depth": 12
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 1013,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>braces>snapdragon>base>mixin-deep",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1013,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>expand-brackets>snapdragon>base>mixin-deep",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1013,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>snapdragon>base>mixin-deep",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1013,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>nanomatch>snapdragon>base>mixin-deep",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1013,
+          "path": "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>snapdragon>base>mixin-deep",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "mixin-deep",
+      "target": "1.3.2",
+      "depth": 11
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 1065,
+          "path": "critical>filter-css>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1065,
+          "path": "critical>group-args>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1065,
+          "path": "critical>inline-critical>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1065,
+          "path": "critical>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1065,
+          "path": "npm-upgrade>inquirer>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1065,
+          "path": "npm-upgrade>npm-check-updates>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1065,
+          "path": "npm-upgrade>npm-check-updates>node-alias>lodash",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "lodash",
+      "target": "4.17.15",
+      "depth": 4
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 1066,
+          "path": "critical>inline-critical>cheerio>lodash.merge",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "lodash.merge",
+      "target": "4.6.2",
+      "depth": 4
+    },
+    {
+      "action": "update",
+      "resolves": [
+        {
+          "id": 1184,
+          "path": "critical>penthouse>puppeteer>https-proxy-agent",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "https-proxy-agent",
+      "target": "2.2.4",
+      "depth": 4
+    },
+    {
+      "action": "review",
+      "module": "send",
+      "resolves": [
+        {
+          "id": 32,
+          "path": "patternengine-node-twig>twig>phpjs>send",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 56,
+          "path": "patternengine-node-twig>twig>phpjs>send",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "review",
+      "module": "minimatch",
+      "resolves": [
+        {
+          "id": 118,
+          "path": "patternengine-node-twig>twig>phpjs>glob>minimatch",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 118,
+          "path": "patternengine-node-twig>twig>phpjs>mocha>glob>minimatch",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "review",
+      "module": "growl",
+      "resolves": [
+        {
+          "id": 146,
+          "path": "patternengine-node-twig>twig>phpjs>mocha>growl",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "review",
+      "module": "fresh",
+      "resolves": [
+        {
+          "id": 526,
+          "path": "patternengine-node-twig>twig>phpjs>send>fresh",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "review",
+      "module": "mime",
+      "resolves": [
+        {
+          "id": 535,
+          "path": "patternengine-node-twig>twig>phpjs>send>mime",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "review",
+      "module": "hoek",
+      "resolves": [
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>node-gyp>request>hawk>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>hawk>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>hawk>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>npm-registry-client>request>hawk>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>hawk>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>hawk>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>request>hawk>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>request>hawk>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>hawk>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>node-gyp>request>hawk>cryptiles>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>hawk>cryptiles>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>hawk>cryptiles>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>npm-registry-client>request>hawk>cryptiles>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>hawk>cryptiles>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>hawk>cryptiles>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>request>hawk>cryptiles>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>request>hawk>cryptiles>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>hawk>cryptiles>boom>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>node-gyp>request>hawk>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>hawk>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>hawk>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>npm-registry-client>request>hawk>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>hawk>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>hawk>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>request>hawk>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>request>hawk>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>hawk>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>node-gyp>request>hawk>sntp>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>node-gyp>request>hawk>sntp>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>hawk>sntp>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>npm-registry-client>request>hawk>sntp>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>hawk>sntp>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>hawk>sntp>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm>request>hawk>sntp>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npm>request>hawk>sntp>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        },
+        {
+          "id": 566,
+          "path": "npm-upgrade>npm-check-updates>npmi>npm>request>hawk>sntp>hoek",
+          "dev": false,
+          "bundled": true,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "advisories": {
+    "32": {
+      "findings": [
+        {
+          "version": "0.1.0",
+          "paths": [
+            "patternengine-node-twig>twig>phpjs>send"
+          ]
+        }
+      ],
+      "id": 32,
+      "created": "2015-10-17T19:41:46.382Z",
+      "updated": "2019-06-24T14:44:59.313Z",
+      "deleted": null,
+      "title": "Directory Traversal",
+      "found_by": {
+        "name": "Ilya Kantor"
+      },
+      "reported_by": {
+        "name": "Ilya Kantor"
+      },
+      "module_name": "send",
+      "cves": [
+        "CVE-2014-6394"
+      ],
+      "vulnerable_versions": "< 0.8.4",
+      "patched_versions": ">= 0.8.4",
+      "overview": "Versions 0.8.3 and earlier of `send` are affected by a directory traversal vulnerability. When relying on the root option to restrict file access it may be possible for an application consumer to escape out of the restricted directory and access files in a similarly named directory. \n\nFor example, `static(_dirname + '/public')` would allow access to `_dirname + '/public-restricted'`.",
+      "recommendation": "Update to version 0.8.4 or later.",
+      "references": "- [PR #59](https://github.com/visionmedia/send/pull/59)\n- [Commit #9c6ca9b](https://github.com/visionmedia/send/commit/9c6ca9b2c0b880afd3ff91ce0d211213c5fa5f9a)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-22",
+      "metadata": {
+        "module_type": "Network.Application",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/32"
+    },
+    "56": {
+      "findings": [
+        {
+          "version": "0.1.0",
+          "paths": [
+            "patternengine-node-twig>twig>phpjs>send"
+          ]
+        }
+      ],
+      "id": 56,
+      "created": "2015-11-03T07:12:20.676Z",
+      "updated": "2019-06-24T15:14:48.902Z",
+      "deleted": null,
+      "title": "Root Path Disclosure",
+      "found_by": {
+        "name": "Dinis Cruz"
+      },
+      "reported_by": {
+        "name": "Dinis Cruz"
+      },
+      "module_name": "send",
+      "cves": [
+        "CVE-2015-8859"
+      ],
+      "vulnerable_versions": "<0.11.1",
+      "patched_versions": ">=0.11.1",
+      "overview": "Versions of `send` prior to 0.11.2 are affected by an information leakage vulnerability which may allow an attacker to enumerate paths on the server filesystem.\n",
+      "recommendation": "Update to version 0.11.1 or later.",
+      "references": "- [PR #70](https://github.com/pillarjs/send/pull/70)\n- [Express Changelog - 2015/01/20](https://github.com/expressjs/serve-static/blob/master/HISTORY.md#181--2015-01-20)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-934",
+      "metadata": {
+        "module_type": "Network.Application",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/56"
+    },
+    "118": {
+      "findings": [
+        {
+          "version": "0.2.14",
+          "paths": [
+            "patternengine-node-twig>twig>phpjs>glob>minimatch"
+          ]
+        },
+        {
+          "version": "0.2.14",
+          "paths": [
+            "patternengine-node-twig>twig>phpjs>mocha>glob>minimatch"
+          ]
+        }
+      ],
+      "id": 118,
+      "created": "2016-05-25T16:37:20.000Z",
+      "updated": "2018-03-01T21:58:01.072Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Nick Starke"
+      },
+      "reported_by": {
+        "name": "Nick Starke"
+      },
+      "module_name": "minimatch",
+      "cves": [
+        "CVE-2016-10540"
+      ],
+      "vulnerable_versions": "<=3.0.1",
+      "patched_versions": ">=3.0.2",
+      "overview": "Affected versions of `minimatch` are vulnerable to regular expression denial of service attacks when user input is passed into the `pattern` argument of `minimatch(path, pattern)`.\n\n\n## Proof of Concept\n```\nvar minimatch = require(“minimatch”);\n\n// utility function for generating long strings\nvar genstr = function (len, chr) {\n  var result = “”;\n  for (i=0; i<=len; i++) {\n    result = result + chr;\n  }\n  return result;\n}\n\nvar exploit = “[!” + genstr(1000000, “\\\\”) + “A”;\n\n// minimatch exploit.\nconsole.log(“starting minimatch”);\nminimatch(“foo”, exploit);\nconsole.log(“finishing minimatch”);\n```",
+      "recommendation": "Update to version 3.0.2 or later.",
+      "references": "",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "Multi.Library",
+        "exploitability": 4,
+        "affected_components": "Internal::Code::Function::minimatch({type:'args', key:0, vector:{type:'string'}})"
+      },
+      "url": "https://npmjs.com/advisories/118"
+    },
+    "146": {
+      "findings": [
+        {
+          "version": "1.7.0",
+          "paths": [
+            "patternengine-node-twig>twig>phpjs>mocha>growl"
+          ]
+        }
+      ],
+      "id": 146,
+      "created": "2016-09-06T12:49:40.000Z",
+      "updated": "2019-06-24T14:53:20.802Z",
+      "deleted": null,
+      "title": "Command Injection",
+      "found_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "reported_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "module_name": "growl",
+      "cves": [
+        "CVE-2017-16042"
+      ],
+      "vulnerable_versions": "<1.10.2",
+      "patched_versions": ">=1.10.2",
+      "overview": "Affected versions of `growl` do not properly sanitize input prior to passing it into a shell command, allowing for arbitrary command execution.",
+      "recommendation": "Update to version 1.10.2 or later.",
+      "references": "- [Issue #60](https://github.com/tj/node-growl/issues/60)\n- [PR #61](https://github.com/tj/node-growl/pull/61)",
+      "access": "public",
+      "severity": "critical",
+      "cwe": "CWE-94",
+      "metadata": {
+        "module_type": "CLI.Library",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/146"
+    },
+    "338": {
+      "findings": [
+        {
+          "version": "1.1.6",
+          "paths": [
+            "npm-upgrade>npm>fs-vacuum>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>fs-vacuum>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>fs-vacuum>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>fstream-npm>fstream-ignore>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>fstream-npm>fstream-ignore>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>fstream-npm>fstream-ignore>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>node-gyp>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>node-gyp>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>tar>fstream>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>node-gyp>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>rimraf>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>node-gyp>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>glob>minimatch>brace-expansion"
+          ]
+        },
+        {
+          "version": "1.1.6",
+          "paths": [
+            "npm-upgrade>npm>fstream-npm>fstream-ignore>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>fstream-npm>fstream-ignore>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>fstream-npm>fstream-ignore>minimatch>brace-expansion"
+          ]
+        },
+        {
+          "version": "1.1.6",
+          "paths": [
+            "npm-upgrade>npm>init-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>init-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>init-package-json>glob>minimatch>brace-expansion"
+          ]
+        },
+        {
+          "version": "1.1.6",
+          "paths": [
+            "npm-upgrade>npm>init-package-json>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>init-package-json>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>init-package-json>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>read-installed>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>read-installed>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>read-installed>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm>read-package-tree>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>read-package-tree>read-package-json>glob>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>read-package-tree>read-package-json>glob>minimatch>brace-expansion"
+          ]
+        },
+        {
+          "version": "1.1.6",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>minimatch>brace-expansion",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>minimatch>brace-expansion"
+          ]
+        }
+      ],
+      "id": 338,
+      "created": "2017-04-25T18:07:05.988Z",
+      "updated": "2018-12-07T16:52:01.286Z",
+      "deleted": null,
+      "title": "ReDoS",
+      "found_by": {
+        "name": "myvyang"
+      },
+      "reported_by": {
+        "name": "myvyang"
+      },
+      "module_name": "brace-expansion",
+      "cves": [
+        "CVE-2017-16032"
+      ],
+      "vulnerable_versions": "<=1.1.6",
+      "patched_versions": ">=1.1.7",
+      "overview": "Affected versions of `brace-expansion` are vulnerable to a regular expression denial of service condition.\n\n## Proof of Concept\n\n```\nvar expand = require('brace-expansion');\nexpand('{,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\\n}');\n```",
+      "recommendation": "Update to version 1.1.7 or later.",
+      "references": "- [Issue #33](https://github.com/juliangruber/brace-expansion/issues/33)\n- [PR #35](https://github.com/juliangruber/brace-expansion/pull/35)\n- [PR #35](https://github.com/juliangruber/brace-expansion/pull/35/commits/b13381281cead487cbdbfd6a69fb097ea5e456c3)",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "Multi.Library",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/338"
+    },
+    "525": {
+      "findings": [
+        {
+          "version": "2.3.1",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>request>tough-cookie",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>tough-cookie",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>tough-cookie",
+            "npm-upgrade>npm>npm-registry-client>request>tough-cookie",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>tough-cookie",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>tough-cookie",
+            "npm-upgrade>npm>request>tough-cookie",
+            "npm-upgrade>npm-check-updates>npm>request>tough-cookie",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>tough-cookie"
+          ]
+        }
+      ],
+      "id": 525,
+      "created": "2017-09-08T18:07:02.061Z",
+      "updated": "2019-06-24T14:57:19.055Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "reported_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "module_name": "tough-cookie",
+      "cves": [
+        "CVE-2017-15010"
+      ],
+      "vulnerable_versions": "<2.3.3",
+      "patched_versions": ">=2.3.3",
+      "overview": "Affected versions of `tough-cookie` are susceptible to a regular expression denial of service.\n\nThe amplification on this vulnerability is relatively low - it takes around 2 seconds for the engine to execute on a malicious input which is 50,000 characters in length.\n\nIf node was compiled using the `-DHTTP_MAX_HEADER_SIZE` however, the impact of the vulnerability can be significant, as the primary limitation for the vulnerability is the default max HTTP header length in node.",
+      "recommendation": "Update to version 2.3.3 or later.",
+      "references": "- [Issue #92](https://github.com/salesforce/tough-cookie/issues/92)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "Network.Library",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/525"
+    },
+    "526": {
+      "findings": [
+        {
+          "version": "0.1.0",
+          "paths": [
+            "patternengine-node-twig>twig>phpjs>send>fresh"
+          ]
+        }
+      ],
+      "id": 526,
+      "created": "2017-09-08T20:23:54.164Z",
+      "updated": "2018-04-09T00:15:21.807Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "reported_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "module_name": "fresh",
+      "cves": [
+        "CVE-2017-16119"
+      ],
+      "vulnerable_versions": "< 0.5.2",
+      "patched_versions": ">= 0.5.2",
+      "overview": "Affected versions of `fresh` are vulnerable to regular expression denial of service when parsing specially crafted user input.",
+      "recommendation": "Update to version 0.5.2 or later.",
+      "references": "",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "Multi.Library",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/526"
+    },
+    "534": {
+      "findings": [
+        {
+          "version": "2.2.0",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>path-array>array-index>debug",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>path-array>array-index>debug",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>path-array>array-index>debug"
+          ]
+        }
+      ],
+      "id": 534,
+      "created": "2017-09-25T18:55:55.956Z",
+      "updated": "2018-05-16T19:37:43.686Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "reported_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "module_name": "debug",
+      "cves": [
+        "CVE-2017-16137"
+      ],
+      "vulnerable_versions": "<= 2.6.8 || >= 3.0.0 <= 3.0.1",
+      "patched_versions": ">= 2.6.9 < 3.0.0 || >= 3.1.0",
+      "overview": "Affected versions of `debug` are vulnerable to regular expression denial of service when untrusted user input is passed into the `o` formatter. \n\nAs it takes 50,000 characters to block the event loop for 2 seconds, this issue is a low severity issue.",
+      "recommendation": "Version 2.x.x: Update to version 2.6.9 or later.\nVersion 3.x.x: Update to version 3.1.0 or later.\n",
+      "references": "- [Issue #501](https://github.com/visionmedia/debug/issues/501)\n- [PR #504](https://github.com/visionmedia/debug/pull/504)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/534"
+    },
+    "535": {
+      "findings": [
+        {
+          "version": "1.2.6",
+          "paths": [
+            "patternengine-node-twig>twig>phpjs>send>mime"
+          ]
+        }
+      ],
+      "id": 535,
+      "created": "2017-09-25T19:02:28.152Z",
+      "updated": "2018-04-09T00:38:22.785Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "reported_by": {
+        "name": "Cristian-Alexandru Staicu"
+      },
+      "module_name": "mime",
+      "cves": [
+        "CVE-2017-16138"
+      ],
+      "vulnerable_versions": "< 1.4.1 || > 2.0.0 < 2.0.3",
+      "patched_versions": ">= 1.4.1 < 2.0.0 || >= 2.0.3",
+      "overview": "Affected versions of `mime` are vulnerable to regular expression denial of service when a mime lookup is performed on untrusted user input.",
+      "recommendation": "Update to version 2.0.3 or later.",
+      "references": "[Issue #167](https://github.com/broofa/node-mime/issues/167)",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "Multi.Library",
+        "exploitability": 4,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/535"
+    },
+    "566": {
+      "findings": [
+        {
+          "version": "2.16.3",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>request>hawk>boom>hoek",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>hawk>boom>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>hawk>boom>hoek",
+            "npm-upgrade>npm>npm-registry-client>request>hawk>boom>hoek",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>hawk>boom>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>hawk>boom>hoek",
+            "npm-upgrade>npm>request>hawk>boom>hoek",
+            "npm-upgrade>npm-check-updates>npm>request>hawk>boom>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>hawk>boom>hoek",
+            "npm-upgrade>npm>node-gyp>request>hawk>cryptiles>boom>hoek",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>hawk>cryptiles>boom>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>hawk>cryptiles>boom>hoek",
+            "npm-upgrade>npm>npm-registry-client>request>hawk>cryptiles>boom>hoek",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>hawk>cryptiles>boom>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>hawk>cryptiles>boom>hoek",
+            "npm-upgrade>npm>request>hawk>cryptiles>boom>hoek",
+            "npm-upgrade>npm-check-updates>npm>request>hawk>cryptiles>boom>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>hawk>cryptiles>boom>hoek",
+            "npm-upgrade>npm>node-gyp>request>hawk>hoek",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>hawk>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>hawk>hoek",
+            "npm-upgrade>npm>npm-registry-client>request>hawk>hoek",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>hawk>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>hawk>hoek",
+            "npm-upgrade>npm>request>hawk>hoek",
+            "npm-upgrade>npm-check-updates>npm>request>hawk>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>hawk>hoek",
+            "npm-upgrade>npm>node-gyp>request>hawk>sntp>hoek",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>hawk>sntp>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>hawk>sntp>hoek",
+            "npm-upgrade>npm>npm-registry-client>request>hawk>sntp>hoek",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>hawk>sntp>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>hawk>sntp>hoek",
+            "npm-upgrade>npm>request>hawk>sntp>hoek",
+            "npm-upgrade>npm-check-updates>npm>request>hawk>sntp>hoek",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>hawk>sntp>hoek"
+          ]
+        }
+      ],
+      "id": 566,
+      "created": "2018-04-20T21:25:58.421Z",
+      "updated": "2019-06-19T20:16:59.758Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "name": "HoLyVieR"
+      },
+      "reported_by": {
+        "name": "HoLyVieR"
+      },
+      "module_name": "hoek",
+      "cves": [
+        "CVE-2018-3728"
+      ],
+      "vulnerable_versions": "<= 4.2.0 || >= 5.0.0 < 5.0.3",
+      "patched_versions": "> 4.2.0 < 5.0.0 || >= 5.0.3",
+      "overview": "Versions of `hoek` prior to 4.2.1 and 5.0.3 are vulnerable to prototype pollution.\n\nThe `merge` function, and the `applyToDefaults` and `applyToDefaultsWithShallow` functions which leverage `merge` behind the scenes, are vulnerable to a prototype pollution attack when provided an _unvalidated_ payload created from a JSON string containing the `__proto__` property.\n\nThis can be demonstrated like so:\n\n```javascript\nvar Hoek = require('hoek');\nvar malicious_payload = '{\"__proto__\":{\"oops\":\"It works !\"}}';\n\nvar a = {};\nconsole.log(\"Before : \" + a.oops);\nHoek.merge({}, JSON.parse(malicious_payload));\nconsole.log(\"After : \" + a.oops);\n```\n\nThis type of attack can be used to overwrite existing properties causing a potential denial of service.",
+      "recommendation": "Update to version 4.2.1, 5.0.3 or later.",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/310439)",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/566"
+    },
+    "572": {
+      "findings": [
+        {
+          "version": "2.15.0",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>request>har-validator>is-my-json-valid",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>har-validator>is-my-json-valid",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>har-validator>is-my-json-valid",
+            "npm-upgrade>npm>npm-registry-client>request>har-validator>is-my-json-valid",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>har-validator>is-my-json-valid",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>har-validator>is-my-json-valid",
+            "npm-upgrade>npm>request>har-validator>is-my-json-valid",
+            "npm-upgrade>npm-check-updates>npm>request>har-validator>is-my-json-valid",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>har-validator>is-my-json-valid"
+          ]
+        }
+      ],
+      "id": 572,
+      "created": "2018-04-20T21:45:29.766Z",
+      "updated": "2019-07-12T16:24:59.647Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Jamie Davis"
+      },
+      "reported_by": {
+        "name": "Jamie Davis"
+      },
+      "module_name": "is-my-json-valid",
+      "cves": [],
+      "vulnerable_versions": "<1.4.1 || >=2.0.0 <2.17.2",
+      "patched_versions": ">=1.4.1 <2.0.0 || >=2.17.2",
+      "overview": "Version of `is-my-json-valid` before 1.4.1 or 2.17.2 are vulnerable to regular expression denial of service (ReDoS) via the email validation function.",
+      "recommendation": "Update to version 1.4.1, 2.17.2 or later.",
+      "references": "- [GitHub PR #159](https://github.com/mafintosh/is-my-json-valid/pull/159)\n- [GitHub Commit #b3051b2](https://github.com/mafintosh/is-my-json-valid/commit/b3051b277f7caa08cd2edc6f74f50aeda65d2976)\n- [HackerOne Report](https://hackerone.com/reports/317548)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/572"
+    },
+    "577": {
+      "findings": [
+        {
+          "version": "2.4.2",
+          "paths": [
+            "critical>inline-critical>cave>lodash"
+          ]
+        },
+        {
+          "version": "3.10.1",
+          "paths": [
+            "critical>oust>cheerio>lodash"
+          ]
+        }
+      ],
+      "id": 577,
+      "created": "2018-04-24T14:27:02.796Z",
+      "updated": "2018-04-24T14:27:13.049Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "name": "Olivier Arteau (HoLyVieR)"
+      },
+      "reported_by": {
+        "name": "Olivier Arteau (HoLyVieR)"
+      },
+      "module_name": "lodash",
+      "cves": [
+        "CVE-2018-3721"
+      ],
+      "vulnerable_versions": "<4.17.5",
+      "patched_versions": ">=4.17.5",
+      "overview": "Versions of `lodash` before 4.17.5 are vulnerable to prototype pollution. \n\nThe vulnerable functions are 'defaultsDeep', 'merge', and 'mergeWith' which allow a malicious user to modify the prototype of `Object` via `__proto__` causing the addition or modification of an existing property that will exist on all objects.\n\n",
+      "recommendation": "Update to version 4.17.5 or later.",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/310443)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 1,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/577"
+    },
+    "598": {
+      "findings": [
+        {
+          "version": "0.4.3",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>request>tunnel-agent",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>tunnel-agent",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>tunnel-agent",
+            "npm-upgrade>npm>npm-registry-client>request>tunnel-agent",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>tunnel-agent",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>tunnel-agent",
+            "npm-upgrade>npm>request>tunnel-agent",
+            "npm-upgrade>npm-check-updates>npm>request>tunnel-agent",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>tunnel-agent"
+          ]
+        }
+      ],
+      "id": 598,
+      "created": "2018-04-24T20:30:16.099Z",
+      "updated": "2018-04-24T20:31:15.816Z",
+      "deleted": null,
+      "title": "Memory Exposure",
+      "found_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "reported_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "module_name": "tunnel-agent",
+      "cves": [],
+      "vulnerable_versions": "<0.6.0",
+      "patched_versions": ">=0.6.0",
+      "overview": "Versions of `tunnel-agent` before 0.6.0 are vulnerable to memory exposure.\n\nThis is exploitable if user supplied input is provided to the auth value and is a number.\n\nProof-of-concept:\n```js\nrequire('request')({\n  method: 'GET',\n  uri: 'http://www.example.com',\n  tunnel: true,\n  proxy:{\n    protocol: 'http:',\n    host:'127.0.0.1',\n    port:8080,\n    auth:USERSUPPLIEDINPUT // number\n  }\n});\n```",
+      "recommendation": "Update to version 0.6.0 or later.",
+      "references": "- [GitHub Commit #9ca95ec](https://github.com/request/tunnel-agent/commit/9ca95ec7219daface8a6fc2674000653de0922c0)\n- [Proof of Concept](https://gist.github.com/ChALkeR/fd6b2c445834244e7d440a043f9d2ff4)",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-20",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/598"
+    },
+    "606": {
+      "findings": [
+        {
+          "version": "1.10.1",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>request>http-signature>sshpk",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>http-signature>sshpk",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>http-signature>sshpk",
+            "npm-upgrade>npm>npm-registry-client>request>http-signature>sshpk",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>http-signature>sshpk",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>http-signature>sshpk",
+            "npm-upgrade>npm>request>http-signature>sshpk",
+            "npm-upgrade>npm-check-updates>npm>request>http-signature>sshpk",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>http-signature>sshpk"
+          ]
+        }
+      ],
+      "id": 606,
+      "created": "2018-04-24T22:25:08.333Z",
+      "updated": "2018-09-07T17:39:16.549Z",
+      "deleted": null,
+      "title": "Regular Expression Denial of Service",
+      "found_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "reported_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "module_name": "sshpk",
+      "cves": [
+        "CVE-2018-3737"
+      ],
+      "vulnerable_versions": "<1.13.2 || >=1.14.0 <1.14.1",
+      "patched_versions": ">=1.13.2 < 1.14.0 || >=1.14.1",
+      "overview": "Versions of `sshpk` before 1.13.2 or 1.14.1 are vulnerable to regular expression denial of service when parsing crafted invalid public keys.",
+      "recommendation": "Update to version 1.13.2, 1.14.1 or later.",
+      "references": "- https://github.com/joyent/node-sshpk/blob/v1.13.1/lib/formats/ssh.js#L17\n- [HackerOne Report](https://hackerone.com/reports/319593)\n- https://github.com/joyent/node-sshpk/commit/46065d38a5e6d1bccf86d3efb2fb83c14e3f9957",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/606"
+    },
+    "664": {
+      "findings": [
+        {
+          "version": "0.0.5",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>request>stringstream",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>stringstream",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>stringstream",
+            "npm-upgrade>npm>npm-registry-client>request>stringstream",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>stringstream",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>stringstream",
+            "npm-upgrade>npm>request>stringstream",
+            "npm-upgrade>npm-check-updates>npm>request>stringstream",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>stringstream"
+          ]
+        }
+      ],
+      "id": 664,
+      "created": "2018-05-16T19:39:37.463Z",
+      "updated": "2018-05-22T15:03:12.999Z",
+      "deleted": null,
+      "title": "Out-of-bounds Read",
+      "found_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "reported_by": {
+        "name": "Сковорода Никита Андреевич"
+      },
+      "module_name": "stringstream",
+      "cves": [],
+      "vulnerable_versions": "<=0.0.5",
+      "patched_versions": ">=0.0.6",
+      "overview": "All versions of `stringstream` are vulnerable to out-of-bounds read as it allocates uninitialized Buffers when number is passed in input stream on Node.js 4.x and below.",
+      "recommendation": "No fix is currently available for this vulnerability. It is our recommendation to not install or use this module if user input is being passed in to `stringstream`.\n",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/321670)\n- https://github.com/mhart/StringStream/blob/v0.0.5/stringstream.js#L32",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-125",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 2,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/664"
+    },
+    "782": {
+      "findings": [
+        {
+          "version": "2.4.2",
+          "paths": [
+            "critical>inline-critical>cave>lodash"
+          ]
+        },
+        {
+          "version": "3.10.1",
+          "paths": [
+            "critical>oust>cheerio>lodash"
+          ]
+        },
+        {
+          "version": "4.17.10",
+          "paths": [
+            "critical>postcss-image-inliner>asset-resolver>lodash"
+          ]
+        },
+        {
+          "version": "4.17.10",
+          "paths": [
+            "npm-upgrade>lodash"
+          ]
+        }
+      ],
+      "id": 782,
+      "created": "2019-02-13T16:16:53.770Z",
+      "updated": "2019-06-27T14:01:44.172Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "link": "",
+        "name": "asgerf"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "asgerf"
+      },
+      "module_name": "lodash",
+      "cves": [
+        "CVE-2018-16487"
+      ],
+      "vulnerable_versions": "<4.17.11",
+      "patched_versions": ">=4.17.11",
+      "overview": "Versions of `lodash` before 4.17.5 are vulnerable to prototype pollution. \n\nThe vulnerable functions are 'defaultsDeep', 'merge', and 'mergeWith' which allow a malicious user to modify the prototype of `Object` via `{constructor: {prototype: {...}}}` causing the addition or modification of an existing property that will exist on all objects.\n\n",
+      "recommendation": "Update to version 4.17.11 or later.",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/380873)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/782"
+    },
+    "788": {
+      "findings": [
+        {
+          "version": "3.12.1",
+          "paths": [
+            "critical>postcss-image-inliner>svgo>js-yaml",
+            "npm-upgrade>npm-check-updates>rc-config-loader>js-yaml"
+          ]
+        }
+      ],
+      "id": 788,
+      "created": "2019-03-18T21:29:08.514Z",
+      "updated": "2019-04-04T03:44:12.205Z",
+      "deleted": null,
+      "title": "Denial of Service",
+      "found_by": {
+        "link": "https://sites.google.com/site/jensdietrich/",
+        "name": "Shawn Rasheed, Jens DIetrich"
+      },
+      "reported_by": {
+        "link": "https://conf.researchr.org/profile/shawnrasheed",
+        "name": "Shawn Rasheed"
+      },
+      "module_name": "js-yaml",
+      "cves": [],
+      "vulnerable_versions": "<3.13.0",
+      "patched_versions": ">=3.13.0",
+      "overview": "Versions of `js-yaml` prior to 3.13.0 are vulnerable to Denial of Service. By parsing a carefully-crafted YAML file, the node process stalls and may exhaust system resources leading to a Denial of Service.",
+      "recommendation": "Upgrade to version 3.13.0.",
+      "references": "",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 6,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/788"
+    },
+    "803": {
+      "findings": [
+        {
+          "version": "2.2.1",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>tar",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>tar",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>tar",
+            "npm-upgrade>npm>tar",
+            "npm-upgrade>npm-check-updates>npm>tar",
+            "npm-upgrade>npm-check-updates>npmi>npm>tar"
+          ]
+        }
+      ],
+      "id": 803,
+      "created": "2019-04-04T03:31:56.572Z",
+      "updated": "2019-05-15T14:13:58.612Z",
+      "deleted": null,
+      "title": "Arbitrary File Overwrite",
+      "found_by": {
+        "link": "",
+        "name": "Max Justicz"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Max Justicz"
+      },
+      "module_name": "tar",
+      "cves": [],
+      "vulnerable_versions": "<2.2.2 || >=3.0.0 <4.4.2",
+      "patched_versions": ">=2.2.2 <3.0.0 || >=4.4.2",
+      "overview": "Versions of `tar` prior to 4.4.2 for 4.x and 2.2.2 for 2.x are vulnerable to Arbitrary File Overwrite. Extracting tarballs containing a hardlink to a file that already exists in the system, and a file that matches the hardlink will overwrite the system's file with the contents of the extracted file.",
+      "recommendation": "For tar 4.x, upgrade to version 4.4.2 or later.\nFor tar 2.x, upgrade to version 2.2.2 or later.",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/344595)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-59",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/803"
+    },
+    "813": {
+      "findings": [
+        {
+          "version": "3.12.1",
+          "paths": [
+            "critical>postcss-image-inliner>svgo>js-yaml",
+            "npm-upgrade>npm-check-updates>rc-config-loader>js-yaml"
+          ]
+        }
+      ],
+      "id": 813,
+      "created": "2019-04-10T19:02:51.064Z",
+      "updated": "2019-04-15T21:29:06.670Z",
+      "deleted": null,
+      "title": "Code Injection",
+      "found_by": {
+        "link": "",
+        "name": "Alex Kocharin"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Alex Kocharin"
+      },
+      "module_name": "js-yaml",
+      "cves": [],
+      "vulnerable_versions": "<3.13.1",
+      "patched_versions": ">=3.13.1",
+      "overview": "Versions of `js-yaml` prior to 3.13.1 are vulnerable to Code Injection. The `load()` function may execute arbitrary code injected through a malicious YAML file. Objects that have `toString` as key, JavaScript code as value and are used as explicit mapping keys allow attackers to execute the supplied code through the `load()` function. The `safeLoad()` function is unaffected.\n\nAn example payload is \n`{ toString: !<tag:yaml.org,2002:js/function> 'function (){return Date.now()}' } : 1` \nwhich returns the object \n{\n  \"1553107949161\": 1\n}",
+      "recommendation": "Upgrade to version 3.13.1.",
+      "references": "- [GitHub PR](https://github.com/nodeca/js-yaml/pull/480)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-94",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/813"
+    },
+    "824": {
+      "findings": [
+        {
+          "version": "1.10.0",
+          "paths": [
+            "critical>penthouse>puppeteer"
+          ]
+        }
+      ],
+      "id": 824,
+      "created": "2019-04-19T21:33:38.879Z",
+      "updated": "2019-04-19T21:33:38.879Z",
+      "deleted": null,
+      "title": "Use-After-Free",
+      "found_by": {
+        "link": "",
+        "name": "Joel Griffith"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Joel Griffith"
+      },
+      "module_name": "puppeteer",
+      "cves": [
+        "CVE-2019-5786"
+      ],
+      "vulnerable_versions": "<1.13.0",
+      "patched_versions": ">=1.13.0",
+      "overview": "Versions of `puppeteer` prior to 1.13.0 are vulnerable to the Use-After-Free vulnerability in Chromium (CVE-2019-5786). The Chromium FileReader API is vulnerable to Use-After-Free which may lead to Remote Code Execution.",
+      "recommendation": "Upgrade to version 1.13.0 or later.",
+      "references": "- [GitHub Issue](https://github.com/GoogleChrome/puppeteer/issues/4141)\n- [Snyk Report](https://snyk.io/vuln/SNYK-JS-PUPPETEER-174321)\n- [CVE-2019-5786 Analysis by Exodus Intelligence](https://blog.exodusintel.com/2019/03/20/cve-2019-5786-analysis-and-exploitation/)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-416",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/824"
+    },
+    "886": {
+      "findings": [
+        {
+          "version": "1.0.10",
+          "paths": [
+            "npm-upgrade>npm>fstream",
+            "npm-upgrade>npm-check-updates>npm>fstream",
+            "npm-upgrade>npm-check-updates>npmi>npm>fstream",
+            "npm-upgrade>npm>fstream-npm>fstream-ignore>fstream",
+            "npm-upgrade>npm-check-updates>npm>fstream-npm>fstream-ignore>fstream",
+            "npm-upgrade>npm-check-updates>npmi>npm>fstream-npm>fstream-ignore>fstream",
+            "npm-upgrade>npm>node-gyp>fstream",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>fstream",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>fstream",
+            "npm-upgrade>npm>node-gyp>tar>fstream",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>tar>fstream",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>tar>fstream",
+            "npm-upgrade>npm>tar>fstream",
+            "npm-upgrade>npm-check-updates>npm>tar>fstream",
+            "npm-upgrade>npm-check-updates>npmi>npm>tar>fstream"
+          ]
+        }
+      ],
+      "id": 886,
+      "created": "2019-05-15T14:22:26.820Z",
+      "updated": "2019-07-17T20:46:09.777Z",
+      "deleted": null,
+      "title": "Arbitrary File Overwrite",
+      "found_by": {
+        "link": "",
+        "name": "Max Justicz"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Max Justicz"
+      },
+      "module_name": "fstream",
+      "cves": [
+        "CVE-2019-13173"
+      ],
+      "vulnerable_versions": "<1.0.12",
+      "patched_versions": ">=1.0.12",
+      "overview": "Versions of `fstream` prior to 1.0.12 are vulnerable to Arbitrary File Overwrite. Extracting tarballs containing a hardlink to a file that already exists in the system and a file that matches the hardlink will overwrite the system's file with the contents of the extracted file. The `fstream.DirWriter()` function is vulnerable.",
+      "recommendation": "Upgrade to version 1.0.12 or later.",
+      "references": "- [GitHub Commit](https://github.com/npm/fstream/commit/6a77d2fa6e1462693cf8e46f930da96ec1b0bb22)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-59",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/886"
+    },
+    "996": {
+      "findings": [
+        {
+          "version": "3.0.0",
+          "paths": [
+            "npm-upgrade>npm>node-gyp>request>extend",
+            "npm-upgrade>npm-check-updates>npm>node-gyp>request>extend",
+            "npm-upgrade>npm-check-updates>npmi>npm>node-gyp>request>extend",
+            "npm-upgrade>npm>npm-registry-client>request>extend",
+            "npm-upgrade>npm-check-updates>npm>npm-registry-client>request>extend",
+            "npm-upgrade>npm-check-updates>npmi>npm>npm-registry-client>request>extend",
+            "npm-upgrade>npm>request>extend",
+            "npm-upgrade>npm-check-updates>npm>request>extend",
+            "npm-upgrade>npm-check-updates>npmi>npm>request>extend"
+          ]
+        }
+      ],
+      "id": 996,
+      "created": "2019-06-19T00:18:20.635Z",
+      "updated": "2019-07-24T18:05:41.047Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "link": "",
+        "name": "asgerf"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "asgerf"
+      },
+      "module_name": "extend",
+      "cves": [],
+      "vulnerable_versions": "<2.0.2 || >=3.0.0 <3.0.2",
+      "patched_versions": ">=2.0.2 <3.0.0 || >=3.0.2",
+      "overview": "Versions of `extend` prior to 3.0.2 (for 3.x) and 2.0.2 (for 2.x) are vulnerable to Prototype Pollution. The `extend()` function allows attackers to modify the prototype of Object causing the addition or modification of an existing property that will exist on all objects.\n\n",
+      "recommendation": "If you're using `extend` 3.x upgrade to 3.0.2 or later.\nIf you're using `extend` 2.x upgrade to 2.0.2 or later.",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/381185)",
+      "access": "public",
+      "severity": "moderate",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 4,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/996"
+    },
+    "1012": {
+      "findings": [
+        {
+          "version": "2.0.0",
+          "paths": [
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>braces>snapdragon>base>cache-base>set-value",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>expand-brackets>snapdragon>base>cache-base>set-value",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>snapdragon>base>cache-base>set-value",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>nanomatch>snapdragon>base>cache-base>set-value",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>snapdragon>base>cache-base>set-value"
+          ]
+        },
+        {
+          "version": "0.4.3",
+          "paths": [
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>braces>snapdragon>base>cache-base>union-value>set-value",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>expand-brackets>snapdragon>base>cache-base>union-value>set-value",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>snapdragon>base>cache-base>union-value>set-value",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>nanomatch>snapdragon>base>cache-base>union-value>set-value",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>snapdragon>base>cache-base>union-value>set-value"
+          ]
+        }
+      ],
+      "id": 1012,
+      "created": "2019-06-20T14:35:11.974Z",
+      "updated": "2019-07-12T21:43:14.145Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "link": "",
+        "name": "Jon Schlinkert"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Jon Schlinkert"
+      },
+      "module_name": "set-value",
+      "cves": [
+        "CVE-2019-10747"
+      ],
+      "vulnerable_versions": "<2.0.1 || >=3.0.0 <3.0.1",
+      "patched_versions": ">=2.0.1 <3.0.0 || >=3.0.1",
+      "overview": "Versions of `set-value` prior to 3.0.1 or 2.0.1 are vulnerable to Prototype Pollution. The `set` function fails to validate which Object properties it updates. This allows attackers to modify the prototype of Object, causing the addition or modification of an existing property on all objects.\n\n",
+      "recommendation": "If you are using `set-value` 3.x, upgrade to version 3.0.1 or later.\nIf you are using `set-value` 2.x, upgrade to version 2.0.1 or later.\n",
+      "references": "- [Snyk Report](https://snyk.io/vuln/SNYK-JS-SETVALUE-450213)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/1012"
+    },
+    "1013": {
+      "findings": [
+        {
+          "version": "1.3.1",
+          "paths": [
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>braces>snapdragon>base>mixin-deep",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>expand-brackets>snapdragon>base>mixin-deep",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>extglob>snapdragon>base>mixin-deep",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>nanomatch>snapdragon>base>mixin-deep",
+            "critical>postcss-image-inliner>asset-resolver>globby>fast-glob>micromatch>snapdragon>base>mixin-deep"
+          ]
+        }
+      ],
+      "id": 1013,
+      "created": "2019-06-20T14:51:39.425Z",
+      "updated": "2019-07-12T18:53:21.152Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "link": "",
+        "name": "Snyk Security Team"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Snyk Security Team"
+      },
+      "module_name": "mixin-deep",
+      "cves": [
+        "CVE-2019-10746"
+      ],
+      "vulnerable_versions": "<1.3.2 || >=2.0.0 <2.0.1",
+      "patched_versions": ">=1.3.2 <2.0.0 || >=2.0.1",
+      "overview": "Versions of `mixin-deep` prior to 2.0.1 or 1.3.2 are vulnerable to Prototype Pollution. The `mixinDeep` function fails to validate which Object properties it updates. This allows attackers to modify the prototype of Object, causing the addition or modification of an existing property on all objects.\n\n",
+      "recommendation": "If you are using `mixin-deep` 2.x, upgrade to version 2.0.1 or later.\nIf you are using `mixin-deep` 1.x, upgrade to version 1.3.2 or later.",
+      "references": "- [Snyk Report](https://snyk.io/vuln/SNYK-JS-MIXINDEEP-450212)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 5,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/1013"
+    },
+    "1065": {
+      "findings": [
+        {
+          "version": "4.17.11",
+          "paths": [
+            "critical>filter-css>lodash",
+            "critical>group-args>lodash",
+            "critical>inline-critical>lodash",
+            "critical>lodash",
+            "npm-upgrade>inquirer>lodash",
+            "npm-upgrade>npm-check-updates>lodash",
+            "npm-upgrade>npm-check-updates>node-alias>lodash"
+          ]
+        },
+        {
+          "version": "2.4.2",
+          "paths": [
+            "critical>inline-critical>cave>lodash"
+          ]
+        },
+        {
+          "version": "3.10.1",
+          "paths": [
+            "critical>oust>cheerio>lodash"
+          ]
+        },
+        {
+          "version": "4.17.10",
+          "paths": [
+            "critical>postcss-image-inliner>asset-resolver>lodash"
+          ]
+        },
+        {
+          "version": "4.17.10",
+          "paths": [
+            "npm-upgrade>lodash"
+          ]
+        }
+      ],
+      "id": 1065,
+      "created": "2019-07-15T17:22:56.990Z",
+      "updated": "2019-07-15T17:25:05.721Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "link": "",
+        "name": "Snyk Security Team"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Snyk Security Team"
+      },
+      "module_name": "lodash",
+      "cves": [
+        "CVE-2019-10744"
+      ],
+      "vulnerable_versions": "<4.17.12",
+      "patched_versions": ">=4.17.12",
+      "overview": "Versions of `lodash` before 4.17.12 are vulnerable to Prototype Pollution.  The function `defaultsDeep` allows a malicious user to modify the prototype of `Object` via `{constructor: {prototype: {...}}}` causing the addition or modification of an existing property that will exist on all objects.\n\n",
+      "recommendation": "Update to version 4.17.12 or later.",
+      "references": "- [Snyk Advisory](https://snyk.io/vuln/SNYK-JS-LODASH-450202)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/1065"
+    },
+    "1066": {
+      "findings": [
+        {
+          "version": "4.6.1",
+          "paths": [
+            "critical>inline-critical>cheerio>lodash.merge"
+          ]
+        }
+      ],
+      "id": 1066,
+      "created": "2019-07-15T17:33:14.034Z",
+      "updated": "2019-07-15T17:37:17.962Z",
+      "deleted": null,
+      "title": "Prototype Pollution",
+      "found_by": {
+        "link": "",
+        "name": "asgerf"
+      },
+      "reported_by": {
+        "link": "",
+        "name": "asgerf"
+      },
+      "module_name": "lodash.merge",
+      "cves": [],
+      "vulnerable_versions": "<4.6.2",
+      "patched_versions": ">=4.6.2",
+      "overview": "Versions of `lodash.merge` before 4.6.2 are vulnerable to prototype pollution. The function `merge` may allow a malicious user to modify the prototype of `Object` via `{constructor: {prototype: {...}}}` causing the addition or modification of an existing property that will exist on all objects.\n\n",
+      "recommendation": "Update to version 4.6.2 or later.",
+      "references": "",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-471",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/1066"
+    },
+    "1084": {
+      "findings": [
+        {
+          "version": "1.1.0",
+          "paths": [
+            "npm-upgrade>yargs>os-locale>mem"
+          ]
+        }
+      ],
+      "id": 1084,
+      "created": "2019-07-18T21:30:31.935Z",
+      "updated": "2019-11-19T23:31:37.349Z",
+      "deleted": null,
+      "title": "Denial of Service",
+      "found_by": {
+        "link": "",
+        "name": "Juan Campa",
+        "email": ""
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Juan Campa",
+        "email": ""
+      },
+      "module_name": "mem",
+      "cves": [],
+      "vulnerable_versions": "<4.0.0",
+      "patched_versions": ">=4.0.0",
+      "overview": "Versions of `mem` prior to 4.0.0 are vulnerable to Denial of Service (DoS).  The package fails to remove old values from the cache even after a value passes its `maxAge` property. This may allow attackers to exhaust the system's memory if they are able to abuse the application logging.",
+      "recommendation": "Upgrade to version 4.0.0 or later.",
+      "references": "- [Snyk Report](https://snyk.io/vuln/npm:mem:20180117)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-400",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 2,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/1084"
+    },
+    "1184": {
+      "findings": [
+        {
+          "version": "2.2.1",
+          "paths": [
+            "critical>penthouse>puppeteer>https-proxy-agent"
+          ]
+        }
+      ],
+      "id": 1184,
+      "created": "2019-09-26T20:20:57.498Z",
+      "updated": "2019-10-22T14:33:42.791Z",
+      "deleted": null,
+      "title": "Machine-In-The-Middle",
+      "found_by": {
+        "link": "",
+        "name": "Kris Adler",
+        "email": ""
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Kris Adler",
+        "email": ""
+      },
+      "module_name": "https-proxy-agent",
+      "cves": [],
+      "vulnerable_versions": "<2.2.3",
+      "patched_versions": ">=2.2.3",
+      "overview": "Versions of `https-proxy-agent` prior to 2.2.3 are vulnerable to Machine-In-The-Middle. The package fails to enforce TLS on the socket if the proxy server responds the to the request with a HTTP status different than 200. This allows an attacker with access to the proxy server to intercept unencrypted communications, which may include sensitive information such as credentials.",
+      "recommendation": "Upgrade to version 3.0.0 or 2.2.3.",
+      "references": "- [HackerOne Report](https://hackerone.com/reports/541502)",
+      "access": "public",
+      "severity": "high",
+      "cwe": "CWE-300",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 8,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/1184"
+    },
+    "1434": {
+      "findings": [
+        {
+          "version": "3.10.10",
+          "paths": [
+            "npm-upgrade>npm",
+            "npm-upgrade>npm-check-updates>npm",
+            "npm-upgrade>npm-check-updates>npmi>npm"
+          ]
+        }
+      ],
+      "id": 1434,
+      "created": "2019-12-11T20:44:48.336Z",
+      "updated": "2019-12-18T02:36:08.529Z",
+      "deleted": null,
+      "title": "Arbitrary File Write",
+      "found_by": {
+        "link": "",
+        "name": "Daniel Ruf",
+        "email": ""
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Daniel Ruf",
+        "email": ""
+      },
+      "module_name": "npm",
+      "cves": [],
+      "vulnerable_versions": "<6.13.3",
+      "patched_versions": ">=6.13.3",
+      "overview": "Versions of the npm CLI prior to 6.13.3 are vulnerable to an Arbitrary File Write. It fails to prevent access to folders outside of the intended node_modules folder through the bin field. A properly constructed entry in the package.json bin field would allow a package publisher to create files on a user's system when the package is installed. It is only possible to affect files that the user running `npm install` has access to and it is not possible to over write files that already exist on disk.\n\nThis behavior is still possible through install scripts. This vulnerability bypasses a user using the --ignore-scripts install option.",
+      "recommendation": "Upgrade to version 6.13.3 or later.",
+      "references": "- [npm blog post](https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-22",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 4,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/1434"
+    },
+    "1436": {
+      "findings": [
+        {
+          "version": "3.10.10",
+          "paths": [
+            "npm-upgrade>npm",
+            "npm-upgrade>npm-check-updates>npm",
+            "npm-upgrade>npm-check-updates>npmi>npm"
+          ]
+        }
+      ],
+      "id": 1436,
+      "created": "2019-12-11T20:56:33.472Z",
+      "updated": "2019-12-13T16:27:20.846Z",
+      "deleted": null,
+      "title": "Symlink reference outside of node_modules",
+      "found_by": {
+        "link": "",
+        "name": "Daniel Ruf",
+        "email": ""
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Daniel Ruf",
+        "email": ""
+      },
+      "module_name": "npm",
+      "cves": [],
+      "vulnerable_versions": "<6.13.3",
+      "patched_versions": ">=6.13.3",
+      "overview": "Versions of the npm CLI prior to 6.13.3 are vulnerable to a symlink reference outside of node_modules. It is possible for packages to create symlinks to files outside of the`node_modules` folder through the `bin` field upon installation. A properly constructed entry in the package.json bin field would allow a package publisher to create a symlink pointing to arbitrary files on a user’s system when the package is installed. Only files accessible by the user running the `npm install` are affected.  \n\nThis behavior is still possible through install scripts. This vulnerability bypasses a user using the --ignore-scripts install option.",
+      "recommendation": "Upgrade to version 6.13.3 or later.",
+      "references": "- [npm blog post](https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-552",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 3,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/1436"
+    },
+    "1437": {
+      "findings": [
+        {
+          "version": "3.10.10",
+          "paths": [
+            "npm-upgrade>npm",
+            "npm-upgrade>npm-check-updates>npm",
+            "npm-upgrade>npm-check-updates>npmi>npm"
+          ]
+        }
+      ],
+      "id": 1437,
+      "created": "2019-12-11T21:15:23.901Z",
+      "updated": "2019-12-13T16:26:11.872Z",
+      "deleted": null,
+      "title": "Global node_modules Binary Overwrite",
+      "found_by": {
+        "link": "",
+        "name": "Daniel Ruf",
+        "email": ""
+      },
+      "reported_by": {
+        "link": "",
+        "name": "Daniel Ruf",
+        "email": ""
+      },
+      "module_name": "npm",
+      "cves": [],
+      "vulnerable_versions": "<6.13.4",
+      "patched_versions": ">=6.13.4",
+      "overview": "Versions of  the npm CLI prior to 6.13.4 are vulnerable to a Global node_modules Binary Overwrite. It fails to prevent existing globally-installed binaries to be overwritten by other package installations. \n\nFor example, if a package was installed globally and created a `serve` binary, any subsequent installs of packages that also create a `serve` binary would overwrite the first binary. This will not overwrite system binaries but only binaries put into the global node_modules directory.\n\nThis behavior is still allowed in local installations and also through install scripts. This vulnerability bypasses a user using the --ignore-scripts install option.",
+      "recommendation": "Upgrade to version 6.13.4 or later.",
+      "references": "- [npm blog post](https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli)",
+      "access": "public",
+      "severity": "low",
+      "cwe": "CWE-22",
+      "metadata": {
+        "module_type": "",
+        "exploitability": 4,
+        "affected_components": ""
+      },
+      "url": "https://npmjs.com/advisories/1437"
+    }
+  },
+  "muted": [],
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 26,
+      "moderate": 117,
+      "high": 77,
+      "critical": 1
+    },
+    "dependencies": 5094,
+    "devDependencies": 0,
+    "optionalDependencies": 183,
+    "totalDependencies": 5277
+  },
+  "runId": "3aad747e-87a1-474b-a3f5-13b7346c165d"
+}
