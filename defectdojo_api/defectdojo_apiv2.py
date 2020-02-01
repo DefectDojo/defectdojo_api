@@ -286,6 +286,15 @@ class DefectDojoAPIv2(object):
         if done_testing:
             data['done_testing'] = done_testing
 
+        if build_id:
+            data['build_id'] = build_id
+
+        if commit_hash:
+            data['commit_hash'] = commit_hash
+
+        if description:
+            data['description'] = description
+
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######

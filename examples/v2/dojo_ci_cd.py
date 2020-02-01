@@ -97,8 +97,9 @@ def get_engagement_id(dd, product_id, user_id, engagement_id, engagement_name, b
 
 # no engagement found by id or by name, so create a new one
 
+    # end_date == last upload
     start_date = datetime.now()
-    end_date = start_date+timedelta(days=365)
+    end_date = datetime.now()
 
     engagement_description = "CI/CD Engagement created by ci/cd script"
     
@@ -413,7 +414,17 @@ class Main:
                     print("Scanner type must be specified for a file import. --scanner")
                     sys.exit()
             else:
-                test_ids = process_findings(dd, engagement_id, dir, build_id)
+                test_ids = process_findings(dd, engagement_id, dir, build_id)                
+
+            # Update engagement with latest build_url, build_id and/or commit_hash
+            # TODO also set source_code_managent_server/url?
+            engagement_description = "CI/CD Engagement created by ci/cd script"
+            end_date = datetime.now()
+            
+            if build_url:
+                engagement_description += " for " + build_url
+
+            dd.set_engagement(engagement_id, description=engagement_description, build_id=build_id, commit_hash=commit_hash, target_end=end_date.strftime("%Y-%m-%d"))
 
             #Close the engagement_id
             #dd.close_engagement(engagement_id)
