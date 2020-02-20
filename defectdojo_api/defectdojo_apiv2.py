@@ -761,6 +761,11 @@ class DefectDojoAPIv2(object):
 
         return self._request('PATCH', 'tests/' + str(test_id) + '/', data=data)
 
+
+    def delete_test(self, test_id):
+        return self._request('DELETE', 'tests/' + str(id) + '/')
+
+
     # Findings API
 
     def list_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
