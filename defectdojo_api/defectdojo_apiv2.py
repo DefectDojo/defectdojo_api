@@ -702,13 +702,10 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Upload API #####
-
-    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, minimum_severity="Info"):
+    def upload_scan(self, engagement_id, scan_type, filedata, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, minimum_severity="Info"):
         """Uploads and processes a scan file.
-
         :param application_id: Application identifier.
-        :param file_path: Path to the scan file to be uploaded.
-
+        :param filedata: Tuple with name and contents of (filename, open(filename, 'rb'))
         """
         if tags is None:
             tags = ''
@@ -716,9 +713,6 @@ class DefectDojoAPIv2(object):
         if build is None:
             build = ''
 
-        with open(file, 'rb') as f:
-             filedata = f.read()
-        
         if self.debug:
             print("filedata:")
             print(filedata)
