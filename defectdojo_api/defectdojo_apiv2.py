@@ -399,9 +399,7 @@ class DefectDojoAPIv2(object):
         """
         return self._request('GET', 'tests/' + str(test_id) + '/')
 
-    def create_test(self, engagement_id, test_type, environment, target_start,
-                    target_end, percent_complete=None, lead=None, title=None,
-                    version=None, description=None):
+    def create_test(self, engagement_id, test_type, environment, target_start, target_end, percent_complete=None):
         """Creates a product with the given properties.
 
         :param engagement_id: Engagement id.
@@ -409,10 +407,6 @@ class DefectDojoAPIv2(object):
         :param target_start: Test start date.
         :param target_end: Test end date.
         :param percent_complete: Percentage until test completion.
-        :pram lead: Test lead id
-        :param title: Test title/name
-        :param version: Test version
-        :param description: Test description
 
         """
 
@@ -424,18 +418,6 @@ class DefectDojoAPIv2(object):
             'target_end': target_end,
             'percent_complete': percent_complete
         }
-
-        if lead:
-            data['lead'] = lead
-
-        if title:
-            data['title'] = title
-
-        if version:
-            data['version'] = version
-
-        if description:
-            data['description'] = description
 
         return self._request('POST', 'tests/', data=data)
 
@@ -720,7 +702,8 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Upload API #####
-    def upload_scan(self, engagement_id, scan_type, filedata, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, minimum_severity="Info"):
+    def upload_scan(self, engagement_id, scan_type, filedata, active, verified, close_old_findings,
+        skip_duplicates, scan_date, lead, test_type, tags=None, build=None, minimum_severity="Info"):
         """Uploads and processes a scan file.
         :param application_id: Application identifier.
         :param filedata: Tuple with name and contents of (filename, open(filename, 'rb'))
@@ -746,19 +729,16 @@ class DefectDojoAPIv2(object):
             'scan_date': ('', scan_date),
             'tags': ('', tags),
             'build_id': ('', build),
-            'minimum_severity': ('', minimum_severity)
+            'minimum_severity': ('', minimum_severity),
+            'lead':  ('', lead),
+            'test_type': ('', test_type)
         }
-        """
-        TODO: implement these parameters:
-          lead
-          test_type
-          scan_date
-        """
 
         return self._request(
             'POST', 'import-scan/',
             files=data
         )
+
 
     ##### Re-upload API #####
 
