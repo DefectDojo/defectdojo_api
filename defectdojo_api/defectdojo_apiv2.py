@@ -285,6 +285,24 @@ class DefectDojoAPIv2(object):
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
+    def add_meta_data(self, product_id, name=None, value=None):
+        """Add a custom field to a product.
+
+        :param product_id: Product ID.
+        :param meta_data: name/value array.
+
+        """
+        data = {
+            'product': product_id,
+            'name': name,
+            'value': value
+        }
+        headers = {
+            'product_id': '{}'.format(product_id)
+        }
+
+        return self._request('POST', 'metadata/', data=data, custom_headers=headers)
+
     def list_products(self, name=None, name_contains=None, limit=200):
         """Retrieves all the products.
 
@@ -313,23 +331,6 @@ class DefectDojoAPIv2(object):
 
         """
         return self._request('GET', 'products/' + str(product_id) + '/')
-
-    def create_product(self, name, description, prod_type):
-        """Creates a product with the given properties.
-
-        :param name: Product name.
-        :param description: Product key id..
-        :param prod_type: Product type.
-
-        """
-
-        data = {
-            'name': name,
-            'description': description,
-            'prod_type': prod_type
-        }
-
-        return self._request('POST', 'products/', data=data)
 
     def create_product(self, name, description, prod_type):
         """Creates a product with the given properties.
@@ -782,7 +783,7 @@ class DefectDojoAPIv2(object):
             'scan_date': ('', scan_date),
             'tags': ('', tags),
             'build_id': ('', build),
-	    'minimum_severity': ('', minimum_severity)
+	        'minimum_severity': ('', minimum_severity)
         }
 
         return self._request(
@@ -1115,7 +1116,7 @@ class DefectDojoAPIv2(object):
             params[str(param_name) + '[0].' + str(key)] = str(values)
         return params
 
-    def _request(self, method, url, params=None, data=None, files=None):
+    def _request(self, method, url, params=None, data=None, files=None, custom_headers=None):
         """Common handler for all HTTP requests."""
         if not params:
             params = {}
@@ -1131,6 +1132,9 @@ class DefectDojoAPIv2(object):
         if not files:
             headers['Accept'] = 'application/json'
             headers['Content-Type'] = 'application/json'
+
+        if custom_headers:
+            headers.update(custom_headers)
 
         if self.proxies:
             proxies=self.proxies
