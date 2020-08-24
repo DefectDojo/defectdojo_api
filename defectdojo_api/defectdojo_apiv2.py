@@ -285,7 +285,7 @@ class DefectDojoAPIv2(object):
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
-    def add_meta_data(self, product_id, name=None, value=None):
+    def add_product_metadata(self, product_id, name=None, value=None):
         """Add a custom field to a product.
 
         :param product_id: Product ID.
