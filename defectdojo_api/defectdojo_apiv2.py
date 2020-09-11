@@ -285,6 +285,24 @@ class DefectDojoAPIv2(object):
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
+    def add_product_metadata(self, product_id, name=None, value=None):
+        """Add a custom field to a product.
+
+        :param product_id: Product ID.
+        :param meta_data: name/value array.
+
+        """
+        data = {
+            'product': product_id,
+            'name': name,
+            'value': value
+        }
+        headers = {
+            'product_id': '{}'.format(product_id)
+        }
+
+        return self._request('POST', 'metadata/', data=data, custom_headers=headers)
+
     def list_products(self, name=None, name_contains=None, limit=200):
         """Retrieves all the products.
 
@@ -313,23 +331,6 @@ class DefectDojoAPIv2(object):
 
         """
         return self._request('GET', 'products/' + str(product_id) + '/')
-
-    def create_product(self, name, description, prod_type):
-        """Creates a product with the given properties.
-
-        :param name: Product name.
-        :param description: Product key id..
-        :param prod_type: Product type.
-
-        """
-
-        data = {
-            'name': name,
-            'description': description,
-            'prod_type': prod_type
-        }
-
-        return self._request('POST', 'products/', data=data)
 
     def create_product(self, name, description, prod_type):
         """Creates a product with the given properties.
@@ -398,8 +399,10 @@ class DefectDojoAPIv2(object):
 
         """
         return self._request('GET', 'tests/' + str(test_id) + '/')
+    def create_test(self, engagement_id, test_type, environment, target_start,
+                    target_end, percent_complete=None, lead=None, title=None,
+                    version=None, description=None):
 
-    def create_test(self, engagement_id, test_type, environment, target_start, target_end, percent_complete=None):
         """Creates a product with the given properties.
 
         :param engagement_id: Engagement id.
@@ -407,6 +410,11 @@ class DefectDojoAPIv2(object):
         :param target_start: Test start date.
         :param target_end: Test end date.
         :param percent_complete: Percentage until test completion.
+        :param lead: Test lead id
+        :param title: Test title/name
+        :param version: Test version
+        :param description: Test description
+
 
         """
 
@@ -418,6 +426,18 @@ class DefectDojoAPIv2(object):
             'target_end': target_end,
             'percent_complete': percent_complete
         }
+
+        if lead:
+            data['lead'] = lead
+
+        if title:
+            data['title'] = title
+
+        if version:
+            data['version'] = version
+
+        if description:
+            data['description'] = description
 
         return self._request('POST', 'tests/', data=data)
 
@@ -702,13 +722,11 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Upload API #####
-
-    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, minimum_severity="Info"):
+    def upload_scan(self, engagement_id, scan_type, filedata, active, verified, close_old_findings,
+        skip_duplicates, scan_date, lead, test_type, tags=None, build=None, minimum_severity="Info"):
         """Uploads and processes a scan file.
-
         :param application_id: Application identifier.
-        :param file_path: Path to the scan file to be uploaded.
-
+        :param filedata: Tuple with name and contents of (filename, open(filename, 'rb'))
         """
         if tags is None:
             tags = ''
@@ -716,9 +734,6 @@ class DefectDojoAPIv2(object):
         if build is None:
             build = ''
 
-        with open(file, 'rb') as f:
-             filedata = f.read()
-        
         if self.debug:
             print("filedata:")
             print(filedata)
@@ -734,19 +749,16 @@ class DefectDojoAPIv2(object):
             'scan_date': ('', scan_date),
             'tags': ('', tags),
             'build_id': ('', build),
-            'minimum_severity': ('', minimum_severity)
+            'minimum_severity': ('', minimum_severity),
+            'lead':  ('', lead),
+            'test_type': ('', test_type)
         }
-        """
-        TODO: implement these parameters:
-          lead
-          test_type
-          scan_date
-        """
 
         return self._request(
             'POST', 'import-scan/',
             files=data
         )
+
 
     ##### Re-upload API #####
 
@@ -771,7 +783,7 @@ class DefectDojoAPIv2(object):
             'scan_date': ('', scan_date),
             'tags': ('', tags),
             'build_id': ('', build),
-	    'minimum_severity': ('', minimum_severity)
+	        'minimum_severity': ('', minimum_severity)
         }
 
         return self._request(
@@ -1104,7 +1116,7 @@ class DefectDojoAPIv2(object):
             params[str(param_name) + '[0].' + str(key)] = str(values)
         return params
 
-    def _request(self, method, url, params=None, data=None, files=None):
+    def _request(self, method, url, params=None, data=None, files=None, custom_headers=None):
         """Common handler for all HTTP requests."""
         if not params:
             params = {}
@@ -1120,6 +1132,9 @@ class DefectDojoAPIv2(object):
         if not files:
             headers['Accept'] = 'application/json'
             headers['Content-Type'] = 'application/json'
+
+        if custom_headers:
+            headers.update(custom_headers)
 
         if self.proxies:
             proxies=self.proxies
