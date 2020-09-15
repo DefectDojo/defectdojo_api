@@ -360,30 +360,33 @@ class DefectDojoAPI(object):
         """
         return self._request('GET', 'products/' + str(product_id) + '/')
 
-    def create_product(self, name, description, prod_type):
+    def create_product(self, name, description, prod_type, lifecycle=None):
         """Creates a product with the given properties.
 
         :param name: Product name.
         :param description: Product key id..
         :param prod_type: Product type.
+	:param lifecycle: Lifecycle type.
 
         """
 
         data = {
             'name': name,
             'description': description,
-            'prod_type': prod_type
+            'prod_type': prod_type,
+	    'lifecycle': lifecycle
         }
 
         return self._request('POST', 'products/', data=data)
 
-    def set_product(self, product_id, name=None, description=None, prod_type=None):
+    def set_product(self, product_id, name=None, description=None, prod_type=None, lifecycle=None):
         """Updates a product with the given properties.
 
         :param product_id: Product ID
         :param name: Product name.
         :param description: Product key id..
         :param prod_type: Product type.
+	:param lifecycle: Lifecycle type.
 
         """
 
@@ -397,6 +400,10 @@ class DefectDojoAPI(object):
 
         if prod_type:
             data['prod_type'] = prod_type
+
+        if lifecycle:
+            data['lifecycle'] = lifecycle
+
 
         return self._request('PUT', 'products/' + str(product_id) + '/', data=data)
 
