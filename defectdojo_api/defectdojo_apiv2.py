@@ -566,13 +566,13 @@ class DefectDojoAPIv2(object):
             params['date'] = date
 
         if engagement_id_in:
-            params['engagement__id__in'] = engagement_id_in
+            params['test__engagement'] = engagement_id_in
 
         if product_id_in:
-            params['product__id__in'] = product_id_in
+            params['test__engagement__product'] = product_id_in
 
         if test_id_in:
-            params['test__id__in'] = test_id_in
+            params['test'] = test_id_in
 
         if build:
             params['build_id__contains'] = build
