@@ -1106,6 +1106,23 @@ class DefectDojoAPIv2(object):
 
         return self._request('GET', 'tool_product_settings/', params)
 
+    def list_jira_issues(self, finding_id=None, jira_key=None):
+        """
+        Retrieves JIRA issues assigned to findings
+
+        :param finding_id: Search for a specific finding ID
+        :param jira_key: Search a specific JIRA key
+        """
+
+        params = {}
+        if finding_id:
+            params['finding_id'] = finding_id
+        
+        if jira_key:
+            params['jira_key'] = jira_key
+
+        return self._request('GET', 'jira_finding_mappings/', params)
+
     # Utility
 
     @staticmethod
