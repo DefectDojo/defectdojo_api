@@ -116,3 +116,5 @@ pip_install.bat
 # visual studio code
 *.code-workspace
 /tests/scans/supplier_hub.json
+
+.vscode

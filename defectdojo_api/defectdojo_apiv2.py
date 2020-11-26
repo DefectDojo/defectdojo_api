@@ -88,18 +88,22 @@ class DefectDojoAPIv2(object):
         return self._request('GET', 'users/' + str(user_id) + '/')
 
     ###### Engagements API #######
-    def list_engagements(self, status=None, product_id=None, name_contains=None, name=None, limit=20):
+    def list_engagements(self, status=None, product_id=None, name_contains=None, name=None, limit=20, offset=0):
         """Retrieves all the engagements.
 
         :param product_in: List of product ids (1,2).
         :param name_contains: Engagement name
         :param limit: Number of records to return.
+        :param offset: The initial index from which to return the result
 
         """
 
         params  = {}
         if limit:
             params['limit'] = limit
+
+        if offset:
+            params['offset'] = offset
 
         if product_id:
             params['product'] = product_id
@@ -298,18 +302,23 @@ class DefectDojoAPIv2(object):
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
-    def list_products(self, name=None, name_contains=None, limit=200):
+    def list_products(self, name=None, name_contains=None, limit=200, offset=0):
+
         """Retrieves all the products.
 
         :param name: Search by product name.
         :param name_contains: Search by product name.
         :param limit: Number of records to return.
+        :param offset: The initial index from which to return the results.
 
         """
 
         params  = {}
         if limit:
             params['limit'] = limit
+
+        if offset:
+            params['offset'] = offset
 
         if name:
             params['name'] = name
@@ -387,7 +396,7 @@ class DefectDojoAPIv2(object):
 
 
     ###### Test API #######
-    def list_tests(self, engagement_id=None, test_type=None, limit=20):
+    def list_tests(self, engagement_id=None, test_type=None, limit=20, offset=0):
         """Retrieves all the tests.
 
         :param name_contains: Search by product name.
@@ -398,6 +407,9 @@ class DefectDojoAPIv2(object):
         params  = {}
         if limit:
             params['limit'] = limit
+
+        if offset:
+            params['offset'] = offset
 
         if engagement_id:
             params['engagement'] = engagement_id
@@ -481,7 +493,7 @@ class DefectDojoAPIv2(object):
     ###### Findings API #######
     def list_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
         severity_gt=None, severity_contains=None, title_contains=None, url_contains=None, date_lt=None,
-        date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_id_in=None, build=None, limit=20):
+        date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_id_in=None, build=None, limit=20, offset=0):
 
         """Returns filtered list of findings.
 
@@ -503,12 +515,16 @@ class DefectDojoAPIv2(object):
         :param test_in: Test id(s) associated with a finding. (1,2 or 1)
         :param build_id: User specified build id relating to the build number from the build server. (Jenkins, Travis etc.).
         :param limit: Number of records to return.
+        :param offset: The initial index from which to return the results
 
         """
 
         params  = {}
         if limit:
             params['limit'] = limit
+
+        if offset:
+            params['offset'] = offset
 
         if active:
             params['active'] = active
