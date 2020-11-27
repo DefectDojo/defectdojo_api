@@ -1122,12 +1122,14 @@ class DefectDojoAPIv2(object):
 
         return self._request('GET', 'tool_product_settings/', params)
 
-    def list_jira_issues(self, finding_id=None, jira_key=None):
+    def list_jira_issues(self, finding_id=None, jira_key=None, limit=100, offset=0):
         """
         Retrieves JIRA issues assigned to findings
 
         :param finding_id: Search for a specific finding ID
         :param jira_key: Search a specific JIRA key
+        :param limit: Number of records to return.
+        :param offset: The initial index from which to return the result
         """
 
         params = {}
@@ -1136,6 +1138,12 @@ class DefectDojoAPIv2(object):
         
         if jira_key:
             params['jira_key'] = jira_key
+
+        if limit:
+            params['limit'] = limit
+
+        if offset:
+            params['offset'] = offset
 
         return self._request('GET', 'jira_finding_mappings/', params)
 
