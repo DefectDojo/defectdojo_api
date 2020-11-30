@@ -50,6 +50,7 @@ class DefectDojoAPIv2(object):
         if not debug:
             # Configure the default logging level to warning instead of debug for request library
             logging.getLogger("requests").setLevel(logging.WARNING)
+            logging.getLogger("urllib3").setLevel(logging.WARNING)
             self.logger.setLevel(logging.WARNING)
 
         if not self.verify_ssl:
