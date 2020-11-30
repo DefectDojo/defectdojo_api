@@ -2,9 +2,11 @@ import json
 import requests
 import requests.exceptions
 import requests.packages.urllib3
+import logging
 
 from . import __version__ as version
 
+LOGGER_NAME = "defectdojo_api"
 
 class DefectDojoAPI(object):
     """An API wrapper for DefectDojo."""
@@ -40,7 +42,13 @@ class DefectDojoAPI(object):
             self.user_agent = user_agent
 
         self.cert = cert
-        self.debug = debug  # Prints request and response information.
+
+        self.logger = logging.getLogger(LOGGER_NAME)
+        self.logger.setLevel(logging.DEBUG)
+        if not debug:
+            # Configure the default logging level to warning instead of debug for request library
+            logging.getLogger("requests").setLevel(logging.WARNING)
+            self.logger.setLevel(logging.WARNING)
 
         if not self.verify_ssl:
             requests.packages.urllib3.disable_warnings()  # Disabling SSL warning messages if verification is disabled.
@@ -1139,16 +1147,14 @@ class DefectDojoAPI(object):
             proxies = {}
 
         try:
-            if self.debug:
-                print(method + ' ' + url)
-                print(params)
+            self.logger.debug(method + ' ' + url)
+            self.logger.debug(params)
 
             response = requests.request(method=method, url=self.host + url, params=params, data=data, files=files, headers=headers,
                                         timeout=self.timeout, verify=self.verify_ssl, cert=self.cert, proxies=proxies)
 
-            if self.debug:
-                print(response.status_code)
-                print(response.text)
+            self.logger.debug(response.status_code)
+            self.logger.debug(response.text)
 
             try:
                 if response.status_code == 201: #Created new object
