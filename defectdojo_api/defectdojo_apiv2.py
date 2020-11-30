@@ -2,10 +2,13 @@ import json
 import requests
 import requests.exceptions
 import requests.packages.urllib3
+import logging
 
 requests.packages.urllib3.add_stderr_logger()
 
 version = "1.1.6.dev2"
+
+LOGGER_NAME = "defectdojo_api"
 
 class DefectDojoAPIv2(object):
     """An API wrapper for DefectDojo."""
@@ -41,7 +44,13 @@ class DefectDojoAPIv2(object):
             self.user_agent = user_agent
 
         self.cert = cert
-        self.debug = debug  # Prints request and response information.
+
+        self.logger = logging.getLogger(LOGGER_NAME)
+        self.logger.setLevel(logging.DEBUG)
+        if not debug:
+            # Configure the default logging level to warning instead of debug for request library
+            logging.getLogger("requests").setLevel(logging.WARNING)
+            self.logger.setLevel(logging.WARNING)
 
         if not self.verify_ssl:
             requests.packages.urllib3.disable_warnings()  # Disabling SSL warning messages if verification is disabled.
@@ -479,7 +488,6 @@ class DefectDojoAPIv2(object):
             data['target_start'] = target_start
         else:
             data['target_start'] = current_test["target_start"]
-
         if target_end:
             data['target_end'] = target_end
         else:
@@ -752,9 +760,8 @@ class DefectDojoAPIv2(object):
         with open(file, 'rb') as f:
              filedata = f.read()
         
-        if self.debug:
-            print("filedata:")
-            print(filedata)
+        self.logger.debug("filedata:")
+        self.logger.debug(filedata)
 
         data = {
             'file': filedata,
@@ -1185,21 +1192,19 @@ class DefectDojoAPIv2(object):
             proxies = {}
 
         try:
-            if self.debug:
-                print("request:")
-                print(method + ' ' + url)
-                print("headers: " + str(headers))
-                print("params:" + str(params))
-                print("data:" + str(data))
-                print("files:" + str(files))
+            self.logger.debug("request:")
+            self.logger.debug(method + ' ' + url)
+            self.logger.debug("headers: " + str(headers))
+            self.logger.debug("params:" + str(params))
+            self.logger.debug("data:" + str(data))
+            self.logger.debug("files:" + str(files))
 
             response = requests.request(method=method, url=self.host + url, params=params, data=data, files=files, headers=headers,
                                         timeout=self.timeout, verify=self.verify_ssl, cert=self.cert, proxies=proxies)
 
-            if self.debug:
-                print("response:")
-                print(response.status_code)
-                print(response.text)
+            self.logger.debug("response:")
+            self.logger.debug(response.status_code)
+            self.logger.debug(response.text)
 
             try:
                 if response.status_code == 201: #Created new object
@@ -1229,18 +1234,18 @@ class DefectDojoAPIv2(object):
             except ValueError:
                 return DefectDojoResponse(message='JSON response could not be decoded.', response_code=response.status_code, success=False, data=response.text)
         except requests.exceptions.SSLError:
-            print("An SSL error occurred.")
+            self.logger.warning("An SSL error occurred.")
             return DefectDojoResponse(message='An SSL error occurred.', response_code=response.status_code, success=False)
         except requests.exceptions.ConnectionError:
-            print("A connection error occurred.")
+            self.logger.warning("A connection error occurred.")
             return DefectDojoResponse(message='A connection error occurred.', response_code=response.status_code, success=False)
         except requests.exceptions.Timeout:
-            print("The request timed out")
+            self.logger.warning("The request timed out")
             return DefectDojoResponse(message='The request timed out after ' + str(self.timeout) + ' seconds.', response_code=response.status_code,
                                      success=False)
         except requests.exceptions.RequestException as e:
-            print("There was an error while handling the request.")
-            print(e)
+            self.logger.warning("There was an error while handling the request.")
+            self.logger.exception(e)
             return DefectDojoResponse(message='There was an error while handling the request.', response_code=response.status_code, success=False)
 
 
@@ -1255,6 +1260,7 @@ class DefectDojoResponse(object):
         self.data = data
         self.success = success
         self.response_code = response_code
+        self.logger = logging.getLogger(LOGGER_NAME)
 
     def __str__(self):
         if self.data:
@@ -1263,7 +1269,7 @@ class DefectDojoResponse(object):
             return self.message
 
     def id(self):
-        print("response_code" + str (self.response_code))
+        self.logger.debug("response_code" + str(self.response_code))
         if self.response_code == 400: #Bad Request
             raise ValueError('Object not created:' + json.dumps(self.data, sort_keys=True, indent=4, separators=(',', ': ')))
         return int(self.data["id"])
