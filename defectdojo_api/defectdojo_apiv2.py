@@ -763,7 +763,7 @@ class DefectDojoAPIv2(object):
 
 
     def delete_test(self, test_id):
-        return self._request('DELETE', 'tests/' + str(id) + '/')
+        return self._request('DELETE', 'tests/' + str(test_id) + '/')
 
 
     # Findings API
@@ -771,7 +771,7 @@ class DefectDojoAPIv2(object):
     def list_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
                       severity_gt=None, severity_contains=None, title_contains=None, url_contains=None, date_lt=None,
                       date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_id_in=None, build=None,
-                      limit=20):
+                      limit=20, offset=0, related_fields=False):
 
         """Returns filtered list of findings.
 
@@ -793,12 +793,20 @@ class DefectDojoAPIv2(object):
         :param test_in: Test id(s) associated with a finding. (1,2 or 1)
         :param build_id: User specified build id relating to the build number from the build server. (Jenkins, Travis etc.).
         :param limit: Number of records to return.
+        :param offset: The initial index from which to return the results.
+        :param related_fields: Expand finding external relations (engagement, environment, product, product_type, test, test_type)
 
         """
 
         params = {}
         if limit:
             params['limit'] = limit
+
+        if offset:
+            params['offset'] = offset
+
+        if related_fields:
+            params['related_fields'] = related_fields
 
         if active is not None:
             params['active'] = active
