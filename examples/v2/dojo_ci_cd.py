@@ -141,7 +141,7 @@ def process_findings(dd, engagement_id, dir, build_id=None):
                 test_ids.append(str(test_id))
     return ','.join(test_ids)
 
-def processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=None, build_id=None, version=None, branch_tag=None, commit_hash=None):
+def processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=None, build=None, version=None, branch_tag=None, commit_hash=None):
     upload_scan = None
     scannerName = None
     path=os.path.dirname(file)
@@ -209,7 +209,7 @@ def processFiles(dd, engagement_id, file, active, verified, close_old_findings, 
         if existing_test_id:
             print("ReUploading " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id) + " with test_id: " + str(existing_test_id))
             # TODO check verified param?
-            test_id = dd.reupload_scan(existing_test_id, scannerName, file, active, dojoDate, build_id=build_id, version=version, branch_tag=branch_tag, commit_hash=commit_hash)
+            test_id = dd.reupload_scan(existing_test_id, scannerName, file, active, dojoDate, build=build, version=version, branch_tag=branch_tag, commit_hash=commit_hash)
 
             if test_id.success == False:
                 raise ValueError("ReUpload failed: Detailed error message: " + test_id.data)
@@ -219,7 +219,7 @@ def processFiles(dd, engagement_id, file, active, verified, close_old_findings, 
             print("Done ReUploading  " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id) + " with test_id: " + str(existing_test_id))
         else:
             print("Uploading new " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id))
-            test_id = dd.upload_scan(engagement_id, scannerName, file, active, verified, close_old_findings, skip_duplicates, dojoDate, tags="ci/cd", build_id=build_id, version=version, branch_tag=branch_tag, commit_hash=commit_hash)
+            test_id = dd.upload_scan(engagement_id, scannerName, file, active, verified, close_old_findings, skip_duplicates, dojoDate, tags="ci/cd", build=build, version=version, branch_tag=branch_tag, commit_hash=commit_hash)
             if test_id.success == False:
                 raise ValueError("Upload failed: Detailed error message: " + test_id.data)
             print("Done Uploading new " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id))
@@ -414,7 +414,7 @@ class Main:
             test_ids = None
             if file is not None:
                 if scanner is not None:
-                    test_ids = processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=scanner, version=version, branch_tag=branch_name, commit_hash=commit_hash, build_id=build_id)
+                    test_ids = processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=scanner, version=version, branch_tag=branch_name, commit_hash=commit_hash, build=build_id)
                 else:
                     print("Scanner type must be specified for a file import. --scanner")
                     sys.exit()

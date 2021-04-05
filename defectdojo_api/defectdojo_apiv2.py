@@ -649,7 +649,7 @@ class DefectDojoAPIv2(object):
 
         return self._request('POST', 'findings/', data=data)
 
-    def set_finding(self, finding_id, product_id, engagement_id, test_id, title=None, description=None, severity=None,
+    def set_finding(self, finding_id, product_id, engagement_id, test_id, title=None, description=None, severity=None, build=None,
         cwe=None, date=None, user_id=None, impact=None, active=None, verified=None,
         mitigation=None, references=None):
 
@@ -744,7 +744,7 @@ class DefectDojoAPIv2(object):
 
     ##### Upload API #####
 
-    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build_id=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info"):
+    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info"):
         """Uploads and processes a scan file.
 
         :param application_id: Application identifier.
@@ -754,8 +754,8 @@ class DefectDojoAPIv2(object):
         if tags is None:
             tags = ''
 
-        if build_id is None:
-            build_id = ''
+        if build is None:
+            build = ''
 
         with open(file, 'rb') as f:
              filedata = f.read()
@@ -773,7 +773,7 @@ class DefectDojoAPIv2(object):
             'skip_duplicates': ('', skip_duplicates),
             'scan_date': ('', scan_date),
             'tags': ('', tags),
-            'build_id': ('', build_id),
+            'build_id': ('', build),
             'version': ('', version),
             'branch_tag': ('', branch_tag),
             'commit_hash': ('', commit_hash),
@@ -794,7 +794,7 @@ class DefectDojoAPIv2(object):
 
     ##### Re-upload API #####
 
-    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build_id=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info"):
+    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info"):
         """Re-uploads and processes a scan file.
 
         :param test_id: Test identifier.
@@ -804,8 +804,8 @@ class DefectDojoAPIv2(object):
         if tags is None:
             tags = ''
 
-        if build_id is None:
-            build_id = ''
+        if build is None:
+            build = ''
 
         data = {
             'test': ('', test_id),
@@ -814,7 +814,7 @@ class DefectDojoAPIv2(object):
             'active': ('', active),
             'scan_date': ('', scan_date),
             'tags': ('', tags),
-            'build_id': ('', build_id),
+            'build_id': ('', build),
             'version': ('', version),
             'branch_tag': ('', branch_tag),
             'commit_hash': ('', commit_hash),
