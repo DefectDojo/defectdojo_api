@@ -19,7 +19,7 @@ class DefectDojoAPIv2(object):
         :param host: The URL for the DefectDojo server. (e.g., http://localhost:8000/DefectDojo/)
         :param api_token: The API token generated on the DefectDojo API key page.
         :param user: The user associated with the API key.
-        :param api_version: API version to call, the default is v1.
+        :param api_version: API version to call, the default is v2.
         :param verify_ssl: Specify if API requests will verify the host's SSL certificate, defaults to true.
         :param timeout: HTTP timeout in seconds, default is 30.
         :param proxis: Proxy for API requests.
