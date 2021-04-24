@@ -830,8 +830,6 @@ class DefectDojoAPIv2(object):
         if auto_group_by:
             data['auto_group_by'] = (auto_group_by, '')
 
-        print('reupload data: ', data)
-
         return self._request(
             'POST', 'reimport-scan/',
             files=data

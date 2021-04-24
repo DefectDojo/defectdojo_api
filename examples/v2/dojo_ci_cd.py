@@ -214,8 +214,6 @@ def processFiles(dd, engagement_id, file, active, verified, close_old_findings, 
             if test_id.success == False:
                 raise ValueError("ReUpload failed: Detailed error message: " + test_id.data)
 
-            print(test_id)
-
             print("Done ReUploading  " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id) + " with test_id: " + str(existing_test_id))
         else:
             print("Uploading new " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id))
