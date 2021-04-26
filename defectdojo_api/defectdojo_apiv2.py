@@ -745,7 +745,7 @@ class DefectDojoAPIv2(object):
 
     ##### Upload API #####
 
-    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info"):
+    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None):
         """Uploads and processes a scan file.
 
         :param application_id: Application identifier.
@@ -781,6 +781,10 @@ class DefectDojoAPIv2(object):
             'minimum_severity': ('', minimum_severity),
             # 'push_to_jira': ('', True)
         }
+
+        if auto_group_by:
+            data['auto_group_by'] = (auto_group_by, '')
+
         """
         TODO: implement these parameters:
           lead
@@ -795,7 +799,7 @@ class DefectDojoAPIv2(object):
 
     ##### Re-upload API #####
 
-    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info"):
+    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None):
         """Re-uploads and processes a scan file.
 
         :param test_id: Test identifier.
@@ -822,6 +826,9 @@ class DefectDojoAPIv2(object):
 	        'minimum_severity': ('', minimum_severity),
             # 'push_to_jira': ('', True)
         }
+
+        if auto_group_by:
+            data['auto_group_by'] = (auto_group_by, '')
 
         return self._request(
             'POST', 'reimport-scan/',

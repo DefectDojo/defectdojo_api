@@ -131,17 +131,17 @@ def get_test_id(dd, engagement_id, test_type):
     return None
 
 
-def process_findings(dd, engagement_id, dir, build_id=None):
+def process_findings(dd, engagement_id, dir, build_id=None, auto_group_by=None):
     test_ids = []
     for root, dirs, files in os.walk(dir):
         for name in files:
             file = os.path.join(os.getcwd(),root, name)
-            test_id = processFiles(dd, engagement_id, file)
+            test_id = processFiles(dd, engagement_id, file, auto_group_by=auto_group_by)
             if test_id is not None:
                 test_ids.append(str(test_id))
     return ','.join(test_ids)
 
-def processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=None, build=None, version=None, branch_tag=None, commit_hash=None):
+def processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=None, build=None, version=None, branch_tag=None, commit_hash=None, auto_group_by=None):
     upload_scan = None
     scannerName = None
     path=os.path.dirname(file)
@@ -209,17 +209,15 @@ def processFiles(dd, engagement_id, file, active, verified, close_old_findings, 
         if existing_test_id:
             print("ReUploading " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id) + " with test_id: " + str(existing_test_id))
             # TODO check verified param?
-            test_id = dd.reupload_scan(existing_test_id, scannerName, file, active, dojoDate, build=build, version=version, branch_tag=branch_tag, commit_hash=commit_hash)
+            test_id = dd.reupload_scan(existing_test_id, scannerName, file, active, dojoDate, build=build, version=version, branch_tag=branch_tag, commit_hash=commit_hash, auto_group_by=auto_group_by)
 
             if test_id.success == False:
                 raise ValueError("ReUpload failed: Detailed error message: " + test_id.data)
 
-            print(test_id)
-
             print("Done ReUploading  " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id) + " with test_id: " + str(existing_test_id))
         else:
             print("Uploading new " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id))
-            test_id = dd.upload_scan(engagement_id, scannerName, file, active, verified, close_old_findings, skip_duplicates, dojoDate, tags="ci/cd", build=build, version=version, branch_tag=branch_tag, commit_hash=commit_hash)
+            test_id = dd.upload_scan(engagement_id, scannerName, file, active, verified, close_old_findings, skip_duplicates, dojoDate, tags="ci/cd", build=build, version=version, branch_tag=branch_tag, commit_hash=commit_hash, auto_group_by=auto_group_by)
             if test_id.success == False:
                 raise ValueError("Upload failed: Detailed error message: " + test_id.data)
             print("Done Uploading new " + scannerName + " scan: " + file + " for engagement: " + str(engagement_id))
@@ -357,7 +355,10 @@ class Main:
         parser.add_argument('--close_old_findings', help="Should findings not present in this uplaod be closed?", required=False, default=False)
         parser.add_argument('--skip_duplicates', help="Should findings already present in DefectDojo be skipped?", required=False, default=False)
 
+        parser.add_argument('--auto_group_by', help="Should new findings automatically be group on this field?", required=False)
+
         parser.add_argument('--debug', help="Do we want debug logging?", required=False, default=False)
+
 
         #Parse out arguments
         args = vars(parser.parse_args())
@@ -386,9 +387,9 @@ class Main:
         verified = args["verified"]
         close_old_findings = args["close_old_findings"]
         skip_duplicates = args["skip_duplicates"]
+        auto_group_by = args["auto_group_by"]
 
         debug = args["debug"]
-
 
         if dir is not None or file is not None:
             if debug:
@@ -414,12 +415,12 @@ class Main:
             test_ids = None
             if file is not None:
                 if scanner is not None:
-                    test_ids = processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=scanner, version=version, branch_tag=branch_name, commit_hash=commit_hash, build=build_id)
+                    test_ids = processFiles(dd, engagement_id, file, active, verified, close_old_findings, skip_duplicates, scanner=scanner, version=version, branch_tag=branch_name, commit_hash=commit_hash, build=build_id, auto_group_by=auto_group_by)
                 else:
                     print("Scanner type must be specified for a file import. --scanner")
                     sys.exit()
             else:
-                test_ids = process_findings(dd, engagement_id, dir, build_id)
+                test_ids = process_findings(dd, engagement_id, dir, build_id, auto_group_by=auto_group_by)
 
             # Update engagement with latest build_url, build_id and/or commit_hash
             # TODO also set source_code_managent_server/url?
