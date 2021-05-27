@@ -1,10 +1,13 @@
+#!/usr/bin/env python
+
 """
 Example written by Aaron Weaver <aaron.weaver@owasp.org>
 as part of the OWASP DefectDojo and OWASP AppSec Pipeline Security projects
 
 Description: CI/CD example for DefectDojo
 """
-from defectdojo_api import defectdojo
+# from defectdojo_api import defectdojo
+from defectdojo_api import defectdojo_apiv2 as defectdojo
 from datetime import datetime, timedelta
 import os, sys
 import argparse
@@ -65,7 +68,7 @@ def return_engagement(dd, product_id, user, build_id=None):
     dojoTime = start_date.strftime("%H:%M:%S")
     engagementText = "CI/CD Integration (" + dojoTime + ")"
     if build_id is not None:
-        engagementText = engagementText + " - Build #" + build_id
+        engagementText = engagementText + " - Build #" + build_id + "(" + start_date.strftime("%H:%M:%S") + ")"
 
     engagement_id = dd.create_engagement(engagementText, product_id, str(user_id),
     "In Progress", start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
@@ -82,7 +85,8 @@ def process_findings(dd, engagement_id, dir, build=None):
     return ','.join(test_ids)
 
 def processFiles(dd, engagement_id, file, scanner=None, build=None):
-    upload_scan = None
+    print("Processing file"  + file)
+	upload_scan = None
     scannerName = None
     path=os.path.dirname(file)
     name = os.path.basename(file)
@@ -125,6 +129,8 @@ def processFiles(dd, engagement_id, file, scanner=None, build=None):
             scannerName = "VCG Scan"
         elif tool == "dependency":
             scannerName = "Dependency Check Scan"
+        elif tool == "deptrack":
+            scannerName = "Dependency Track Finding Packaging Format (FPF) Export"			
         elif tool == "retirejs":
             scannerName = "Retire.js Scan"
         elif tool == "nodesecurity":
@@ -137,12 +143,16 @@ def processFiles(dd, engagement_id, file, scanner=None, build=None):
             scannerName = "OpenVAS CSV"
         elif tool == "snyk":
             scannerName = "Snyk Scan"
+        elif tool == "clair":
+            scannerName = "Clair Scan"			
 
         if scannerName is not None:
             print "Uploading " + scannerName + " scan: " + file
             test_id = dd.upload_scan(engagement_id, scannerName, file, "true", dojoDate, build)
 
-    if test_id.success == False:
+    if test_id == None:
+        print "Upload failed: no scanner for tool: " + tool
+    elif test_id.success == False:
         print "Upload failed: Detailed error message: " + test_id.data
 
     return test_id

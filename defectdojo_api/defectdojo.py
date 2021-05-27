@@ -2,9 +2,11 @@ import json
 import requests
 import requests.exceptions
 import requests.packages.urllib3
+import logging
 
 from . import __version__ as version
 
+LOGGER_NAME = "defectdojo_api"
 
 class DefectDojoAPI(object):
     """An API wrapper for DefectDojo."""
@@ -40,7 +42,13 @@ class DefectDojoAPI(object):
             self.user_agent = user_agent
 
         self.cert = cert
-        self.debug = debug  # Prints request and response information.
+
+        self.logger = logging.getLogger(LOGGER_NAME)
+        self.logger.setLevel(logging.DEBUG)
+        if not debug:
+            # Configure the default logging level to warning instead of debug for request library
+            logging.getLogger("requests").setLevel(logging.WARNING)
+            self.logger.setLevel(logging.WARNING)
 
         if not self.verify_ssl:
             requests.packages.urllib3.disable_warnings()  # Disabling SSL warning messages if verification is disabled.
@@ -360,30 +368,33 @@ class DefectDojoAPI(object):
         """
         return self._request('GET', 'products/' + str(product_id) + '/')
 
-    def create_product(self, name, description, prod_type):
+    def create_product(self, name, description, prod_type, lifecycle=None):
         """Creates a product with the given properties.
 
         :param name: Product name.
         :param description: Product key id..
         :param prod_type: Product type.
+	:param lifecycle: Lifecycle type.
 
         """
 
         data = {
             'name': name,
             'description': description,
-            'prod_type': prod_type
+            'prod_type': prod_type,
+	    'lifecycle': lifecycle
         }
 
         return self._request('POST', 'products/', data=data)
 
-    def set_product(self, product_id, name=None, description=None, prod_type=None):
+    def set_product(self, product_id, name=None, description=None, prod_type=None, lifecycle=None):
         """Updates a product with the given properties.
 
         :param product_id: Product ID
         :param name: Product name.
         :param description: Product key id..
         :param prod_type: Product type.
+	:param lifecycle: Lifecycle type.
 
         """
 
@@ -397,6 +408,10 @@ class DefectDojoAPI(object):
 
         if prod_type:
             data['prod_type'] = prod_type
+
+        if lifecycle:
+            data['lifecycle'] = lifecycle
+
 
         return self._request('PUT', 'products/' + str(product_id) + '/', data=data)
 
@@ -1139,16 +1154,14 @@ class DefectDojoAPI(object):
             proxies = {}
 
         try:
-            if self.debug:
-                print(method + ' ' + url)
-                print(params)
+            self.logger.debug(method + ' ' + url)
+            self.logger.debug(params)
 
             response = requests.request(method=method, url=self.host + url, params=params, data=data, files=files, headers=headers,
                                         timeout=self.timeout, verify=self.verify_ssl, cert=self.cert, proxies=proxies)
 
-            if self.debug:
-                print(response.status_code)
-                print(response.text)
+            self.logger.debug(response.status_code)
+            self.logger.debug(response.text)
 
             try:
                 if response.status_code == 201: #Created new object
