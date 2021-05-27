@@ -312,6 +312,24 @@ class DefectDojoAPIv2(object):
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
+    def set_product_metadata(self, product_id, name=None, value=None):
+        """Add a custom field to a product.
+
+        :param product_id: Product ID.
+        :param meta_data: name/value array.
+
+        """
+        data = {
+            'product': product_id,
+            'name': name,
+            'value': value
+        }
+        headers = {
+            'product_id': '{}'.format(product_id)
+        }
+
+        return self._request('POST', 'metadata/', data=data, custom_headers=headers)
+
     def list_products(self, name=None, name_contains=None, limit=200, offset=0):
 
         """Retrieves all the products.
@@ -438,7 +456,9 @@ class DefectDojoAPIv2(object):
         """
         return self._request('GET', 'tests/' + str(test_id) + '/')
 
-    def create_test(self, engagement_id, test_type, environment, target_start, target_end, percent_complete=None):
+    def create_test(self, engagement_id, test_type, environment, target_start,
+                    target_end, percent_complete=None, lead=None, title=None,
+                    version=None, description=None):
         """Creates a product with the given properties.
 
         :param engagement_id: Engagement id.
@@ -446,6 +466,10 @@ class DefectDojoAPIv2(object):
         :param target_start: Test start date.
         :param target_end: Test end date.
         :param percent_complete: Percentage until test completion.
+        :param lead: Test lead id
+        :param title: Test title/name
+        :param version: Test version
+        :param description: Test description
 
         """
 
@@ -457,6 +481,18 @@ class DefectDojoAPIv2(object):
             'target_end': target_end,
             'percent_complete': percent_complete
         }
+
+        if lead:
+            data['lead'] = lead
+
+        if title:
+            data['title'] = title
+
+        if version:
+            data['version'] = version
+
+        if description:
+            data['description'] = description
 
         return self._request('POST', 'tests/', data=data)
 
@@ -744,7 +780,6 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Upload API #####
-
     def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None):
         """Uploads and processes a scan file.
 
@@ -798,7 +833,6 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Re-upload API #####
-
     def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None):
         """Re-uploads and processes a scan file.
 
@@ -1150,7 +1184,7 @@ class DefectDojoAPIv2(object):
         Retrieves JIRA issues assigned to findings
 
         :param finding_id: Search for a specific finding ID
-        :param jira_key: Search a specific JIRA key
+        :param jira_key: Search a specific JIRA key
         :param limit: Number of records to return.
         :param offset: The initial index from which to return the result
         """

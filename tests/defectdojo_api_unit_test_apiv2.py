@@ -165,8 +165,11 @@ class TestDefectDojoAPI(unittest.TestCase):
         dir_path = os.path.dirname(os.path.realpath(__file__))
 
         date = datetime.now()
-        upload_scan = self.dd.upload_scan(self.__class__.engagement_id, "Burp Scan", dir_path + "/scans/Bodgeit-burp.xml",
-        "true", "false", "false", "false", date.strftime("%Y-%m-%d"), "API")
+        user_id = 1
+        upload_scan = self.dd.upload_scan(self.__class__.engagement_id,
+        "Test Burp Scan", dir_path + "/scans/Bodgeit-burp.xml",
+        "true", "false", "false", "false", user_id, "Burp Scan",
+        date.strftime("%Y-%m-%d"), "API")
 
         #upload_scan = self.dd.upload_scan(self.__class__.engagement_id, "NPM Audit Scan", dir_path + "/report.json",
         #"true", date.strftime("%Y-%m-%d"), "API")
@@ -181,8 +184,11 @@ class TestDefectDojoAPI(unittest.TestCase):
         dir_path = os.path.dirname(os.path.realpath(__file__))
 
         date = datetime.now()
-        upload_scan = self.dd.upload_scan(self.__class__.test_id, "Burp Scan", dir_path + "/scans/Bodgeit-burp.xml",
-        "true", date.strftime("%Y-%m-%d"), "API")
+        user_id = 1
+        upload_scan = self.dd.upload_scan(self.__class__.engagement_id,
+        "Test Burp Scan", dir_path + "/scans/Bodgeit-burp.xml",
+        "true", "false", "false", "false", user_id, "Burp Scan",
+        date.strftime("%Y-%m-%d"), "API")
 
         # response doesn't contain an id, so check for engagement instead
         self.assertIsNotNone(upload_scan.data["engagement"])
