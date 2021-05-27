@@ -780,7 +780,6 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Upload API #####
-
     def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None):
         """Uploads and processes a scan file.
 
