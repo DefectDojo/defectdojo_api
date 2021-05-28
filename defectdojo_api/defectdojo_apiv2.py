@@ -498,7 +498,7 @@ class DefectDojoAPIv2(object):
 
     def set_test(self, test_id, engagement_id=None, test_type=None,
         environment=None, target_start=None, target_end=None,
-        percent_complete=None, , title=None, version=None, description=None):
+        percent_complete=None, title=None, version=None, description=None):
         """Creates a product with the given properties.
 
         :param engagement_id: Engagement id.
