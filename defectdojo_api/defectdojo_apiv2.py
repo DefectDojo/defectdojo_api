@@ -1336,7 +1336,10 @@ class DefectDojoResponse(object):
         self.logger.debug("response_code" + str(self.response_code))
         if self.response_code == 400: #Bad Request
             raise ValueError('Object not created:' + json.dumps(self.data, sort_keys=True, indent=4, separators=(',', ': ')))
-        return int(self.data["id"])
+        if "id" in self.data.keys():
+            return int(self.data["id"])
+        else:
+            return int(self.data["engagement"])        
 
     def count(self):
         return self.data["count"]
