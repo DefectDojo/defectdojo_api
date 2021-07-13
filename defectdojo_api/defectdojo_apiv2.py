@@ -98,7 +98,7 @@ class DefectDojoAPIv2(object):
         return self._request('GET', 'users/' + str(user_id) + '/')
 
     ###### Engagements API #######
-    def list_engagements(self, status=None, product_id=None, name_contains=None, name=None, limit=20, offset=0):
+    def list_engagements(self, status=None, product_id=None, name_contains=None, name=None, limit=20, offset=0, related_fields=False):
         """Retrieves all the engagements.
 
         :param product_in: List of product ids (1,2).
@@ -120,6 +120,9 @@ class DefectDojoAPIv2(object):
 
         if status:
             params['status'] = status
+
+        if related_fields:
+            params['related_fields'] = 'true'
 
         # TODO remove name_contains here, or add to Defect Dojo. Currently it does nothing
         if name_contains:
@@ -330,7 +333,7 @@ class DefectDojoAPIv2(object):
 
         return self._request('POST', 'metadata/', data=data, custom_headers=headers)
 
-    def list_products(self, name=None, name_contains=None, limit=200, offset=0):
+    def list_products(self, name=None, name_contains=None, limit=200, offset=0, related_fields=False):
 
         """Retrieves all the products.
 
@@ -353,6 +356,8 @@ class DefectDojoAPIv2(object):
 
         if name_contains:
             params['name__icontains'] = name_contains
+        if related_fields:
+            params['related_fields'] = 'true'
 
         return self._request('GET', 'products/', params)
 
@@ -552,7 +557,7 @@ class DefectDojoAPIv2(object):
     ###### Findings API #######
     def list_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
         severity_gt=None, severity_contains=None, title_contains=None, url_contains=None, date_lt=None,
-        date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_id_in=None, build=None, limit=20, offset=0):
+        date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_id_in=None, build=None, limit=20, offset=0, related_fields=False):
 
         """Returns filtered list of findings.
 
@@ -635,6 +640,8 @@ class DefectDojoAPIv2(object):
 
         if build:
             params['build_id__contains'] = build
+        if related_fields:
+            params['related_fields'] = 'true'
 
         return self._request('GET', 'findings/', params)
 
