@@ -121,15 +121,15 @@ class DefectDojoAPIv2(object):
         if status:
             params['status'] = status
 
-        if related_fields:
-            params['related_fields'] = 'true'
-
         # TODO remove name_contains here, or add to Defect Dojo. Currently it does nothing
         if name_contains:
              params['name_contains'] = name_contains
 
         if name:
             params['name'] = name
+
+        if related_fields:
+            params['related_fields'] = 'true'
 
         return self._request('GET', 'engagements/', params)
 
@@ -141,7 +141,7 @@ class DefectDojoAPIv2(object):
         """
         return self._request('GET', 'engagements/' + str(engagement_id) + '/')
 
-    def create_engagement(self, name, product_id, lead_id, status, target_start, target_end, active='True',
+    def create_engagement(self, name, product_id,  target_start, target_end, active='True', lead_id=None, status=None,
         pen_test='False', check_list='False', threat_model='False', risk_path="",test_strategy="", progress="",
         done_testing='False', engagement_type="CI/CD", build_id=None, commit_hash=None, branch_tag=None, build_server=None,
         source_code_management_server=None, source_code_management_uri=None, orchestration_engine=None, description=None, deduplication_on_engagement=True):
@@ -315,24 +315,6 @@ class DefectDojoAPIv2(object):
         return self._request('PATCH', 'engagements/' + str(id) + '/', data=data)
 
     ###### Product API #######
-    def set_product_metadata(self, product_id, name=None, value=None):
-        """Add a custom field to a product.
-
-        :param product_id: Product ID.
-        :param meta_data: name/value array.
-
-        """
-        data = {
-            'product': product_id,
-            'name': name,
-            'value': value
-        }
-        headers = {
-            'product_id': '{}'.format(product_id)
-        }
-
-        return self._request('POST', 'metadata/', data=data, custom_headers=headers)
-
     def list_products(self, name=None, name_contains=None, limit=200, offset=0, related_fields=False):
 
         """Retrieves all the products.
@@ -356,6 +338,7 @@ class DefectDojoAPIv2(object):
 
         if name_contains:
             params['name__icontains'] = name_contains
+
         if related_fields:
             params['related_fields'] = 'true'
 
@@ -461,9 +444,7 @@ class DefectDojoAPIv2(object):
         """
         return self._request('GET', 'tests/' + str(test_id) + '/')
 
-    def create_test(self, engagement_id, test_type, environment, target_start,
-                    target_end, percent_complete=None, lead=None, title=None,
-                    version=None, description=None):
+    def create_test(self, engagement_id, test_type, environment, target_start, target_end, percent_complete=None):
         """Creates a product with the given properties.
 
         :param engagement_id: Engagement id.
@@ -471,10 +452,6 @@ class DefectDojoAPIv2(object):
         :param target_start: Test start date.
         :param target_end: Test end date.
         :param percent_complete: Percentage until test completion.
-        :param lead: Test lead id
-        :param title: Test title/name
-        :param version: Test version
-        :param description: Test description
 
         """
 
@@ -487,23 +464,10 @@ class DefectDojoAPIv2(object):
             'percent_complete': percent_complete
         }
 
-        if lead:
-            data['lead'] = lead
-
-        if title:
-            data['title'] = title
-
-        if version:
-            data['version'] = version
-
-        if description:
-            data['description'] = description
-
         return self._request('POST', 'tests/', data=data)
 
-    def set_test(self, test_id, engagement_id=None, test_type=None,
-        environment=None, target_start=None, target_end=None,
-        percent_complete=None, title=None, version=None, description=None):
+    def set_test(self, test_id, engagement_id=None, test_type=None, environment=None,
+        target_start=None, target_end=None, percent_complete=None):
         """Creates a product with the given properties.
 
         :param engagement_id: Engagement id.
@@ -511,10 +475,6 @@ class DefectDojoAPIv2(object):
         :param target_start: Test start date.
         :param target_end: Test end date.
         :param percent_complete: Percentage until test completion.
-        :param title: Test title/name
-        :param version: Test version
-        :param description: Test description
-
 
         """
 
@@ -542,15 +502,6 @@ class DefectDojoAPIv2(object):
 
         if percent_complete:
             data['percent_complete'] = percent_complete
-            
-        if title:
-            data['title'] = title
-
-        if version:
-            data['version'] = version
-
-        if description:
-            data['description'] = description
 
         return self._request('PUT', 'tests/' + str(test_id) + '/', data=data)
 
@@ -640,6 +591,7 @@ class DefectDojoAPIv2(object):
 
         if build:
             params['build_id__contains'] = build
+
         if related_fields:
             params['related_fields'] = 'true'
 
@@ -801,6 +753,7 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Upload API #####
+
     def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None):
         """Uploads and processes a scan file.
 
@@ -854,6 +807,7 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Re-upload API #####
+
     def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None):
         """Re-uploads and processes a scan file.
 
@@ -878,7 +832,7 @@ class DefectDojoAPIv2(object):
             'version': ('', version),
             'branch_tag': ('', branch_tag),
             'commit_hash': ('', commit_hash),
-	        'minimum_severity': ('', minimum_severity),
+            'minimum_severity': ('', minimum_severity),
             # 'push_to_jira': ('', True)
         }
 
@@ -1205,7 +1159,7 @@ class DefectDojoAPIv2(object):
         Retrieves JIRA issues assigned to findings
 
         :param finding_id: Search for a specific finding ID
-        :param jira_key: Search a specific JIRA key
+        :param jira_key: Search a specific JIRA key
         :param limit: Number of records to return.
         :param offset: The initial index from which to return the result
         """
