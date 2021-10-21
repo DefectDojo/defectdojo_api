@@ -764,10 +764,10 @@ class DefectDojoAPIv2(object):
         if impact:
             data['impact'] = impact
 
-        if active:
+        if active is not None:
             data['active'] = active
 
-        if verified:
+        if verified is not None:
             data['verified'] = verified
 
         if mitigation:
