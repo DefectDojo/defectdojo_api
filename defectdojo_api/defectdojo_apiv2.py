@@ -700,9 +700,9 @@ class DefectDojoAPIv2(object):
 
         return self._request('POST', 'findings/', data=data)
 
-    def set_finding(self, finding_id, product_id, engagement_id, test_id, title=None, description=None, severity=None, build=None,
+    def set_finding(self, finding_id, product_id=None, engagement_id=None, test_id=None, title=None, description=None, severity=None, build=None,
         cwe=None, date=None, user_id=None, impact=None, active=None, verified=None,
-        mitigation=None, references=None):
+        mitigation=None, references=None, numerical_severity=None):
 
         """Updates a finding with the given properties.
 
@@ -721,19 +721,27 @@ class DefectDojoAPIv2(object):
         :param mitigation: Steps to mitigate the finding.
         :param references: Details on finding.
         :param build: User specified build id relating to the build number from the build server. (Jenkins, Travis etc.).
+        :param numerical_severity: The numerical representation of the severity (S0, S1, S2, S3, S4).
 
         """
 
         data = {}
 
-        if title:
-            data['title'] = title
+        if not title:
+            raise ValueError('title may not be null')
+        data['title'] = title
 
-        if description:
-            data['description'] = description
+        if not description:
+            raise ValueError('description may not be null')
+        data['description'] = description
 
-        if severity:
-            data['severity'] = severity
+        if not severity:
+            raise ValueError('severity may not be null')
+        data['severity'] = severity
+
+        if not numerical_severity:
+            raise ValueError('numerical_severity may not be null')
+        data['numerical_severity'] = numerical_severity
 
         if cwe:
             data['cwe'] = cwe
@@ -756,10 +764,10 @@ class DefectDojoAPIv2(object):
         if impact:
             data['impact'] = impact
 
-        if active:
+        if active is not None:
             data['active'] = active
 
-        if verified:
+        if verified is not None:
             data['verified'] = verified
 
         if mitigation:
