@@ -607,10 +607,10 @@ class DefectDojoAPIv2(object):
             params['severity__gt'] = severity_gt
 
         if severity_contains:
-            params['severity__contains'] = severity_contains
+            params['severity'] = severity_contains
 
         if title_contains:
-            params['title__contains'] = title_contains
+            params['title'] = title_contains
 
         if url_contains:
             params['url__contains'] = url_contains
