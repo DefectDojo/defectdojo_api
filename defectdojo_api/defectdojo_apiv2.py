@@ -859,9 +859,6 @@ class DefectDojoAPIv2(object):
         :param file: Path to the scan file to be uploaded.
 
         """
-        if tags is None:
-            tags = ''
-
         if build is None:
             build = ''
 
