@@ -6,7 +6,7 @@ import logging
 
 requests.packages.urllib3.add_stderr_logger()
 
-version = "1.1.6.dev2"
+version = "1.2.0."
 
 LOGGER_NAME = "defectdojo_api"
 
