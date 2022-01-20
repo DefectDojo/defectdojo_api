@@ -537,7 +537,7 @@ class DefectDojoAPIv2(object):
 
         if percent_complete:
             data['percent_complete'] = percent_complete
-            
+
         if title:
             data['title'] = title
 
@@ -1219,6 +1219,31 @@ class DefectDojoAPIv2(object):
             params['offset'] = offset
 
         return self._request('GET', 'jira_finding_mappings/', params)
+
+    def list_products_type(self, id=None, name=None, limit=100, offset=0):
+        """
+        Retrieves product types
+
+        :param id: Search for a specific product type ID
+        :param name: Search a specific product type key
+        :param limit: Number of records to return.
+        :param offset: The initial index from which to return the result
+        """
+
+        params = {}
+        if id:
+            params['id'] = id
+
+        if name:
+            params['name'] = name
+
+        if limit:
+            params['limit'] = limit
+
+        if offset:
+            params['offset'] = offset
+
+        return self._request('GET', 'product_types/', params)
 
     # Utility
 
