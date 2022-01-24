@@ -1,3 +1,8 @@
+##THIS API WRAPPER IS NO LONGER MAINTAINED. IT MAY OR MAY NOT WORK##
+
+See `clients and api wrappers in the docs <https://defectdojo.github.io/django-DefectDojo/integrations/api-v2-docs/#clients--api-wrappers>`_ for alternatives##
+
+
 DefectDojo API
 ==============
 
@@ -10,9 +15,9 @@ Quick Start
 
 Several quick start options are available:
 
-- Install with pip (recommended): :code:`pip install defectdojo_api`
-- `Download the latest release <https://github.com/aaronweaver/defectdojo_api/releases/latest>`_
-- Clone the repository: :code:`git clone https://github.com/aaronweaver/defectdojo_api`
+- Clone the repository: :code:`git clone https://github.com/DefectDojo/defectdojo_api`
+- Install with pip (not recommended): :code:`pip install git+https://github.com/DefectDojo/defectdojo_api#master`
+
 - If you are testing the api locally make sure to set the PYTHONPATH. export PYTHONPATH=/path/totheapi/defectdojo_api:$PYTHONPATH
 
 Example
