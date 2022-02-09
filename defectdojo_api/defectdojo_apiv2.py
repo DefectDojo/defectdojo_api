@@ -649,7 +649,7 @@ class DefectDojoAPIv2(object):
         test_id, user_id, impact, active, verified, mitigation, references=None, build=None, line=0,
         file_path=None, static_finding="False", dynamic_finding="False", false_p="False",
         duplicate="False",  out_of_scope="False", under_review="False", under_defect_review="False",
-        numerical_severity=None):
+        numerical_severity=None, found_by=None):
 
         """Creates a finding with the given properties.
 
@@ -695,7 +695,8 @@ class DefectDojoAPIv2(object):
             'out_of_scope' : out_of_scope,
             'under_review' : under_review,
             'under_defect_review' : under_defect_review,
-            'numerical_severity' : numerical_severity
+            'numerical_severity' : numerical_severity,
+            'found_by' : [] if found_by is None else found_by
         }
 
         return self._request('POST', 'findings/', data=data)
