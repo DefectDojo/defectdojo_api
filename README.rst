@@ -1,6 +1,7 @@
-##THIS API WRAPPER IS NO LONGER MAINTAINED. IT MAY OR MAY NOT WORK##
+THIS API WRAPPER IS NO LONGER MAINTAINED. IT MAY OR MAY NOT WORK
+========
 
-See `clients and api wrappers in the docs <https://defectdojo.github.io/django-DefectDojo/integrations/api-v2-docs/#clients--api-wrappers>`_ for alternatives##
+See `clients and api wrappers in the docs <https://defectdojo.github.io/django-DefectDojo/integrations/api-v2-docs/#clients--api-wrappers>`_ for alternatives
 
 
 DefectDojo API
