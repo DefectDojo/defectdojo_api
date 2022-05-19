@@ -117,6 +117,21 @@ class TestDefectDojoAPI(unittest.TestCase):
         self.assertTrue(tests.data["count"]>0)
 
 
+    #### Test Types API TESTS ####
+    def test_create_test_type(self):
+        name = "test_name"
+        test_type = self.dd.create_test_type(name)
+        self.__class__.test_type_id = test_type.id()
+        self.assertIsNotNone(test_type.id())
+
+    def test_get_test_type(self):
+        test_type = self.dd.get_test_type(self.__class__.test_type_id)
+        self.assertIsNotNone(str(test_type.data["test_type"]))
+
+    def test_list_test_types(self):
+        test_types = self.dd.list_test_types()
+        self.assertTrue(test_types.data["count"]>0)
+
     @unittest.skip
     #Fails b/c of DojoAPI Issue
     def test_14_set_test(self):
