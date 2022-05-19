@@ -549,6 +549,88 @@ class DefectDojoAPIv2(object):
 
         return self._request('PUT', 'tests/' + str(test_id) + '/', data=data)
 
+    ###### Test Types API #######
+    def list_test_types(self, name=None, limit=20, offset=0):
+        """Returns filtered list of test types.
+
+        :param name: Test type name.
+        :param limit: Number of records to return.
+        :param offset: The initial index from which to return the results.
+
+        """
+
+        params = {}
+        if name:
+            params['name'] = name
+
+        if limit:
+            params['limit'] = limit
+
+        if offset:
+            params['offset'] = offset
+        
+        return self._request('GET', 'test_types/', params)
+
+    
+    def create_test_type(self, name, static_tool="False", dynamic_tool="False", active="True"):
+        """Creates a test type with given properties.
+
+        :param name: Test type name.
+        :param static_tool: Test type is for static tool.
+        :param dynamic_tool: Test type is for dynamic tool.
+        :param active: Test type is active.
+        :param tags: Tags.
+
+        """
+
+        data = {
+            'name': name,
+            'static_tool': static_tool,
+            'dynamic_tool': dynamic_tool,
+            'active': active
+        }
+
+        return self._request('POST', 'test_types/', data=data)
+
+
+    def get_test_type(self, test_type_id):
+        """Retrieves a test type with the given id.
+
+        :param test_type_id: Test type id.
+        """
+
+        return self._request('GET', 'test_types/' + str(test_type_id) + '/')
+
+    
+    def set_test_type(self, test_type_id, name, static_tool="False", dynamic_tool="False", active="True"):
+        """Updates a test type with the given properties.
+
+        :param test_type_id: Test type id.
+        :param name: Test type name.
+        :param static_tool: Test type is for static tool.
+        :param dynamic_tool: Test type is for dynamic tool.
+        :param active: Test type is active.
+
+        """
+
+        data = {}
+        if name:
+            data['name'] = name
+
+        if static_tool:
+            data['static_tool'] = static_tool
+
+        if dynamic_tool:
+            data['dynamic_tool'] = dynamic_tool
+
+        if active:
+            data['active'] = active
+
+        return self._request('PATCH', 'test_types/' + str(test_type_id) + '/', data=data)
+
+
+    
+
     ###### Findings API #######
     def list_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
         severity_gt=None, severity_contains=None, title_contains=None, url_contains=None, date_lt=None,
