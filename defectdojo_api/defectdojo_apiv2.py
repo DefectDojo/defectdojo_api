@@ -722,7 +722,7 @@ class DefectDojoAPIv2(object):
             params['build_id__contains'] = build
 
         if is_mitigated:
-            params['is__mitigated'] = is_mitigated
+            params['is_mitigated'] = is_mitigated
 
         if tags:
             params['tags'] = tags
