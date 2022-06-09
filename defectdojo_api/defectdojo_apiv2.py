@@ -886,7 +886,8 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Upload API #####
-    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None):
+    def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None,
+        version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None, environment=None):
         """Uploads and processes a scan file.
 
         :param application_id: Application identifier.
@@ -917,6 +918,7 @@ class DefectDojoAPIv2(object):
             'branch_tag': ('', branch_tag),
             'commit_hash': ('', commit_hash),
             'minimum_severity': ('', minimum_severity),
+            'environment': ('', environment),
             # 'push_to_jira': ('', True)
         }
 
@@ -936,7 +938,8 @@ class DefectDojoAPIv2(object):
         )
 
     ##### Re-upload API #####
-    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None):
+    def reupload_scan(self, test_id, scan_type, file, active, scan_date, tags=None, build=None, version=None, branch_tag=None, commit_hash=None,
+        minimum_severity="Info", auto_group_by=None, environment=None):
         """Re-uploads and processes a scan file.
 
         :param test_id: Test identifier.
@@ -958,6 +961,7 @@ class DefectDojoAPIv2(object):
             'branch_tag': ('', branch_tag),
             'commit_hash': ('', commit_hash),
 	        'minimum_severity': ('', minimum_severity),
+            'environment': ('', environment),
             # 'push_to_jira': ('', True)
         }
 
