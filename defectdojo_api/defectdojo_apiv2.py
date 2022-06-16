@@ -97,6 +97,26 @@ class DefectDojoAPIv2(object):
         """
         return self._request('GET', 'users/' + str(user_id) + '/')
 
+    def patch_user(self, user_id,data):
+        """modifies a user using the given user id.
+
+        :param user_id: User identification.
+
+        """
+        return self._request('PATCH', 'users/' + str(user_id) + '/', data=data)
+    
+    def get_user_api_key(self,username, password):
+        """Retrieves the user API key 
+            is useful to import reports and findings from other tools, 
+            since findings owner in API are set to the user calling the API
+        """
+        data = {
+            'username': username,
+            'password': password
+        }
+        return self._request('POST', 'api-token-auth/', data=data)
+
+
     ###### Engagements API #######
     def list_engagements(self, status=None, product_id=None, name_contains=None, name=None, limit=20, offset=0, related_fields=False):
         """Retrieves all the engagements.
@@ -369,6 +389,13 @@ class DefectDojoAPIv2(object):
         """
         return self._request('GET', 'products/' + str(product_id) + '/')
 
+    def get_product_list_by_name(self, product_name):
+#       Retrieves a product list by using the product name 
+        #Note (search is made with Like.
+
+        return self._request('GET', 'products/?name=' + str(product_name) + '/')
+
+
     def create_product(self, name, description, prod_type):
         """Creates a product with the given properties.
 
@@ -426,6 +453,12 @@ class DefectDojoAPIv2(object):
             data['prod_type'] = prod_type
 
         return self._request('PUT', 'products/' + str(product_id) + '/', data=data)
+
+    def delete_product(self, product_id):
+        """
+        Deletes a product the given id
+        """
+        return self._request('DELETE', 'products/' + str(product_id) + '/')
 
 
     ###### Test API #######
@@ -739,7 +772,6 @@ class DefectDojoAPIv2(object):
         file_path=None, static_finding="False", dynamic_finding="False", false_p="False",
         duplicate="False",  out_of_scope="False", under_review="False", under_defect_review="False",
         numerical_severity=None, found_by=None, tags=None):
-
         """Creates a finding with the given properties.
 
         :param title: Finding title
@@ -758,6 +790,14 @@ class DefectDojoAPIv2(object):
         :param references: Details on finding.
         :param build: User specified build id relating to the build number from the build server. (Jenkins, Travis etc.).
         """
+        
+        #If numerical_severity is not set, maps numerical_severity with severity : Low then S0 Medium then S1....
+        if (numerical_severity is None):
+            if (severity=='Low'): numerical_severity='S1'
+            elif (severity=='Medium'): numerical_severity='S2'
+            elif (severity=='High'): numerical_severity='S3'
+            elif (severity=='Critical'): numerical_severity='S4'
+
 
         data = {
             'title': title,
