@@ -393,7 +393,7 @@ class DefectDojoAPIv2(object):
 #       Retrieves a product list by using the product name 
         #Note (search is made with Like.
 
-        return self._request('GET', 'products/?name=' + str(product_name) + '/')
+        return self._request('GET', 'products/?name=' + str(product_name))
 
 
     def create_product(self, name, description, prod_type):
