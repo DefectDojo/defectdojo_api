@@ -912,6 +912,16 @@ class DefectDojoAPIv2(object):
 
         return self._request('PUT', 'findings/' + str(finding_id) + '/', data=data)
 
+    def delete_finding(self, finding_id):
+
+        """Deletes a finding with the given id.
+
+        :param finding_id: ID of finding to delete.
+
+        """
+
+        return self._request('DELETE', 'findings/' + str(finding_id))
+
     ##### Build Details API #####
 
     def build_details(self, engagement_id, json):
