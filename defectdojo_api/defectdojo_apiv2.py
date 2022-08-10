@@ -934,7 +934,7 @@ class DefectDojoAPIv2(object):
 
     ##### Upload API #####
     def upload_scan(self, engagement_id, scan_type, file, active, verified, close_old_findings, skip_duplicates, scan_date, tags=None, build=None,
-        version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None, environment=None):
+        version=None, branch_tag=None, commit_hash=None, minimum_severity="Info", auto_group_by=None, environment=None, endpoint_to_add=None):
         """Uploads and processes a scan file.
 
         :param application_id: Application identifier.
@@ -966,6 +966,7 @@ class DefectDojoAPIv2(object):
             'commit_hash': ('', commit_hash),
             'minimum_severity': ('', minimum_severity),
             'environment': ('', environment),
+            'endpoint_to_add': ('', endpoint_to_add)
             # 'push_to_jira': ('', True)
         }
 
