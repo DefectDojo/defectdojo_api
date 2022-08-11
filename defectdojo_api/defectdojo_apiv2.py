@@ -673,7 +673,7 @@ class DefectDojoAPIv2(object):
     def list_findings(self, active=None, duplicate=None, mitigated=None, severity=None, verified=None, severity_lt=None,
         severity_gt=None, severity_contains=None, title_contains=None, url_contains=None, date_lt=None,
         date_gt=None, date=None, product_id_in=None, engagement_id_in=None, test_id_in=None, build=None, limit=20, offset=0,
-        related_fields=False
+        related_fields=False,
         is_mitigated=None, tags=None):
         """Returns filtered list of findings.
 
