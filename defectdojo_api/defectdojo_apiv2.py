@@ -780,7 +780,7 @@ class DefectDojoAPIv2(object):
         test_id, user_id, impact, active, verified, mitigation, references=None, build=None, line=0,
         file_path=None, static_finding="False", dynamic_finding="False", false_p="False",
         duplicate="False",  out_of_scope="False", under_review="False", under_defect_review="False",
-        numerical_severity=None, found_by=None, tags=None):
+        numerical_severity=None, found_by=None, tags=None, service=""):
         """Creates a finding with the given properties.
 
         :param title: Finding title
@@ -835,7 +835,8 @@ class DefectDojoAPIv2(object):
             'under_defect_review' : under_defect_review,
             'numerical_severity' : numerical_severity,
             'found_by' : [] if found_by is None else found_by,
-            'tags': [] if tags is None else tags
+            'tags': [] if tags is None else tags,
+	    'service': service
         }
 
         return self._request('POST', 'findings/', data=data)
@@ -862,7 +863,7 @@ class DefectDojoAPIv2(object):
         :param references: Details on finding.
         :param build: User specified build id relating to the build number from the build server. (Jenkins, Travis etc.).
         :param numerical_severity: The numerical representation of the severity (S0, S1, S2, S3, S4).
-
+        :param service: Service you want associate to the finding. (string)
         """
 
         data = {}
