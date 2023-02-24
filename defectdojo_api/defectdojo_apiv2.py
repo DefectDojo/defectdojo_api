@@ -971,7 +971,7 @@ class DefectDojoAPIv2(object):
         self.logger.debug(filedata)
 
         data = {
-            'file': filedata,
+            'file': (file, filedata),
             'engagement': ('', engagement_id),
             'scan_type': ('', scan_type),
             'active': ('', active),
